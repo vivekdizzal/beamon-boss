@@ -26,18 +26,13 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		if($this->input->post())
+		{	
+			redirect('dashboard');
+		}
+
 		$this->load->view('login');
 	}
 
-	public function login_action()
-	{
-		echo "<pre>";
-		print_r($_POST);
-
-		//check user name and password here redirect
-		$result = $this->user_model->login($username, $password);
-
-		//redirect to dashboard page
-
-	}
+	
 }
