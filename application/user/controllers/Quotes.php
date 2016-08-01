@@ -40,4 +40,11 @@ class Quotes extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
+
+	public function rfq_action()
+	{
+		echo "<pre>";
+		print_r($_POST);
+	}
+
 }

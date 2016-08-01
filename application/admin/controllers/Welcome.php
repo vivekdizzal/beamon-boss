@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome1 extends CI_Controller {
+class Welcome extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -24,21 +24,14 @@ class Welcome1 extends CI_Controller {
 		{
 			echo "inserted";
 		}
-
-		echo site_url();
-		echo "******************</br>";
-		echo base_url();
-
 		$this->load->view('layout/header_login.php');
-		$this->load->view('welcome_message1');
+		$this->load->view('welcome_message');
 		$this->load->view('layout/footer_login.php');
 	}
 
 	public function dashboard()
 	{
-		echo site_url();
-		echo "******************</br>";
-		echo base_url();
+		
 		echo "inserted";
 	}
 }

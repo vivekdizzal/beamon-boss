@@ -1,4 +1,3 @@
-<?php echo site_url(); ?>
 <body class="utility-page sb-l-c sb-r-c">
 
 <!-- Body Wrap -->
@@ -21,7 +20,7 @@
                 </div> 
                 <div class="panel mw320">
 
-                    <form method="post" action="<?php echo site_url('welcome1/dashboard'); ?>" id="form-login">
+                    <form method="post" action="<?php echo site_url('welcome/dashboard'); ?>" id="form-login">
                         <div class="panel-body pn mv10">
 
                             <div class="section">
