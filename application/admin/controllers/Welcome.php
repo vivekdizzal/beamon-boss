@@ -31,7 +31,7 @@ class Welcome extends CI_Controller {
 
 	public function dashboard()
 	{
-		
-		echo "inserted";
+		$this->load->view('layout/header');
+		$this->load->view('layout/footer');
 	}
 }

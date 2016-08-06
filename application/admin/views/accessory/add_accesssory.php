@@ -1,4 +1,4 @@
-<form action="" method="">
+<form action="<?php echo site_url('tooling/add_accessories'); ?>" method="post">
 <h2>Name</h2>
 <input type="text" name="accessory_name" id="accessory_name" />
 <h2>Quantity</h2>
