@@ -7,6 +7,48 @@
 /*
  * Main functionality
 */
+	$(function() {
+    $(".tooling-select li").click(function() {
+		$(".tooling-select li").removeClass("active-tooling");
+       $(this).addClass("active-tooling");
+       $(".tolling-content .tab-pane").hide().eq($(this).index()).show();
+	   $(this).$('input[type=radio]').prop("checked",true);
+       return false;
+    });
+})
+	$(".append-text span").click(function(){
+        $(".cc-append").append("<div class='appen-con'><input type='text' placeholder='Type Here...' class='form-control' id='inputStandard'><div class='clearfix'></div></div>");
+    });
+	$(".append-opt").click(function(){
+        $(".appen-options").append("<div class='form-group'><div class='col-lg-9 pad-left-none'><div class='price-update'><div class='show-price' style='display:none;'><span>Epocoat <a class='Edit-price' href='#'>Edit</a></span> </div><div class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='Epocoat'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div><div class='col-lg-3 text-right'><div class='price-update'><div class='show-price'>$<span>18 <a class='Edit-price' href='#'>Edit</a></span></div><div style='display:none;' class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='18'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div></div>");
+    });
+	$(".append-ref").click(function(){
+        $(".appen-ref-con").append("<div class='form-group'><label for='inputStandard' class='col-lg-3 control-label'>Ref# 54587852</label><span class='pull-right append-add append-ref'><i class='fa fa-plus-square'></i></span><div class='col-lg-9'><p class='form-control-static text-muted'></p></div></div><div class='form-group'><div class='col-lg-9 pad-left-none'><div class=''><select class='form-control'><option>29*29 stencils</option><option>29*29 stencils</option><option>29*29 stencils</option></select></div></div><div class='col-lg-3 text-right'><div class='price-update'><div class='show-price'>$<span>18 <a class='Edit-price' href='#'>Edit</a></span></div><div style='display:none;' class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='18'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div></div><div class='form-group'><label for='inputStandard' class='col-lg-9 control-label'>Options:</label><span class='pull-right append-add append-opt'><i class='fa fa-plus-square'></i></span><div class='col-lg-3'></div></div><div class='appen-options'><div class='form-group'><div class='col-lg-9 pad-left-none'><div class='price-update'><div class='show-price' style='display:none;'><span>Epocoat <a class='Edit-price' href='#'>Edit</a></span> </div><div class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='Epocoat'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div><div class='col-lg-3 text-right'><div class='price-update'><div class='show-price'>$<span>18 <a class='Edit-price' href='#'>Edit</a></span></div><div style='display:none;' class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='18'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div></div><div class='form-group'><div class='col-lg-9 pad-left-none'><div class='price-update'><div class='show-price' style='display:none;'><span>FG Material <a class='Edit-price' href='#'>Edit</a></span> </div><div class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='FG Material'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div><div class='col-lg-3 text-right'><div class='price-update'><div class='show-price'>$<span>18 <a class='Edit-price' href='#'>Edit</a></span></div><div style='display:none;' class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='18'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div></div></div><div class='form-group margin-bottom-20'><label class='col-lg-9 control-label' for='inputStandard'>Sub Total:</label><div class='col-lg-3 text-right'><div class='price-update'><div class='show-price bold'>$<span>18 <a class='Edit-price' href='#'>Edit</a></span></div><div style='display:none;' class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='18'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div></div>");
+    });
+	$(".price-update .Edit-price").click(function () {
+		$(".update-price").hide();
+		$(".show-price").show();
+		$(this).closest(".show-price").next().show();
+		$(this).closest(".show-price").hide();
+	});
+	$(".price-update .save-price").click(function () {
+		$(this).closest(".update-price").hide();
+		$(this).closest(".update-price").prev().show();
+	});
+	$('.save-price').click(function () {
+		var input = $(this).prev(".get-value").val();
+		$(this).parent().prev().find('span').html('' + input + ' <a href="#" class="Edit-price">Edit</a>');
+		$(".price-update .Edit-price").click(function () {
+			$(".update-price").hide();
+			$(".show-price").show();
+			$(this).closest(".show-price").next().show();
+			$(this).closest(".show-price").hide();
+		});
+	});
+	$('.price-update a').click(function(e)
+	{
+		e.preventDefault();
+	});
 
 var Core = function(options) {
 
@@ -826,7 +868,7 @@ var bgPrimary = '#6d5cae',
    bgBlackD = '#1a2620',
    bgBlackDr = '#0e151a';
 
-/* Add custom sidebar */
+/* Add custom sidebar *//*
 if (jQuery("body.with-customizer").length > 0) {
    var custom_options ='<div id="customizer" class="hidden-xs">';
    custom_options  +=    '<div class="panel">';
@@ -993,7 +1035,7 @@ if (jQuery("body.with-customizer").length > 0) {
 
    jQuery('body').append(custom_options);
 }
-
+*/
 // Hover effects on mobile
 // if (jQuery(".chute-icon-style").length > 0) {
 //   $('.chute-icon-style.taphover').on("click", function(e) {

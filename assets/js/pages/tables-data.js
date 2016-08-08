@@ -42,7 +42,7 @@
             "sDom": '<"dt-panelmenu clearfix"lfr>t<"dt-panelfooter clearfix"ip>',
             "oTableTools": {
                 "sSwfPath": "assets/js/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
-            }
+		}
         });
 
         $('#datatable3').dataTable({

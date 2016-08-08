@@ -1,3 +1,4 @@
+ 
  <section id="content_wrapper">
 
         <!-- Topbar -->
@@ -36,8 +37,8 @@
                                     <th>QN#</th>
                                     <th>MATERIAL NAME</th>
                                     <th>MATERIAL DESCRIPTION</th>
-                                 <!--   <th>COST</th> -->
-                                    <th>STATUS</th>
+                                    <th>COST</th> 
+                                    <!--<th>STATUS</th>-->
                                     <th>ACTION</th>
                                 </tr>
                                 </thead>
@@ -45,21 +46,22 @@
 
                                 <?php
                                     //php code here
+                                    $sno = 1;
+                                    if(!empty($result))
+                                    {
+                                        foreach ($result as $value) {
+                                            # code...
+                                            echo "<tr>";
+                                            echo "<td>".$sno."</td>";
+                                            echo "<td>".$value['material_name']."</td>";
+                                            echo "<td>".$value['material_description']."</td>";
+                                            echo "<td>".$value['cost']."</td>";
+                                          //  echo "<td>".$value['material_name']."</td>";
+                                            echo "<td><a href='".site_url('tooling/edit_material/'.$value['id'])."' id='edit' value='".$value['id']."' >Edit</a> | <a href='#' class='del' val='".$value['id']."'>Delete</a></td></tr>";
+                                            $sno++;
+                                        }
+                                    }
                                 ?>
-                                <tr>
-                                    <td>1</td>
-                                    <td>30/07/2016</td>
-                                    <td>HCL</td>
-                                    <td>333tq001</td>
-                                    <td>333tq001</td>
-                                </tr>
-                                <tr>
-                                     <td>2</td>
-                                    <td>30/07/2016</td>
-                                    <td>HCL</td>
-                                    <td>333tq001</td>
-                                    <td>333tq001</td>
-                                </tr>
                                 </tbody>
                             </table>
 
@@ -70,5 +72,16 @@
 
         
         <!-- /Content -->
+
+    <script type="text/javascript">
+        $(".del").click(function() {
+            var id = $(this).attr('val');
+            var res=confirm("Do you want to delete?");
+            if(res == true)
+            {
+                window.location = "<?php echo site_url(); ?>/tooling/delete_material/"+id;
+            }       
+        });
+    </script>
 
        

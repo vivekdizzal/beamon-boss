@@ -26,9 +26,60 @@
         <button type="button" class="btn btn-danger ph25">
             <a href="<?php echo site_url('tooling/add_time'); ?>">Add Time</a>
         </button>
+        <div class="panel" id="spy3">
+
+        <div class="panel-body pn">
+                        <div class="table-responsive">
+                            <table class="table datatable-index table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>QN#</th>
+                                    <th>NAME</th>
+                                    <th>DESIGN COMPLEX</th>
+                                    <th>COST</th> 
+                                    <!--<th>STATUS</th>-->
+                                    <th>ACTION</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <?php
+                                    //php code here
+                                    $sno = 1;
+                                    if(!empty($result))
+                                    {
+                                        foreach ($result as $value) {
+                                            # code...
+                                            echo "<tr>";
+                                            echo "<td>".$sno."</td>";
+                                            echo "<td>".$value['name']."</td>";
+                                            echo "<td>".$value['design_complex']."</td>";
+                                            echo "<td>".$value['cost']."</td>";
+                                          //  echo "<td>".$value['material_name']."</td>";
+                                            echo "<td><a href='#' id='edit' value='".$value['id']."' >Edit</a> | <a href='#' class='delete' value='".$value['id']."'>Delete</a></td>";
+                                            $sno++;
+                                            echo "</tr>";
+                                        }
+                                    }
+                                ?>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    </div>
         </div>
 
         
         <!-- /Content -->
 
-       
+    <script type="text/javascript">
+        $( ".delete" ).click(function() {
+            var id = $(this).attr('value');
+            var res=confirm("Do you want to delete?");
+            if(res == true)
+            {
+                window.location = "<?php echo site_url(); ?>/tooling/delete_time/"+id;
+            }       
+        });
+    </script>

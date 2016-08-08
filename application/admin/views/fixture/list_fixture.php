@@ -26,9 +26,65 @@
         <button type="button" class="btn btn-danger ph25">
             <a href="<?php echo site_url('tooling/add_fixture'); ?>">Add Fixture</a>
         </button>
+        <div class="panel" id="spy3">
+
+        <div class="panel-body pn">
+                        <div class="table-responsive">
+                            <table class="table datatable-index table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>QN#</th>
+                                    <th>FIXTURE NAME</th>
+                                    <th>FIXTURE  DESCRIPTION</th>
+                                    <th>ACTION</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <?php
+                                    //php code here
+                                    $sno = 1;
+                                    if(!empty($result))
+                                    {
+                                        foreach ($result as $value) {
+
+                                ?>
+                                      
+                                        <tr>
+                                           <td><?php echo $sno; ?></td>
+                                           <td><?php echo $value['fixture_name']; ?></td>
+                                           <td><?php echo $value['fixture_description']; ?></td>
+                                           <td><a href="<?php echo site_url('tooling/edit_fixture/'.$value['id']); ?>" id='edit' value='<?php echo $value["id"]; ?>' >Edit</a> | <a href='#' class='delete' value='<?php echo $value["id"]; ?>' >Delete</a></td>;
+
+                                    <?php
+                                            $sno++;
+                                            echo "</tr>";
+
+                                        }
+                                    }
+                                ?>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
         </div>
 
         
         <!-- /Content -->
+
+    <script type="text/javascript">
+        $(".delete").click(function() {
+            var id = $(this).attr('value');
+            var res=confirm("Do you want to delete?");
+            if(res == true)
+            {
+                window.location = "<?php echo site_url(); ?>/tooling/delete_fixture/"+id;
+            }       
+        });
+    </script>
+   
 
        

@@ -20,89 +20,108 @@
         <!-- /Topbar -->
 
         <!-- Content -->
-        <section id="content" class="table-layout animated fadeIn">
+        <div class="" id="content">
+            <div class="row">
 
-            <!-- Column Center -->
-            <div class="chute chute-center">
+                <div class="col-md-12">
 
-            	<div class="row">
-    				<div class="col-sm-6">
-    					<div class="form-group col-sm-8">
-							<label for="select_engineer">Select Engineer</label>
-							 <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="select_engineer">Select Engineer
-                                <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                  <li><a href="#">Engineer 1</a></li>
-                                  <li><a href="#">Engineer 2</a></li>
-                                  <li><a href="#">Engineer 3</a></li>
-                                </ul>
-                              </div>
-						</div>
-    				</div>
-    				<div class="col-sm-6">
-    					<div class="form-group col-sm-8">
-							<label for="quote_number">Quote Ref#</label>
-							<input type="text" class="form-control input-md" id="quote_number">
-						</div>
-    				</div>
-   
- 				</div>
- 				<div class="row">
-    				<div class="col-sm-6">
-    					<div class="form-group col-sm-8">
-							<label for="email_id">Email</label>
-							<input type="text" class="form-control input-md" id="email_id">
-						</div>
+                    <!-- Standard Fields -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <span class="panel-title">New Quotes</span>
+                        </div>
+                        <div class="panel-body">
 
-    				</div>
-    				<div class="col-sm-6">
-    					<div class="form-group col-sm-8">
-							<label for="company">Company</label>
-							<input type="text" class="form-control input-md" id="company">
-						</div>
-    				</div>
-   
- 				</div>
- 				<div class="row">
-    				<div class="col-sm-6">
-    					<div class="form-group col-sm-8">
-							<label for="email_cc">Email CC</label>
-							<input type="text" class="form-control input-md" id="email_cc">
-						</div>
+                            <form class="form-horizontal" action="" method="">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Engineer Name:</label>
+                                            <div class="col-lg-9">
+                                                <div class="">
+                                                    <select class="form-control">
+                                                        <option>Engineer 1</option>
+                                                        <option>Engineer 2</option>
+                                                        <option>Engineer 3</option>
+                                                        <?php
+                                                            /* bring dynamic here*/
 
-    				</div>
-    				<div class="col-sm-6">
-    					<div class="form-group col-sm-8">
-							<label for="customer">Customer</label>
-							<input type="text" class="form-control input-md" id="customer">
-						</div>
-    				</div>
-   
- 				</div>
- 				<div class="row">
-    				<div class="col-sm-6">
-    					<div class="form-group col-sm-8">
-							<label for="email_alt">CC Email</label>
-							<input type="text" class="form-control input-md" id="email_alt">
-						</div>
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="inputStandard">Email:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" value="test@test.com" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="inputStandard">CC Email:</label>
+                                            <div class="col-lg-9 append-text cc-append">
+                                                <div class="appen-con"><input type="text" placeholder="Type Here..." class="form-control" id="inputStandard"><span><i class="fa fa-plus-square"></i></span><div class='clearfix'></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="inputStandard">Quote Ref#:</label>
+                                            <div class="col-lg-9">
+                                                <p class="form-control-static text-muted"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="inputStandard">Company:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" value="Test Company" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="inputStandard">Customer:</label>
+                                            <div class="col-lg-9">
+                                                <div class="">
+                                                    <select class="form-control">
+                                                        <option>Intel</option>
+                                                        <option>HCL</option>
+                                                        <option>Microsoft</option>
+                                                    </select>
 
-    				</div>
-    				<div class="col-sm-6">
-    					<div class="form-group col-sm-8">
-							<label for="assy_ref">Assy#</label>
-							<input type="text" class="form-control input-md" id="assy_ref">
-						</div>
-    				</div>
-   
- 				</div>
+                                                    <?php
+                                                        /* Bring dynamic here*/
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="inputStandard">Assy#:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" value="333444" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="alert alert-dark pastel alert-dismissable text-center">
+                                            <strong>Tooling</strong> 
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-6">
             
-            <p> Tooling </p>
-            <p><a href="<?php echo base_url(); ?>quotes/add_tooling" class="btn btn-info" role="button">Create</a></p>
-
-
+                                                </div>
+                                                <div class="col-lg-6 pull-right text-right">
+                                                    <button type="submit" class="btn btn-danger ph25">
+                                                    <a href="tooling-quotes.html">Create</a></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /Column Center -->
-
-        </section>
-        <!-- /Content -->
+        </div>

@@ -28,6 +28,7 @@
 
     <!-- CSS - allcp forms -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/allcp/forms/css/forms.css">
+    <script src="<?php echo base_url(); ?>assets/js/jquery/jquery-1.11.3.min.js"></script>
 
     <!-- Favicon >
     <link rel="shortcut icon" href="assets/img/favicon.png"-->
@@ -90,7 +91,7 @@
 
             <!-- Sidebar Menu  -->
             <ul class="nav sidebar-menu">
-                <li class="active">
+              <!--  <li class="active">
                     <a href="new-quotes.html">
                         <span class="sidebar-title">New Quote</span>
                     </a>
@@ -114,7 +115,7 @@
                     <a href="#">
                         <span class="sidebar-title">Reports</span>
                     </a>
-                </li>
+                </li> -->
                  <li>
                     <a href="<?php echo site_url('tooling/list_material'); ?>">
                         <span class="sidebar-title">Materials</span>
@@ -128,6 +129,11 @@
                   <li>
                     <a href="<?php echo site_url('tooling/list_time'); ?>">
                         <span class="sidebar-title">Time</span>
+                    </a>
+                </li>
+                   <li>
+                    <a href="<?php echo site_url('tooling/list_accessory'); ?>">
+                        <span class="sidebar-title">Accessory</span>
                     </a>
                 </li>
 

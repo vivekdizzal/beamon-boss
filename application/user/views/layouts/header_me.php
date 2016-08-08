@@ -6,7 +6,7 @@
 <head>
     <!-- Meta and Title -->
     <meta charset="utf-8">
-    <title>Boss2 - Quote Management System</title>
+    <title>Boos 2</title>
     <meta name="keywords" content="HTML5, Bootstrap 3, Admin Template, UI Theme"/>
     <meta name="description" content="myAdmin - A Responsive HTML5 Admin UI Framework">
     <meta name="author" content="ThemeREX">
@@ -34,17 +34,16 @@
     <!-- CSS - allcp forms -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/allcp/forms/css/forms.css">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.png">
+    <!-- Favicon >
+    <link rel="shortcut icon" href="assets/img/favicon.png"-->
 
     <!-- IE8 HTML5 support  -->
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src="<?php echo base_url(); ?>assets/js/jquery/jquery-1.11.3.min.js"></script>
 </head>
-
 <body class="dashboard-page with-customizer">
 
 <!-- Body Wrap  -->
@@ -53,37 +52,25 @@
     <!-- Header  -->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-logo-wrapper dark bg-dark">
-            <a class="navbar-logo-image" href="index.html">
+            <a class="navbar-logo-image" href="<?php echo base_url(); ?>">
                 <img src="<?php echo base_url(); ?>assets/img/logo.png" alt="" class="sb-l-o-logo">
                 <img src="<?php echo base_url(); ?>assets/img/logo_small.png" alt="" class="sb-l-m-logo">
             </a>
         </div>
+        
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown dropdown-fuse">
                 <a href="#" class="dropdown-toggle mln" data-toggle="dropdown">
-                    <span class="hidden-xs hidden-sm"><span class="name">John Iverson</span> </span>
+                    <span class="hidden-xs hidden-sm"><span class="name">Admin</span> </span>
                     <span class="fa fa-caret-down hidden-xs hidden-sm"></span>
-                  
                 </a>
                 <ul class="dropdown-menu list-group keep-dropdown w190" role="menu">
-                    <li class="list-group-item">
-                        <a href="#">
-                            Profile
-                            <span class="fa fa-user"></span> 
-                        </a>
-                    </li>
-                   <!-- <li class="list-group-item">
+                                        <li class="list-group-item">
                         <a href="#">
                             Settings
                             <span class="fa fa-cog"></span> 
                         </a>
                     </li>
-                    <li class="list-group-item">
-                        <a href="#">
-                            My Calendar
-                            <span class="fa fa-calendar-o"></span> 
-                        </a>
-                    </li>-->
                     <li class="list-group-item">
                         <a href="<?php echo base_url(); ?>home/logout">
                             Logout
@@ -96,29 +83,13 @@
     </header>
     <!-- /Header  -->
 
-   
     <!-- Sidebar  -->
     <aside id="sidebar_left" class="nano nano-light affix">
 
         <!-- Sidebar Left Wrapper  -->
         <div class="sidebar-left-content nano-content">
 
-            <!-- Sidebar Header -->
-            <header class="sidebar-header">
-
-                <!-- Sidebar - Author -->
-                <div class="sidebar-widget author-widget">
-                    <div class="media">
-            
-
-                        <div class="media-body">
-                            <div>Welcome</div>
-                            <div class="media-author">John Iverson</div>
-                        </div>
-                    </div>
-                </div>
-
-            </header>
+          
             <!-- /Sidebar Header -->
 
             <!-- Sidebar Menu  -->
@@ -126,35 +97,34 @@
                 <li class="active">
                     <a href="<?php echo base_url(); ?>quotes/add_new_quotes">
                         <span class="sidebar-title">New Quote</span>
-                        <span class="sb-menu-icon fa fa-home"></span>
+                        <span class="sb-menu-icon fa fa-plus-square"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="email-layouts.html">
+                    <a href="#">
                         <span class="sidebar-title">Quote Status</span>
-                        <span class="sb-menu-icon fa fa-envelope"></span>
+                        <span class="sb-menu-icon fa fa-share-square-o"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="basic-calendar.html">
-                        <span class="sidebar-title">Bot User's</span>
-                        <span class="sb-menu-icon fa fa-calendar"></span>
+                    <a href="#">
+                        <span class="sidebar-title">BOT Users</span>
+                        <span class="sb-menu-icon fa fa-user"></span>
                     </a>
-                </li>    
+                </li>
                 <li>
-                    <a href="basic-calendar.html">
+                    <a href="#">
                         <span class="sidebar-title">Price Table</span>
-                        <span class="sb-menu-icon fa fa-calendar"></span>
+                        <span class="sb-menu-icon fa fa-dollar"></span>
                     </a>
-                </li>      
-                <li>
-                    <a href="basic-calendar.html">
+                </li>
+				  <li>
+                    <a href="#">
                         <span class="sidebar-title">Reports</span>
-                        <span class="sb-menu-icon fa fa-calendar"></span>
+                        <span class="sb-menu-icon fa fa-list-ul "></span>
                     </a>
-                </li>        
+                </li>
 
-            
             </ul>
             <!-- /Sidebar Menu  -->
 

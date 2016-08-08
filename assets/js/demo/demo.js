@@ -15,7 +15,7 @@ var Demo = function() {
   var runDemoForms = function() {
 
     // Prevents directory response when submitting a demo form
-  /*  $('.allcp-form').on('submit', function(e) {
+   /* $('.allcp-form').on('submit', function(e) {
 
       if ($('body.basic-timeline').length || $('body.forms-validation').length) {
         return;
