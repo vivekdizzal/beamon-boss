@@ -54,7 +54,7 @@
                                            <td><?php echo $sno; ?></td>
                                            <td><?php echo $value['fixture_name']; ?></td>
                                            <td><?php echo $value['fixture_description']; ?></td>
-                                           <td><a href="<?php echo site_url('tooling/edit_fixture/'.$value['id']); ?>" id='edit' value='<?php echo $value["id"]; ?>' >Edit</a> | <a href='#' class='delete' value='<?php echo $value["id"]; ?>' >Delete</a></td>;
+                                           <td><a href="<?php echo site_url('tooling/edit_fixture/'.$value['id']); ?>" id='edit' value='<?php echo $value["id"]; ?>' >Edit</a> | <a href='#' class='delete' value='<?php echo $value["id"]; ?>' >Delete</a></td>
 
                                     <?php
                                             $sno++;

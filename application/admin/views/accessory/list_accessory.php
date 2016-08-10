@@ -24,7 +24,7 @@
         <div class="chute chute-center">
 
         <button type="button" class="btn btn-danger ph25">
-            <a href="<?php echo site_url('tooling/add_accessories'); ?>">List Accessory</a>
+            <a href="<?php echo site_url('tooling/add_accessories'); ?>">Add Accessory</a>
         </button>
          <div class="panel" id="spy3">
 
@@ -56,7 +56,7 @@
                                            <td><?php echo $value['accessory_name']; ?></td>
                                            <td><?php echo $value['accessory_qty']; ?></td>
                                            <td><?php echo $value['accessory_cost']; ?></td>
-                                           <td><a href='<?php echo site_url("tooling/edit_accessories/".$value["id"]); ?>' id='edit' value='<?php echo $value["id"]; ?>' >Edit</a> | <a href='#' class='delete' value='<?php echo $value["id"]; ?>' >Delete</a></td>;
+                                           <td><a href='<?php echo site_url("tooling/edit_accessories/".$value["id"]); ?>' id='edit' value='<?php echo $value["id"]; ?>' >Edit</a> | <a href='#' class='delete' value='<?php echo $value["id"]; ?>' >Delete</a></td>
 
                                     <?php
                                             $sno++;
@@ -83,7 +83,7 @@
             var res=confirm("Do you want to delete?");
             if(res == true)
             {
-                window.location = "<?php echo site_url(); ?>/tooling/delete_fixture/"+id;
+                window.location = "<?php echo site_url(); ?>/tooling/delete_accessory/"+id;
             }       
         });
     </script>

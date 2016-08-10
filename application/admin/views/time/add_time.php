@@ -23,7 +23,12 @@
 		<form action="<?php echo site_url('tooling/add_time'); ?>" method="post">
 			<h2>Name</h2>
 			<input type="text" name="name" id="name" />
-			<h2>Price</h2>
+            <h2>Design Type</h2>
+            <select name="design_type">
+                <option>Standard Design</option>
+                <option>Complex Design</option>
+            </select>
+			<h2>Cost (Per hour)</h2>
 			<input type="text" name="add_time" id="add_time" />
 			<input type="submit" value="Add Time" id="add_time" />
 		</form>

@@ -44,7 +44,7 @@
                                                         <option>Engineer 2</option>
                                                         <option>Engineer 3</option>
                                                         <?php
-                                                            /* bring dynamic here*/
+                                                            /* bring dynamic fields here*/
 
                                                         ?>
                                                     </select>
@@ -88,7 +88,7 @@
                                                     </select>
 
                                                     <?php
-                                                        /* Bring dynamic here*/
+                                                        /* Bring dynamic fields here*/
                                                     ?>
                                                 </div>
                                             </div>
@@ -113,7 +113,7 @@
                                                 </div>
                                                 <div class="col-lg-6 pull-right text-right">
                                                     <button type="submit" class="btn btn-danger ph25">
-                                                    <a href="tooling-quotes.html">Create</a></button>
+                                                    <a href="<?php echo base_url('tooling/index'); ?>">Create</a></button>
                                                 </div>
                                             </div>
                                         </div>

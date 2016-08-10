@@ -28,7 +28,7 @@ class Tooling extends CI_Controller {
 		if($this->input->post())
 		{
 			$data = array(
-						'material_name' => $this->input->post('material_description'),
+						'material_name' => $this->input->post('material_name'),
 						'material_description' => $this->input->post('material_description'),
 						'cost' => $this->input->post('material_cost'),
 						'date_created' => date('Y-m-d'),
@@ -77,7 +77,7 @@ class Tooling extends CI_Controller {
 						'date_created'	 => date('Y-m-d')
 					);
 			$this->crud_model->insert(MASTER_TOOLING_ACCESSORY,$data);
-			redirect('tooling/list_material');
+			redirect('tooling/list_accessory');
 		}
 		$this->load->view('layout/header');
 		$this->load->view('accessory/add_accesssory');
@@ -181,6 +181,24 @@ class Tooling extends CI_Controller {
 		$data['result'] = $this->crud_model->get(MASTER_TOOLING_TIMING,$where);
 		$this->load->view('layout/header');
 		$this->load->view('time/list_time',$data);
+		$this->load->view('layout/footer');
+	}
+
+	public function edit_time($id=0)
+	{
+		if($this->input->post())
+		{
+			$where = array('id' => $id);
+			$data = array(
+						'cost' => $this->input->post('cost')
+					);
+			$this->crud_model->update(MASTER_TOOLING_TIMING,$data,$where);
+			redirect('tooling/list_time');
+		}
+
+		$data['records'] = $this->crud_model->get(MASTER_TOOLING_TIMING,array('id' => $id));
+		$this->load->view('layout/header');
+		$this->load->view('time/edit_time',$data);
 		$this->load->view('layout/footer');
 	}
 

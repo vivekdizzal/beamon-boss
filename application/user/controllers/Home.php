@@ -28,12 +28,12 @@ class Home extends CI_Controller {
 	{
 		if($this->input->post())
 		{	
-			$this->form_validation->set_rules('usr_logname', 'Username', 'trim|required');
+			/*$this->form_validation->set_rules('usr_logname', 'Username', 'trim|required');
             $this->form_validation->set_rules('usr_logpwd', 'Password', 'trim|required|callback_check_database');
 
-            if ($this->form_validation->run()) {
+            if ($this->form_validation->run()) {*/
                 redirect('dashboard');
-            }
+            //}
 		}
 
 		$this->load->view('layouts/header_login.php');

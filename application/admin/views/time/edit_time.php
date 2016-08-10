@@ -12,7 +12,7 @@
                     <li class="breadcrumb-link">
                         <a href="index.html">Home</a>
                     </li>
-                    <li class="breadcrumb-current-item">Add Accessory</li>
+                    <li class="breadcrumb-current-item">Dashboard</li>
                 </ol>
             </div>
         </header>
@@ -20,17 +20,13 @@
 
             <!-- Column Center -->
             <div class="chute chute-center">
-
-
-<form action="<?php echo site_url('tooling/add_accessories'); ?>" method="post">
-<h2>Name</h2>
-<input type="text" name="accessory_name" id="accessory_name" />
-<h2>Quantity</h2>
-<input type="text" name="accessory_qty" id="accessory_qty" />
-<h2>Cost</h2>
-<input type="" name="cost" id="cost" />
-
-<input type="submit" name="add_accessory" id="add_accessory" value="Add Accessories" />
-</form>
-
+		<form action="<?php echo site_url('tooling/edit_time/'.$records[0]["id"]); ?>" method="post">
+			<h2>Name</h2>
+			<input type="text" name="name" id="name" value="<?php echo $records[0]['name']; ?>" readonly />
+            <h2>Design Type</h2>
+            <input type="text" name="design_type" id="design_type" value="<?php echo $records[0]['design_complex']; ?>" readonly />
+			<h2>Cost (Per hour)</h2>
+			<input type="text" name="cost" id="cost" value="<?php echo $records[0]['cost']; ?>" />
+			<input type="submit" value="Update Time" id="edit_time" name="edit_time" />
+		</form>
 </div>

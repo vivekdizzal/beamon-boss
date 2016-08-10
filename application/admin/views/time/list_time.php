@@ -56,7 +56,7 @@
                                             echo "<td>".$value['design_complex']."</td>";
                                             echo "<td>".$value['cost']."</td>";
                                           //  echo "<td>".$value['material_name']."</td>";
-                                            echo "<td><a href='#' id='edit' value='".$value['id']."' >Edit</a> | <a href='#' class='delete' value='".$value['id']."'>Delete</a></td>";
+                                            echo "<td><a href='".site_url('tooling/edit_time/'.$value['id']) ."' id='edit' value='".$value['id']."' >Edit</a> | <a href='#' class='delete' value='".$value['id']."'>Delete</a></td>";
                                             $sno++;
                                             echo "</tr>";
                                         }
