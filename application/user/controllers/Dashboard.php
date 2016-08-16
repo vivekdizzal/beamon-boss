@@ -13,7 +13,6 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/dashboard');
 		$this->load->view('layouts/footer');
 	}
-
 	/*
 		Function is used to generate the report in the form of csv 
 	*/

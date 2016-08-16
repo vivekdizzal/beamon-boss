@@ -77,7 +77,7 @@ class Home extends CI_Controller {
 
 	public function logout()
 	{
-		redirect('home');
+		redirect(base_url());
 	}
 
 	

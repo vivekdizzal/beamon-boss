@@ -221,6 +221,95 @@ class Tooling extends CI_Controller {
 
 	}
 
+	public function extra_material()
+	{
+		$where = array('status' => '1');
+		$data['result'] = $this->crud_model->get('boss_master_extra_material',$where);
+		$this->load->view('layout/header');
+		$this->load->view('extra_material/list_extra_material',$data);
+		$this->load->view('layout/footer');
+	}
+
+	public function add_extra_material()
+	{
+		if($this->input->post())
+		{
+			$data = array(
+						'extra_material_inch' => $this->input->post('extra_material_inch'),
+						'status' => '1',
+						'date_created' => date('Y-m-d')
+					);
+			$this->crud_model->insert('boss_master_extra_material',$data);
+			redirect('tooling/extra_material');
+		}
+		$this->load->view('layout/header');
+		$this->load->view('extra_material/add_extra_material.php');
+		$this->load->view('layout/footer');
+	}
+
+	public function edit_extra_material($id=0)
+	{
+		if($this->input->post())
+		{
+			$where = array('id' => $id);
+			$data = array(
+						'extra_material_inch' => $this->input->post('extra_material_inch')
+					);
+			$this->crud_model->update('boss_master_extra_material',$data,$where);
+			redirect('tooling/extra_material');
+		}
+
+		$data['records'] = $this->crud_model->get('boss_master_extra_material',array('id' => $id));
+		$this->load->view('layout/header');
+		$this->load->view('extra_material/edit_extra_material',$data);
+		$this->load->view('layout/footer');
+	}
+	/* for markup */
+	public function list_markup()
+	{
+		$where = array('status' => '1');
+		$data['result'] = $this->crud_model->get('boss_master_markup',$where);
+		$this->load->view('layout/header');
+		$this->load->view('markup/list_markup',$data);
+		$this->load->view('layout/footer');
+	}
+
+	public function add_markup()
+	{
+		if($this->input->post())
+		{
+			$data = array(
+						'markup_percentage' => $this->input->post('markup_percentage'),
+						'status' => '1',
+						'date_created' => date('Y-m-d')
+					);
+			$this->crud_model->insert('boss_master_markup',$data);
+			redirect('tooling/list_material');
+		}
+		$this->load->view('layout/header');
+		$this->load->view('markup/add_markup');
+		$this->load->view('layout/footer');
+	}
+
+	public function edit_markup($id=0)
+	{
+		if($this->input->post())
+		{
+			$where = array('id' => $id);
+			$data = array(
+						'markup_percentage' => $this->input->post('markup_percentage')
+					);
+			$this->crud_model->update('boss_master_markup',$data,$where);
+			redirect('tooling/list_markup');
+		}
+
+		$data['records'] = $this->crud_model->get('boss_master_markup',array('id' => $id));
+		$this->load->view('layout/header');
+		$this->load->view('markup/edit_markup',$data);
+		$this->load->view('layout/footer');
+	}
+
+
 	/* For deletting process  */
 	public function delete_material($id=0)
 	{
@@ -242,5 +331,16 @@ class Tooling extends CI_Controller {
 	{
 		$this->crud_model->delete(MASTER_TOOLING_ACCESSORY,array('id' => $id));
 		redirect('tooling/list_accessory');
+	}
+
+	public function delete_markup($id=0)
+	{
+		$this->crud_model->delete('boss_master_markup',array('id' => $id));
+		redirect('tooling/list_markup');
+	}
+	public function delete_extra_material($id=0)
+	{
+		$this->crud_model->delete('boss_master_extra_material',array('id' => $id));
+		redirect('tooling/extra_material');
 	}
 }

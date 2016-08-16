@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="index.html">
+                        <a href="<?php echo base_url(); ?>">
                             Logout
                             <span class="fa fa-sign-out"></span> 
                         </a>
@@ -136,8 +136,16 @@
                         <span class="sidebar-title">Accessory</span>
                     </a>
                 </li>
-
-
+                 <li>
+                    <a href="<?php echo site_url('tooling/extra_material'); ?>">
+                        <span class="sidebar-title">Extra</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('tooling/list_markup'); ?>">
+                        <span class="sidebar-title">Mark-up</span>
+                    </a>
+                </li>
             </ul>
             <!-- /Sidebar Menu  -->
 
