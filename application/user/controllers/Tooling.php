@@ -18,4 +18,11 @@ class Tooling extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
+	public function test()
+	{
+		echo "<pre>";
+		print_r($_POST);
+		exit;
+	}
+
 }
