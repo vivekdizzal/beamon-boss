@@ -19914,7 +19914,7 @@ body.sb-top #sidebar_top_toggle {
 #content.table-layout > div,
 #content.table-layout > section {
   vertical-align: top;
-  padding: 45px 32px 50px;
+  padding: 32px 32px 50px;
 }
 #content.table-layout > aside {
   vertical-align: top;
@@ -28274,4 +28274,26 @@ body.basic-timeline .panel-clone {
 }
 .active-tooling{
 	background:green !important;
+}
+.extra-breadcrumb {
+    float: left;
+    padding: 18px 25px;
+}
+.action-button {
+    text-align: right;
+	margin-bottom:30px;
+}
+.action-button a {
+    line-height: 33px;
+	margin-left: 20px;
+    padding: 7px 17px;
+}
+.form-layout {
+    padding: 40px 30px 50px 31px !important;
+}
+.theme-add {
+    border: medium none;
+    margin-left: 10px;
+    margin-top: 18px;
+    padding: 5px 15px;
 }

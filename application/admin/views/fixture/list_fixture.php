@@ -1,7 +1,7 @@
  <section id="content_wrapper">
 
         <!-- Topbar -->
-        <header id="topbar" class="alt">
+      <!--   <header id="topbar" class="alt">
             <div class="topbar-left">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-icon">
@@ -15,17 +15,17 @@
                     <li class="breadcrumb-current-item">Fixture</li>
                 </ol>
             </div>
-        </header>
+        </header> -->
         <!-- /Topbar -->
 
         <!-- Content -->
         <section id="content" class="table-layout animated fadeIn">
 
-        <div class="chute chute-center">
+        <div class="chute chute-center col-sm-12">
 
-        <button type="button" class="btn btn-danger ph25">
-            <a href="<?php echo site_url('tooling/add_fixture'); ?>">Add Fixture</a>
-        </button>
+        <div class="action-button">
+            <a  class="btn-info" href="<?php echo site_url('tooling/add_fixture'); ?>">Add Fixture</a>
+        </div>
         <div class="panel" id="spy3">
 
         <div class="panel-body pn">

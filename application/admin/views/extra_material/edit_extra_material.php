@@ -1,30 +1,23 @@
  <section id="content_wrapper">               
-      
-        <!-- Topbar -->
-        <header id="topbar" class="alt">
-            <div class="topbar-left">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-icon">
-                        <a href="index.html">
-                            <span class="fa fa-home"></span>
-                        </a>
-                    </li>
-                    <li class="breadcrumb-link">
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li class="breadcrumb-current-item">Edit Extra Material</li>
-                </ol>
-            </div>
-        </header>
-          <section id="content" class="table-layout animated fadeIn">
-
+    <section id="content" class="form-layout">
             <!-- Column Center -->
-            <div class="chute chute-center">
-
-<form action="<?php echo site_url('tooling/edit_extra_material/'.$records[0]['id']); ?>" method="post">
-	<h2>Extra Material in inch</h2>	
-	<input type="text" name="extra_material_inch" value="<?php echo $records[0]['extra_material_inch']; ?>" />
-	<input type="submit" name="add_extra_material_inch" value="Add Extra Material">
-</form>
-
-</div>
+        <div class="row">
+             <div class="col-sm-6">
+                 <div class="panel">
+                        <form action="<?php echo site_url('tooling/edit_extra_material/'.$records[0]['id']); ?>" method="post">
+                              <div class="form-group">
+                                 <label class="col-lg-12 control-label pt18">Extra Material in inch</label>
+                                     <div class="col-lg-12">	
+                        	               <input type="text" name="extra_material_inch" value="<?php echo $records[0]['extra_material_inch']; ?>" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-12 text-right">
+                                    	<input type="submit" class="bg-success theme-add" name="add_extra_material_inch" value="Update">
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                        </form>
+                </div>
+            </div>
+    </div>

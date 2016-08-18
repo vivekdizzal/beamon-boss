@@ -1,7 +1,7 @@
  <section id="content_wrapper">               
       
         <!-- Topbar -->
-        <header id="topbar" class="alt">
+       <!--  <header id="topbar" class="alt">
             <div class="topbar-left">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-icon">
@@ -15,17 +15,44 @@
                     <li class="breadcrumb-current-item">Add Material</li>
                 </ol>
             </div>
-        </header>
-          <section id="content" class="table-layout animated fadeIn">
+        </header> -->
+          <section id="content" class="form-layout">
             <!-- Column Center -->
-            <div class="chute chute-center">
-<form action="<?php echo site_url('tooling/edit_material/'.$get_record[0]['id']); ?>" method="post">
-<input type="text" name="material_name" id="material_name" value="<?php echo $get_record[0]['material_name']; ?>"/></br>
-<input type="text" name="material_description" id="material_description" value="<?php echo $get_record[0]['material_description']; ?>" /></br>
-<input type="text" name="material_cost" id="material_cost" value="<?php echo $get_record[0]['cost']; ?>" />
-<input type="submit" value="Edit Material" name="add_material" />
+           <div class="row">
+             <div class="col-sm-6">
+                 <div class="panel">
+                    <form action="<?php echo site_url('tooling/edit_material/'.$get_record[0]['id']); ?>" method="post">
 
-</form>
+                    <div class="form-group">
+                        <label class="col-lg-12 control-label pt18">Material Name</label>
+                        <div class="col-lg-12">
+                             <input type="text" class="form-control" name="material_name" id="material_name" value="<?php echo $get_record[0]['material_name']; ?>"/>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="col-lg-12 control-label pt18">Material Description</label>
+                        <div class="col-lg-12">
+                             <input type="text" class="form-control" name="material_description" id="material_description" value="<?php echo $get_record[0]['material_description']; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-12 control-label pt18">Material Cost</label>
+                        <div class="col-lg-12">
+                             <input type="text" class="form-control" name="material_cost" id="material_cost" value="<?php echo $get_record[0]['cost']; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-12 text-right">
+                            <input type="submit" class="bg-success theme-add" value="Update Material" name="add_material" />
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                 </form>
+            </div>
+        </div>
 </div>
+
 

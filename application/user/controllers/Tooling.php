@@ -11,6 +11,7 @@ class Tooling extends CI_Controller {
 		$data['fixture_list'] = $this->crud_model->get('boss_master_fixture_list');
 		$data['material_list'] = $this->crud_model->get('boss_master_tooling_material');
 		$data['standard_timing'] = $this->crud_model->get('boss_master_tooling_timing',array('design_complex' => 'Standard'));
+		$data['complex_timing'] = $this->crud_model->get('boss_master_tooling_timing',array('design_complex' => 'Complex'));
 
 		$data['accessories_list'] = $this->crud_model->get('boss_master_accssories');
 		$this->load->view('layouts/header');

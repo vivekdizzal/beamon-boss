@@ -54,7 +54,21 @@
                 <img src="<?php echo base_url(); ?>assets/img/logo_small.png" alt="" class="sb-l-m-logo">
             </a>
         </div>
-        
+		<div class="extra-breadcrumb">
+            <div class="topbar-left">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-icon">
+                        <a href="index.html">
+                            <span class="fa fa-home"></span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-link">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-current-item">Dashboard</li>
+                </ol>
+            </div>
+        </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown dropdown-fuse">
                 <a href="#" class="dropdown-toggle mln" data-toggle="dropdown">
