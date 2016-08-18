@@ -537,6 +537,12 @@
   	var cpx_assembly_hr = $('input[name="cpx_assembly_hr"]').val();
   	var cpx_assembly_min =  $('input[name="cpx_assembly_min"]').val();
 
+  	var time_other_name = $('input[name="time_other_name"]').val();
+  	var std_other_hr = $('input[name="std_other_hr"]').val();
+  	var std_other_min = $('input[name="std_other_min"]').val();
+  	var cpx_other_hr = $('input[name="cpx_other_hr"]').val();
+  	var cpx_other_min = $('input[name="cpx_other_min"]').val();
+
   	/*get the hour value dynamically*/
   	var design_cost = $('#std_design_cost').attr('value');
   	var assembly_cost = $('#std_assembly_cost').attr('value');
@@ -578,9 +584,22 @@
   		var total_complex_assembly_cost = (complex_assembly_cost*cpx_assembly_hr) + (complex_assembly_cost*(cpx_assembly_min/60));
   	}
 
+  	/* For rthers*/
+  	if(std_other_hr != "" || std_other_min != "")
+  	{
+  		var total_standard_other_cost = (time_other_name*std_other_hr) + (time_other_name*(std_other_min/60));
+  	}
+
+  	if(cpx_other_hr != "" || cpx_other_min != "")
+  	{
+  		var total_complex_other_cost = (time_other_name*cpx_other_hr) + (time_other_name*(cpx_other_min/60));
+  	}
+
+
   		var total_design_cost = total_standard_design_cost + total_complex_design_cost;
   		var total_assembly_cost = total_standard_assembly_cost + total_complex_assembly_cost;
   		var total_machine_cost = total_standard_machine_cost + total_complex_machine_cost;
+  		var total_other_cost = total_standard_other_cost + total_complex_other_cost;
 
   		if(isNaN(total_design_cost))
   		{
@@ -599,8 +618,14 @@
   		$('#total_cost_assembly').text('$'+total_assembly_cost);
   		$('#total_cost_machine').text('$'+total_machine_cost);
 
+  		alert(total_other_cost);
   	/*Calculate Accessories*/
 
+
+
+  	/*This is here for calculating multiple quotes*/
+  	var multiple_quote = $('input[name="multiple_quote"]:checked').attr('value');
+  	console.log(multiple_quote);
 
   }
 
