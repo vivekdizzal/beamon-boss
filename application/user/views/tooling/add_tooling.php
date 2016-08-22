@@ -1,19 +1,27 @@
+<?php
+	error_reporting('E_ALL');
+?>
+
      <script type="text/javascript">
 				$(document).ready(function(){
 				    var maxField = 10; //Input fields increment limitation
-				    var material_count=3;
+				    var material_count=1;
 				    var addButton = $('.add-material'); //Add button selector
 				    var wrapper = $('.field-wrapper'); //Input field wrapper
-					var id_count = 2;
+					var id_count = 0;
 					var id_count_extra = 2;
 				    var x = 1; //Initial field counter is 1
 
 				    $('.append-add-extra').click(function(){ //Once add button is clicked
 				      
-				             var fieldHTML = '<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" class="form-control input-tooling" name="tooling_material_select[]" ></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_xvalue[]" class="form-control input-tooling"></div></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_yvalue[]" class="form-control input-tooling"></div></td><td><b></b></td></tr>';
+				             var fieldHTML = '<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" class="form-control input-tooling" name="tooling_material_select[]" ></td><td colspan="3"><b></b></td></tr>';
 				            $('.add_extra').append(fieldHTML); // Add field html
 				            
-				        
+				        /*
+							<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" class="form-control input-tooling" name="tooling_material_select[]" ></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_xvalue[]" class="form-control input-tooling"></div></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_yvalue[]" class="form-control input-tooling"></div></td><td><b></b></td></tr>';
+	
+
+				        */
 				    });
 					
 				//for add extra option
@@ -22,10 +30,12 @@
 				            x++; //Increment field counter
 				            material_count++;
 				            id_count++;
-				             var fieldHTML = '<tr><td>Material-'+material_count+':</td><td colspan="3"></td>														</tr><tr><td><select class="form-control"  name="tooling_material_select[]"><?php 
+				             var fieldHTML = '<tr><td>Material-'+material_count+':</td><td colspan="3"></td>														</tr><tr><td><select class="form-control"  name="tooling_material_select[]" id="tooling_material_select'+id_count+'"><?php 
 																		foreach($material_list as $material)
 																		{
-																			echo "<option>".$material['material_name']."</option>";
+																			/*echo "<option>".$material['material_name']."</option>";*/
+
+																			echo '<option value="'.$material['cost'].'">'.$material['material_name'].'</option>';
 																		}
 																	?>		</select></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_xvalue[]" class="form-control input-tooling"></div></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_yvalue[]" class="form-control input-tooling"></div></td><td><b><span id="material_total_cost'+id_count+'"></span></b></td></tr>';
 				            $(wrapper).append(fieldHTML); // Add field html
@@ -79,7 +89,7 @@
                         </div>
                         <div class="panel-body">
 
-                            <form class="form-horizontal" method="post" action="<?php echo base_url('tooling/test'); ?>">
+                            <form class="form-horizontal" method="post" action="<?php echo base_url('tooling/add_tooling'); ?>">
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="tab-block mb25">
@@ -127,16 +137,16 @@
 															<th width="20%">Type</th><th width="25%">Size - X in Inch</th><th width="25%">Size - Y in Inch</th><th width="20%">Cost</th>
 														</tr>
 														
-														<tr>
+														<!--<tr>
 															<td>Material-1:</td><td colspan="3"></td>
 														</tr>
 														<tr>
 															<td>
-																<select class="form-control" name="tooling_material_select[]">
+																<select class="form-control" name="tooling_material_select[]" id="tooling_material_select0">
 																	<?php 
 																		foreach($material_list as $material)
 																		{
-																			echo "<option>".$material['material_name']."</option>";
+																			echo "<option value='".$material['cost']."'>".$material['material_name']."</option>";
 																		}
 
 																	?>
@@ -163,11 +173,11 @@
 														</tr>
 														<tr>
 															<td>
-																<select class="form-control"  name="tooling_material_select[]">
+																<select class="form-control"  name="tooling_material_select[]" id="tooling_material_select1">
 																	<?php 
 																		foreach($material_list as $material)
 																		{
-																			echo "<option>".$material['material_name']."</option>";
+																			echo "<option value='".$material['cost']."'>".$material['material_name']."</option>";
 																		}
 
 																	?>
@@ -187,17 +197,17 @@
 															<td>
 																<b><div><span id="material_total_cost1" ></span></div></b>
 															</td>
-														</tr>
+														</tr>-->
 														<tr>
-															<td>Material-3:</td><td><span class="pull-left append-add"><i class="fa fa-plus-square add-material"></i></span></td><td colspan="3"></td>
+															<td>Material-1:</td><td><span class="pull-left append-add"><i class="fa fa-plus-square add-material"></i></span></td><td colspan="3"></td>
 														</tr>
 														<tr>
 															<td>
-																<select class="form-control"  name="tooling_material_select[]">
+																<select class="form-control"  name="tooling_material_select[]" id="tooling_material_select0">
 																	<?php 
 																		foreach($material_list as $material)
 																		{
-																			echo "<option>".$material['material_name']."</option>";
+																			echo "<option value='".$material['cost']."'>".$material['material_name']."</option>";
 																		}
 
 																	?>
@@ -214,7 +224,7 @@
 																</div>
 															</td>
 															<td>
-																<b><div><span id="material_total_cost2"></span></div></b>
+																<b><div><span id="material_total_cost0"></span></div></b>
 															</td>
 
 														</tr>
@@ -224,7 +234,7 @@
 															<td>Others</td>
 															<td><span class="pull-left "><i class="fa fa-plus-square append-add-extra"></i></span></td>
 															<td colspan="3"></td>
-															<td></td>
+															<!-- <td></td> -->
 														</tr>
 													</table>
 													<table class="table boss-table tooling-extra-append">
@@ -255,7 +265,7 @@
 					</div>
 				</td>
 				<td>
-					<b><input type="text" class="form-control input-tooling" name="extra_qty[]" value="" ></b>
+					<input type="text" class="form-control input-tooling" name="extra_qty[]" value="" >
 				</td>
 				<td>
 					<b><span id="extra_accessory_<?php echo $accessory_count; ?>"></span></b>
@@ -275,7 +285,7 @@
 															<td colspan="5">
 																<b>TIME:</b>
 															</td>
-															<td width="100"><b>$105.00</b></td>
+															<td width="100"><b></b></td>
 														</tr>
 													</table>
 													<table class="table boss-table">
@@ -295,7 +305,7 @@
 															<td><input type="text" value="" name="std_design_min" class=" form-control "></td>
 															<td><input type="text" value="" name="cpx_design_hr" class="form-control"></td>
 															<td><input type="text" value="" name="cpx_design_min" class=" form-control" ></td>
-															<td><span id="total_cost_design"></span> </td>
+															<td><b><span id="total_cost_design"></span></b> </td>
 														</tr>
 														<tr>
 															<td>Machine  </td>
@@ -304,7 +314,7 @@
 															<td><input type="text" name="std_machine_min" class=" form-control"> </td>
 															<td><input type="text" name="cpx_machine_hr" class=" form-control"> </td>
 															<td><input type="text" name="cpx_machine_min" class=" form-control"> </td>
-															<td><span id="total_cost_machine"></span> </td>
+															<td><b><span id="total_cost_machine"></span></b> </td>
 														</tr>
 														<tr>
 															<td>Assembly  </td>
@@ -313,7 +323,7 @@
 															<td><input type="text" name="std_assembly_min" class="form-control "> </td>
 															<td><input type="text" name="cpx_assembly_hr" class="form-control "></td>
 															<td><input type="text" name="cpx_assembly_min" class="form-control "></td>
-															<td><span id="total_cost_assembly"></span> </td>
+															<td><b><span id="total_cost_assembly"></span></b> </td>
 														</tr>
 														<tr>
 															<td>Others </td>
@@ -322,7 +332,7 @@
 															<td><input type="text" name="std_other_min" class="form-control "></td>
 															<td><input type="text" name="cpx_other_hr" class="form-control "></td>
 															<td><input type="text" name="cpx_other_min" class="form-control "></td>
-															<td> </td>
+															<td><b><span id="total_cost_other"></span> </b> </td>
 														</tr>
 														<tr>
 															<td colspan="5"> </td>
@@ -332,7 +342,7 @@
 														<tr>
 															<td colspan="5"> </td>
 															<td>Total:</td>
-															<td></td>
+															<td><b><span id="total_tooling_cost_wor"></span></b></td>
 														</tr>
 														<tr>
 															<td colspan="5"> </td>
@@ -340,8 +350,8 @@
 														</tr>	
 														<tr>
 															<td colspan="5"> </td>
-															<td><input type="text" value="" class="form-control"></td>
-															<td> </td>
+															<td><input type="text" name="tooling_premium" id="tooling_premium" value="" class="form-control"></td>
+															<td><span id="total_tooling_premium"></span> </td>
 														</tr>
 														<tr>
 															<td colspan="5"> </td>
@@ -349,13 +359,13 @@
 														</tr>	
 														<tr>
 															<td colspan="5"> </td>
-															<td><input type="text" value="" class="form-control"></td>
-															<td></td>
+															<td><input type="text" name="tooling_discount" id="tooling_discount" value="" class="form-control"></td>
+															<td><b><span id="total_tooling_discount"></span></b></td>
 														</tr>
 														<tr>
 															<td colspan="5"> </td>
 															<td><b>Total:</b></td>
-															<td><b></b> </td>
+															<td><b><span id="total_after_discount"></span></b> </td>
 														</tr>
 													</table>
 													<table class="table boss-table">
@@ -447,12 +457,13 @@
 													</div>
 
 												</div>
-												<input type="hidden" name="markup" value="123" >
-												<input type="hidden" name="extra_material" value="456" >
+												<input type="hidden" name="markup" value="<?php echo $mark_up[0]['markup_percentage']; ?>" >
+												<input type="hidden" name="extra_material" value="<?php echo $tooling_extra_material_inch[0]['extra_material_inch']; ?>" >
 												<input type="hidden" name="complex_design_cost" id="complex_design_cost" value="<?php echo $complex_timing[0]['cost']; ?>">
 												<input type="hidden" name="complex_machine_cost" id="complex_machine_cost" value="<?php echo $complex_timing[1]['cost']; ?>">
 												<input type="hidden" name="complex_assembly_cost" id="complex_assembly_cost" value="<?php echo $complex_timing[2]['cost']; ?>">
-												</form>
+												<input type="hidden" name="quote_id" value="<?php echo $quote_id; ?>" >
+ 												</form>
 												
 											</div>
 										</div>
@@ -483,7 +494,14 @@
 
   function calculate()
   {
-  	
+
+  	var all_mat_total_cost = 0;
+  	var all_extra_total_cost = 0;
+  	var all_time_total_cost = 0;
+
+
+  	var material_inch = $('input[name="extra_material"]').val();
+  	var markup_fixed = $('input[name="markup"]').val();
   	/*calculate Material */
   	var material_x_value = $('input[name="material_xvalue[]"]').map(function(){
      							  return this.value
@@ -497,9 +515,17 @@
   	var material_cost = [];
  	for(var i=0 ; i< material_x_value.length ; i++ )
  	{
- 		material_cost[i] = material_x_value[i] * material_y_value[i];
- 		
- 		$('#material_total_cost'+i).text(material_cost[i]);
+ 		var material_fixed_cost = $('#tooling_material_select'+i).val();
+ 		var markup_final_percent = parseFloat((markup_fixed/100).toFixed(2));
+ 		var partb = ((parseFloat(material_x_value[i]) + parseFloat(material_inch)) * (parseFloat(material_y_value[i]) + parseFloat(material_inch)) * markup_final_percent);
+  		material_cost[i] = ((parseFloat(material_x_value[i])+parseFloat(material_inch))*(parseFloat(material_y_value[i])+parseFloat(material_inch))+partb)*material_fixed_cost ;//material_x_value[i] * material_y_value[i];
+ 		$('#material_total_cost'+i).text('$'+parseFloat(material_cost[i]).toFixed(2));
+
+ 		if(material_x_value[i] != "" && material_y_value[i] !="" || material_x_value[i] != 'undefined' && material_y_value[i] != 'undefined' || !isNaN(material_x_value[i] && !isNaN(material_y_value[i]))){
+ 			all_mat_total_cost +=  parseFloat(material_cost[i]);
+ 			console.log('all mat cost'+all_mat_total_cost);
+ 		}
+
  	}
 
   	/*calculate material extra */
@@ -514,9 +540,12 @@
   	var material_extra_cost = [];						
   	for(var e=0 ; e< extra_cost.length ; e++ )
  	{
- 		material_extra_cost[e] = extra_cost[e] * extra_qty[e];
+ 		material_extra_cost[e] = parseFloat(extra_cost[e]) * parseFloat(extra_qty[e]);
  		
- 		$('#extra_accessory_'+e).text(material_extra_cost[e]);
+ 		$('#extra_accessory_'+e).text('$'+material_extra_cost[e]);
+ 		all_extra_total_cost +=  parseFloat(material_extra_cost[e]);
+ 		console.log('all extra cost'+all_extra_total_cost);
+
  	}
   	
 
@@ -617,16 +646,57 @@
   		$('#total_cost_design').text('$'+total_design_cost);
   		$('#total_cost_assembly').text('$'+total_assembly_cost);
   		$('#total_cost_machine').text('$'+total_machine_cost);
+  		$('#total_cost_other').text('$'+total_other_cost);
 
-  		alert(total_other_cost);
   	/*Calculate Accessories*/
+  	/*total time cost */
+  	var total_time_cost = total_design_cost + total_assembly_cost + total_machine_cost + total_other_cost;
+  	/*end of total time */
 
+  	var total_tooling_cost_wro = total_time_cost + all_mat_total_cost + all_extra_total_cost;
+  	//append here to total values
 
+  	$('#total_tooling_cost_wor').text('$'+parseFloat(total_tooling_cost_wro).toFixed(2));
 
+  	//end of append
+
+  	/*check premium available*/
+  	var premium_exist = $('#tooling_premium').val();
+  	if(premium_exist != "")
+  	{	
+  		var premium_calculation = (parseFloat(premium_exist)/100) * total_tooling_cost_wro;
+  		$('#total_tooling_premium').text('$'+parseFloat(premium_calculation).toFixed(2));
+  	}
+
+  	var discount_exist = $('#tooling_discount').val();
+  	if(discount_exist != "")
+  	{
+  		var discount_calculation = (parseFloat(discount_exist)/100) * total_tooling_cost_wro;
+  		$('#total_tooling_discount').text('$'+parseFloat(discount_calculation).toFixed(2));
+  	}
+
+  	/*
+		Total calculation after discount
+  	*/
+  	var total_after_dp;
+  	if(premium_exist != "" || discount_exist !="")
+  	{
+  		total_after_dp = (total_tooling_cost_wro + premium_calculation) - discount_calculation;
+  	}
+  	else
+  	{
+  		total_after_dp = total_tooling_cost_wro;
+  	}
+
+  	$('#total_after_discount').text('$'+parseFloat(total_after_dp).toFixed(2));
   	/*This is here for calculating multiple quotes*/
   	var multiple_quote = $('input[name="multiple_quote"]:checked').attr('value');
-  	console.log(multiple_quote);
 
+  	/* multiple quotes check here*/
+  	if(multiple_quotes != "")
+  	{
+  		
+  	}
   }
 
 

@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="panel">
-                		<form action="<?php echo site_url('tooling/add_time'); ?>" method="post">
+                		<form action="<?php echo site_url('tooling/add_time'); ?>" method="post" id="add_time">
                             <div class="form-group">
                                  <label class="col-lg-12 control-label pt18">Name</label>
                                      <div class="col-lg-12">
@@ -37,3 +37,30 @@
                 </div>
         </div>
 </div>
+
+<script>
+  $('#add_time').validate({
+    rules:{
+      "name": {
+        required: true,
+        
+      },
+      "add_time":{
+        required: true,
+      },
+    },
+    messages:{
+      "name": {
+        required: " Material Name is required",
+
+      },
+      "add_time":{
+        required: "Description is required",
+      },
+    },
+
+  });
+
+
+</script>
+

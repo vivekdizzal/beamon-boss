@@ -4,7 +4,7 @@
            <div class="row">
              <div class="col-sm-6">
                  <div class="panel">
-				<form action="<?php echo site_url('tooling/edit_time/'.$records[0]["id"]); ?>" method="post">
+				<form action="<?php echo site_url('tooling/edit_time/'.$records[0]["id"]); ?>" method="post" id="edit_time">
 
 					 <div class="form-group">
                         <label class="col-lg-12 control-label pt18">Name</label>
@@ -36,3 +36,30 @@
 			</div>
     </div>
 </div>
+<script>
+  $('#edit_time').validate({
+    rules:{
+      "name": {
+        required: true,
+        
+      },
+      "cost":{
+        required: true,
+        number:true,
+      },
+    },
+    messages:{
+      "name": {
+        required: "Name is required",
+
+      },
+      "cost":{
+        required: "Cost is required",
+        number:"Please enter only number",
+      },
+    },
+
+  });
+
+
+</script>

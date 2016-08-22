@@ -10,9 +10,9 @@
 
         <div class="chute chute-center col-sm-12">
 
-       <div class="action-button">
+    <!--    <div class="action-button">
             <a class="btn-info" href="<?php echo site_url('tooling/add_markup'); ?>">Add Markup</a>
-       </div>
+       </div> -->
  <div class="panel" id="spy3">
 
         <div class="panel-body pn">
@@ -37,7 +37,7 @@
                                             echo "<tr>";
                                             echo "<td>".$sno."</td>";
                                             echo "<td>".$value['markup_percentage']."</td>";
-                                            echo "<td><a href='".site_url('tooling/edit_markup/'.$value['id'])."' id='edit' value='".$value['id']."' >Edit</a> | <a href='#' class='del' val='".$value['id']."'>Delete</a></td></tr>";
+                                            echo "<td><a href='".site_url('tooling/edit_markup/'.$value['id'])."' id='edit' value='".$value['id']."' >Edit</a></td></tr>";
                                             $sno++;
                                         }
                                     }

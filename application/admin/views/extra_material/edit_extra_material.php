@@ -4,7 +4,7 @@
         <div class="row">
              <div class="col-sm-6">
                  <div class="panel">
-                        <form action="<?php echo site_url('tooling/edit_extra_material/'.$records[0]['id']); ?>" method="post">
+                        <form action="<?php echo site_url('tooling/edit_extra_material/'.$records[0]['id']); ?>" method="post" id="edit_extra_material">
                               <div class="form-group">
                                  <label class="col-lg-12 control-label pt18">Extra Material in inch</label>
                                      <div class="col-lg-12">	
@@ -21,3 +21,20 @@
                 </div>
             </div>
     </div>
+    <script>
+        $('#edit_extra_material').validate({
+            rules:{
+                "extra_material_inch": {
+                    required: true,
+                    
+                },
+            },
+            messages:{
+                "extra_material_inch": {
+                    required: "Extra Material is required",
+
+                },
+            },
+
+        });
+    </script>

@@ -6,7 +6,7 @@
            <div class="row">
              <div class="col-sm-6">
                  <div class="panel">
-                <form action="<?php echo site_url('tooling/edit_fixture/'.$get_record[0]['id']); ?>" method="post">
+                <form action="<?php echo site_url('tooling/edit_fixture/'.$get_record[0]['id']); ?>" method="post" id="edit_fixture">
 
                     <div class="form-group">
                         <label class="col-lg-12 control-label pt18">Name</label>
@@ -31,3 +31,21 @@
             </div>
         </div>
 </div>
+
+<script>
+        $('#edit_fixture').validate({
+            rules:{
+                "fixture_name": {
+                    required: true,
+                    
+                },
+            },
+            messages:{
+                "fixture_name": {
+                    required: "Fixture Name is required",
+
+                },
+            },
+
+        });
+    </script>

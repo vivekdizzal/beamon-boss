@@ -21,7 +21,7 @@
            <div class="row">
              <div class="col-sm-6">
                  <div class="panel">
-                    <form action="<?php echo site_url('tooling/edit_material/'.$get_record[0]['id']); ?>" method="post">
+                    <form action="<?php echo site_url('tooling/edit_material/'.$get_record[0]['id']); ?>" method="post" id="edit_material">
 
                     <div class="form-group">
                         <label class="col-lg-12 control-label pt18">Material Name</label>
@@ -55,4 +55,36 @@
         </div>
 </div>
 
+
+<script>
+    $('#edit_material').validate({
+        rules:{
+            "material_name": {
+                required: true,
+                
+            },
+            "material_description":{
+                required: true,
+            },
+            "material_cost":{
+                required: true,
+            },
+        },
+        messages:{
+            "material_name": {
+                required: " Material Name is required",
+
+            },
+            "material_description":{
+                required: "Description is required",
+            },
+            "material_cost":{
+                required: "Cost of material is required",
+            },
+        },
+
+    });
+
+
+    </script>
 

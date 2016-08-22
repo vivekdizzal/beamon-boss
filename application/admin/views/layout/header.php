@@ -28,7 +28,13 @@
 
     <!-- CSS - allcp forms -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/allcp/forms/css/forms.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/allcp/forms/css/admin/app.css">
+
     <script src="<?php echo base_url(); ?>assets/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js"></script>
+  
+
+
 
     <!-- Favicon >
     <link rel="shortcut icon" href="assets/img/favicon.png"-->

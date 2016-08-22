@@ -23,9 +23,9 @@
 
         <div class="chute chute-center col-sm-12">
 
-        <div class="action-button">
+       <!--  <div class="action-button">
             <a class="btn-info" href="<?php echo site_url('tooling/add_extra_material'); ?>">Add Extra Material</a>
-        </div>
+        </div> -->
         <div class="panel" id="spy3">
 
         <div class="panel-body pn">
@@ -52,7 +52,7 @@
                                         <tr>
                                            <td><?php echo $sno; ?></td>
                                            <td><?php echo $value['extra_material_inch']; ?></td>
-                                           <td><a href="<?php echo site_url('tooling/edit_extra_material/'.$value['id']); ?>" id='edit' value='<?php echo $value["id"]; ?>' >Edit</a> | <a href='#' class='delete' value='<?php echo $value["id"]; ?>' >Delete</a></td>
+                                           <td><a href="<?php echo site_url('tooling/edit_extra_material/'.$value['id']); ?>" id='edit' value='<?php echo $value["id"]; ?>' >Edit</a></td>
 
                                     <?php
                                             $sno++;

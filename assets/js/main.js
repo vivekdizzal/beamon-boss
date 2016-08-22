@@ -17,7 +17,7 @@
     });
 })
 	$(".append-text span").click(function(){
-        $(".cc-append").append("<div class='appen-con'><input type='text' placeholder='Type Here...' class='form-control' id='inputStandard'><div class='clearfix'></div></div>");
+        $(".cc-append").append("<div class='appen-con'><input type='text' placeholder='Type Here...' name='secondary_email[]' class='form-control' id='inputStandard'><div class='clearfix'></div></div>");
     });
 	$(".append-opt").click(function(){
         $(".appen-options").append("<div class='form-group'><div class='col-lg-9 pad-left-none'><div class='price-update'><div class='show-price' style='display:none;'><span>Epocoat <a class='Edit-price' href='#'>Edit</a></span> </div><div class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='Epocoat'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div><div class='col-lg-3 text-right'><div class='price-update'><div class='show-price'>$<span>18 <a class='Edit-price' href='#'>Edit</a></span></div><div style='display:none;' class='update-price'><input type='text' class='get-value form-control pull-left auto-width-text' value='18'><a class='pull-left padd-top save-price' href='#'>Save</a></div></div></div></div>");

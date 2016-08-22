@@ -32,17 +32,17 @@
                         </div>
                         <div class="panel-body">
 
-                            <form class="form-horizontal" action="<?php echo base_url('quotes/add_new_quotes'); ?>" method="post">
+                            <form class="form-horizontal" action="<?php echo base_url('tooling/index'); ?>" method="post">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Engineer Name:</label>
                                             <div class="col-lg-9">
                                                 <div class="">
-                                                    <select class="form-control" name="engineer_id">
-                                                        <option value="1">Engineer 1</option>
-                                                        <option value="2">Engineer 2</option>
-                                                        <option value="3">Engineer 3</option>
+                                                    <select class="form-control" name="engineer_name">
+                                                        <option>Engineer 1</option>
+                                                        <option>Engineer 2</option>
+                                                        <option>Engineer 3</option>
                                                         <?php
                                                             /* bring dynamic fields here*/
 
@@ -60,7 +60,7 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="inputStandard">CC Email:</label>
                                             <div class="col-lg-9 append-text cc-append">
-                                                <div class="appen-con"><input type="text" placeholder="Type Here..." class="form-control" id="inputStandard" name="secondary_email[]"><span><i class="fa fa-plus-square"></i></span><div class='clearfix'></div></div>
+                                                <div class="appen-con"><input type="text" placeholder="Type Here..." class="form-control" id="inputStandard" name="secondary_email"><span><i class="fa fa-plus-square"></i></span><div class='clearfix'></div></div>
                                             </div>
                                         </div>
                                     </div>
@@ -82,9 +82,9 @@
                                             <div class="col-lg-9">
                                                 <div class="">
                                                     <select class="form-control" name="customer">
-                                                        <option value="1">Intel</option>
-                                                        <option value="2">HCL</option>
-                                                        <option value="3">Microsoft</option>
+                                                        <option>Intel</option>
+                                                        <option>HCL</option>
+                                                        <option>Microsoft</option>
                                                     </select>
 
                                                     <?php

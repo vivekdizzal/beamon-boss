@@ -22,7 +22,7 @@
                 <div class="col-sm-6">
                     <div class="panel">
 
-    				<form action="<?php echo site_url('tooling/edit_accessories/'.$get_record[0]['id']); ?>" method="post">
+    				<form action="<?php echo site_url('tooling/edit_accessories/'.$get_record[0]['id']); ?>" method="post" id="edit_accessories">
                              <div class="form-group">
                              <label class="col-lg-12 control-label pt18">Name</label>
                                 <div class="col-lg-12">
@@ -47,3 +47,31 @@
                 </div>
             </div>
 		</div>
+        <script>
+           $("#edit_accessories").validate({
+                rules:{
+                    "accessory_name": {
+                        required: true,
+                        
+                    },
+                    "accessory_qty":{
+                        required: true,
+                    },
+                    "cost":{
+                        required: true,
+                    },
+                },
+                messages:{
+                    "accessory_name": {
+                        required: " Accessory Name is required",
+
+                    },
+                    "accessory_qty":{
+                        required: "Quantity is required",
+                    },
+                    "cost":{
+                        required: "Cost of material is required",
+                    },
+                },
+            });
+        </script>

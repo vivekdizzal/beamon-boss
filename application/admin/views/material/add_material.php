@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-sm-6">
 			<div class="panel">
-				<form action="<?php echo  site_url('tooling/add_material'); ?>" method="post">
+				<form action="<?php echo  site_url('tooling/add_material'); ?>" method="post" id="add_material">
 				<!--p>Material Name </p>
 				<input type="text" name="material_name" id="material_name" /></br>
 				<p>Material Description </p>
@@ -42,5 +42,35 @@
 		</div>
 	</div>
 
+	<script>
+	$('#add_material').validate({
+		rules:{
+			"material_name": {
+				required: true,
+				
+			},
+			"material_description":{
+				required: true,
+			},
+			"material_cost":{
+				required: true,
+			},
+		},
+		messages:{
+			"material_name": {
+				required: " Material Name is required",
 
+			},
+			"material_description":{
+				required: "Description is required",
+			},
+			"material_cost":{
+				required: "Cost of material is required",
+			},
+		},
+
+	});
+
+
+	</script>
 
