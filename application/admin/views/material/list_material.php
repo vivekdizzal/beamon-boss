@@ -9,12 +9,14 @@
         <section id="content" class="table-layout animated fadeIn">
 
         <div class="chute chute-center col-sm-12">
+                <?php echo $this->session->flashdata('response'); ?>
 		<div class="action-button">
             <a class="btn-info" href="<?php echo site_url('tooling/add_material'); ?>">Add Material</a>
 		</div>
  <div class="panel" id="spy3">
         <div class="panel-body pn">
                         <div class="table-responsive">
+
                             <table class="table datatable-index table-striped table-hover">
                                 <thead>
                                 <tr>

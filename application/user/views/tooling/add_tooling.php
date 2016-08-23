@@ -14,7 +14,7 @@
 
 				    $('.append-add-extra').click(function(){ //Once add button is clicked
 				      
-				             var fieldHTML = '<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" class="form-control input-tooling" name="tooling_material_select[]" ></td><td colspan="3"><b></b></td></tr>';
+				             var fieldHTML = '<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" class="form-control input-tooling" name="tooling_material_other[]" ></td><td colspan="3"><b><input type="text" class="form-control input-tooling" name="tooling_material_other_value[]" ></b></td></tr>';
 				            $('.add_extra').append(fieldHTML); // Add field html
 				            
 				        /*
@@ -89,20 +89,20 @@
                         </div>
                         <div class="panel-body">
 
-                            <form class="form-horizontal" method="post" action="<?php echo base_url('tooling/add_tooling'); ?>">
+                            <form class="form-horizontal" method="post" id="add_new_tooling" action="<?php echo base_url('tooling/add_tooling'); ?>">
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="tab-block mb25">
 											<ul class="nav nav-tabs tooling-select">
 												<li class="active-tooling">
 													<div class="radio-custom mb5">
-														<input id="Standard" checked="" name="radioExample" type="radio">
+														<input id="Standard" checked="" name="tooling_type" type="radio" value="0">
 														<label for="Standard">Standard Quote</label>
 													</div>
 												</li>
 												<li>
 													<div class="radio-custom mb5">
-														<input id="Custom" name="radioExample" type="radio">
+														<input id="Custom" name="tooling_type" type="radio" value="1">
 														<label for="Custom">Custom Quote</label>
 													</div>
 												</li>
@@ -448,7 +448,7 @@
 													</table>
 													
 
-													<textarea class="form-control" id="textArea2" rows="3" placeholder="Notes: Customer will recieve this notes"></textarea>
+													<textarea class="form-control" id="tooling_description" name="tooling_description" rows="3" placeholder="Notes: Customer will recieve this notes"></textarea>
 													<div class="form-buttons text-right">
 														<button class="btn btn-default ph25" value="tooling_calculate" type="button" onclick="calculate();">Calculate</button>
 														<button class="btn btn-default ph25" value="tooling_update" type="submit">Update</button>
@@ -476,10 +476,15 @@
             </div>
 
         </div>
-
   <script>
 
-  //$('#multiple_quote_other').click(function(){
+  	 $("#add_new_tooling").validate({
+        rules: {
+                'material_xvalue[]': "required",
+        },
+    });
+  </script>
+  <script>
    $('input[name="multiple_quote"]').click(function(){
   	if($(this).attr("value")=="other"){    
   			$('#radio_id').show();

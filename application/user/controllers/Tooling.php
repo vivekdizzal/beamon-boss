@@ -36,6 +36,93 @@ class Tooling extends CI_Controller {
 	{
 		echo "<pre>";
 		print_r($_POST);
+
+		//insert into tooling table
+
+		$tooling_data = array(
+							'tooling_type' => $this->input->post('tooling_type'),
+							'quote_id'	=> $this->input->post('quote_id'),
+							'tooling_description' => $this->input->post('tooling_description'),
+							'date_created'	=> Date('Y-m-d'),
+							'status'	=> "1"
+						);
+		$tooling_id = $this->crud_model->insert('boss_tooling',$tooling_data);
+
+		//insert in tooling material
+		$count = count($_POST['material_xvalue']);
+		
+		
+		for($i = 0 ; $i < $count ; $i++)
+		{
+			$tooling_material_data = array(
+										'quote_id' => $this->input->post('quote_id'),
+										'tooling_id' => $tooling_id,
+										'material_id' => $this->input->post('tooling_material_select')[$i],
+										'size_x'	=>  $this->input->post('material_xvalue')[$i],
+										'size_y'	=>  $this->input->post('material_yvalue')[$i],
+										'markup'	=> $this->input->post('markup'),
+										'extra_material' => $this->input->post('extra_material'),
+										'date_created'	=> Date('Y-m-d'),
+										'status'		=> "1"
+									 );
+			$this->crud_model->insert('boss_tooling_material',$tooling_material_data);
+		}
+
+		//insert into time
+		$tooling_time_data = array(
+								'quote_id'=> $this->input->post('quote_id'),
+								'tooling_id' => $tooling_id,
+								'std_des_hr' => $this->input->post('std_design_hr'),
+								'std_des_min' =>$this->input->post('std_design_min'),
+								'cpx_des_hr' =>$this->input->post('cpx_design_hr'),
+								'cpx_des_min' =>$this->input->post('cpx_design_min'),
+								'std_mac_hr' =>$this->input->post('std_machine_hr'),
+								'std_mac_min' =>$this->input->post('std_machine_min'),
+								'cpx_mac_hr' =>$this->input->post('cpx_machine_hr'),
+								'cpx_mac_min' =>$this->input->post('cpx_machine_min'),
+								'std_ass_hr' =>$this->input->post('std_assembly_hr'),
+								'std_ass_min' =>$this->input->post('std_assembly_min'),
+								'cpx_ass_hr' =>$this->input->post('cpx_assembly_hr'),
+								'cpx_ass_min' =>$this->input->post('cpx_assembly_min'),
+								'date_created' => Date('Y-m-d'),
+								'status' 	=> "1"
+							);
+			//$this->crud_model->insert();
+
+		//insert extra material
+
+		$extra_material_count = count($_POST['tooling_material_other']);
+
+		for($em=0 ; $em<$extra_material_count; $em++)
+		{
+			$extra_material_data = array(
+										'quote_id' => $this->input->post('quote_id'),
+										'tooling_id' => $tooling_id,
+										'material_name' => $this->input->post('tooling_material_other')[$em],
+										'material_cost' => $this->input->post('tooling_material_other_value')[$em],
+										'status' => "1",
+										'date_created' => Date('Y-m-d')
+									);
+			//$this->crud_model->insert();
+		}
+
+		/*
+			Insert into tooling accessories
+
+			unit/hour want to check
+
+			need to think
+		*/
+		$tooling_accessories = array(
+									'quote_id' => $this->input->post('quote_id'),
+									'tooling_id' => $tooling_id,
+									'acc_cost' => $this->input->post(''),
+									'acc_qty' => $this->input->post(''),
+									'acc_total_cost' => $this->input->post(''),
+									'status' => "1",
+									'date_created' => Date('Y-m-d')
+								);
+
 		exit;
 	}
 

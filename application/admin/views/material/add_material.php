@@ -1,9 +1,12 @@
+
 <section id="content_wrapper">               
 
 <section id="content" class="form-layout">
 	<div class="row">
 		<div class="col-sm-6">
 			<div class="panel">
+			<?php echo $this->session->flashdata('response'); ?>
+
 				<form action="<?php echo  site_url('tooling/add_material'); ?>" method="post" id="add_material">
 				<!--p>Material Name </p>
 				<input type="text" name="material_name" id="material_name" /></br>

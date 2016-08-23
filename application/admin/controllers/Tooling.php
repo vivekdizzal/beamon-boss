@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Tooling extends CI_Controller {
 	public function __construct() {
         parent::__construct();
+        $this->load->helper('boss_helper');
     }
 	public function index()
 	{
@@ -35,6 +36,7 @@ class Tooling extends CI_Controller {
 						'status'	=> '1'
 					);
 			$this->crud_model->insert(MASTER_TOOLING_MATERIAL,$data);
+			$this->session->set_flashdata('response',success_message('Material Added succesfully'));
 			redirect('tooling/list_material');
 		}
 		$this->load->view('layout/header');
@@ -54,6 +56,7 @@ class Tooling extends CI_Controller {
 						);
 
 			$this->crud_model->update(MASTER_TOOLING_MATERIAL,$data,$where);
+			$this->session->set_flashdata('response',success_message('Material Updated succesfully'));
 			redirect('tooling/list_material');
 		}
 
@@ -77,6 +80,7 @@ class Tooling extends CI_Controller {
 						'date_created'	 => date('Y-m-d')
 					);
 			$this->crud_model->insert(MASTER_TOOLING_ACCESSORY,$data);
+			$this->session->set_flashdata('response',success_message('Accessory Added succesfully'));
 			redirect('tooling/list_accessory');
 		}
 		$this->load->view('layout/header');
@@ -95,6 +99,7 @@ class Tooling extends CI_Controller {
 							'accessory_cost'	=> $this->input->post('cost')	
 						);
 			$this->crud_model->update(MASTER_TOOLING_ACCESSORY,$data,$where);
+			$this->session->set_flashdata('response',success_message('Accessory updated succesfully'));
 			redirect('tooling/list_accessory');
 
 		}
@@ -133,6 +138,7 @@ class Tooling extends CI_Controller {
 						'status'		=> '1'
 					);
 			$this->crud_model->insert(MASTER_TOOLING_FIXTURE,$data);
+			$this->session->set_flashdata('response',success_message('Fixture Added succesfully'));
 			redirect('tooling/list_fixture');
 
 		}
@@ -164,6 +170,7 @@ class Tooling extends CI_Controller {
 							'fixture_description' => $this->input->post('fixture_description'),
 						);
 			$this->crud_model->update(MASTER_TOOLING_FIXTURE,$data,$where);
+			$this->session->set_flashdata('response',success_message('Fixture Updated succesfully'));
 			redirect('tooling/list_fixture');
 
 		}
@@ -193,6 +200,7 @@ class Tooling extends CI_Controller {
 						'cost' => $this->input->post('cost')
 					);
 			$this->crud_model->update(MASTER_TOOLING_TIMING,$data,$where);
+			$this->session->set_flashdata('response',success_message('Time Updated succesfully'));
 			redirect('tooling/list_time');
 		}
 
@@ -300,6 +308,7 @@ class Tooling extends CI_Controller {
 						'markup_percentage' => $this->input->post('markup_percentage')
 					);
 			$this->crud_model->update('boss_master_markup',$data,$where);
+			$this->session->set_flashdata('response',success_message('Markup Updated succesfully'));
 			redirect('tooling/list_markup');
 		}
 
@@ -314,6 +323,7 @@ class Tooling extends CI_Controller {
 	public function delete_material($id=0)
 	{
 		$this->crud_model->delete(MASTER_TOOLING_MATERIAL,array('id' => $id));
+		$this->session->set_flashdata('response',error_message('Material Deleted succesfully'));
 		redirect('tooling/list_material');
 	}
 
