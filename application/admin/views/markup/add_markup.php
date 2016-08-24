@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-sm-6">
              <div class="panel">
-          
+                <?php echo $this->session->flashdata('response'); ?>
                 <form action="<?php echo  site_url('tooling/add_markup'); ?>" method="post">
                    <!--  <div class="form-group">
                         <label class="col-lg-12 control-label pt18">Add Markup Percentage</label>

@@ -28,12 +28,15 @@
 
     <!-- CSS - allcp forms -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/allcp/forms/css/forms.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/allcp/forms/css/app.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/allcp/forms/css/app.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/validationEngine.jquery.css'); ?>">
+
 
 <script src="<?php echo base_url('assets/js/jquery/jquery.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/additional-method.js'); ?>"></script>
-
+<!-- <script src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/additional-method.js'); ?>"></script> -->
+<script src="<?php echo base_url('assets/js/jquery.validationEngine.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.validationEngine-en.js'); ?>"></script>
     <!-- Favicon >
     <link rel="shortcut icon" href="assets/img/favicon.png"-->
 

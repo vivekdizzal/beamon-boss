@@ -14,7 +14,7 @@
 
 				    $('.append-add-extra').click(function(){ //Once add button is clicked
 				      
-				             var fieldHTML = '<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" class="form-control input-tooling" name="tooling_material_other[]" ></td><td colspan="3"><b><input type="text" class="form-control input-tooling" name="tooling_material_other_value[]" ></b></td></tr>';
+				             var fieldHTML = '<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" id="tooling_material_other[]" class="form-control input-tooling validate[required]" name="tooling_material_other[]" ></td><td colspan="3"><b><input type="text" id="tooling_material_other_value[]" class="form-control input-tooling validate[required]" name="tooling_material_other_value[]" ></b></td></tr>';
 				            $('.add_extra').append(fieldHTML); // Add field html
 				            
 				        /*
@@ -35,9 +35,9 @@
 																		{
 																			/*echo "<option>".$material['material_name']."</option>";*/
 
-																			echo '<option value="'.$material['cost'].'">'.$material['material_name'].'</option>';
+																			echo '<option value="'.$material['cost'].'" data-status="'.$material['cost'].'">'.$material['material_name'].'</option>';
 																		}
-																	?>		</select></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_xvalue[]" class="form-control input-tooling"></div></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_yvalue[]" class="form-control input-tooling"></div></td><td><b><span id="material_total_cost'+id_count+'"></span></b></td></tr>';
+																	?>		</select></td><td><div class="price-update table-price-update"><input type="text" id="material_xvalue[]" value="" name="material_xvalue[]" class="form-control input-tooling validate[required]"></div></td><td><div class="price-update table-price-update"><input type="text" value="" id="material_yvalue[]" name="material_yvalue[]" class="form-control input-tooling validate[required]"></div></td><td><b><span id="material_total_cost'+id_count+'"></span></b></td></tr>';
 				            $(wrapper).append(fieldHTML); // Add field html
 				            console.log(material_count);
 				        }
@@ -207,7 +207,7 @@
 																	<?php 
 																		foreach($material_list as $material)
 																		{
-																			echo "<option value='".$material['cost']."'>".$material['material_name']."</option>";
+																			echo "<option value='".$material['id']."' data-status='".$material['cost']."'>".$material['material_name']."</option>";
 																		}
 
 																	?>
@@ -215,12 +215,12 @@
 															</td>
 															<td>
 																<div class="price-update table-price-update">
-																	<input type="text" value="" name="material_xvalue[]" class="form-control input-tooling">
+																	<input type="text" value="" id="material_xvalue[]" name="material_xvalue[]" class="form-control input-tooling validate[required]">
 																</div>
 															</td>
 															<td>
 																<div class="price-update table-price-update">
-																	<input type="text" value="" name="material_yvalue[]" class="form-control input-tooling">
+																	<input type="text" value="" id="material_yvalue[]" name="material_yvalue[]" class="form-control input-tooling validate[required]">
 																</div>
 															</td>
 															<td>
@@ -257,6 +257,7 @@
 				<tr>
 					<td>
 						<?php echo $accessories['accessory_name']; ?>
+						<input type="hidden" name="tooling_accessory_name[]" value="<?php echo $accessories['id']; ?>" />
 					</td>
 					<td>
 					<div class="price-update table-price-update">
@@ -302,27 +303,27 @@
 															<td>Design </td>
 															<td><span id="std_design_cost" value="<?php echo $standard_timing[0]['cost']; ?>">$<?php echo $standard_timing[0]['cost']; ?></span></td>
 															<td><input type="text" value="" name="std_design_hr" class="form-control"></td>
-															<td><input type="text" value="" name="std_design_min" class=" form-control "></td>
+															<td><input type="text" value="" id="std_design_min" name="std_design_min" class="form-control validate[max[59]]"></td>
 															<td><input type="text" value="" name="cpx_design_hr" class="form-control"></td>
-															<td><input type="text" value="" name="cpx_design_min" class=" form-control" ></td>
+															<td><input type="text" value="" name="cpx_design_min" id="cpx_design_min" class=" form-control validate[max[59]]" ></td>
 															<td><b><span id="total_cost_design"></span></b> </td>
 														</tr>
 														<tr>
 															<td>Machine  </td>
 															<td><span id="std_machine_cost" value="<?php echo $standard_timing[1]['cost']; ?>">$<?php echo $standard_timing[1]['cost']; ?> </span></td>
 															<td><input type="text" name="std_machine_hr" class="form-control"></td>
-															<td><input type="text" name="std_machine_min" class=" form-control"> </td>
+															<td><input type="text" name="std_machine_min" id="std_machine_min" class=" form-control validate[max[59]]"> </td>
 															<td><input type="text" name="cpx_machine_hr" class=" form-control"> </td>
-															<td><input type="text" name="cpx_machine_min" class=" form-control"> </td>
+															<td><input type="text" name="cpx_machine_min" id="cpx_machine_min" class="form-control validate[max[59]]"> </td>
 															<td><b><span id="total_cost_machine"></span></b> </td>
 														</tr>
 														<tr>
 															<td>Assembly  </td>
 															<td><span id="std_assembly_cost" value="<?php echo $standard_timing[2]['cost']; ?>">$<?php echo $standard_timing[2]['cost']; ?></span> </td>
 															<td><input type="text" name="std_assembly_hr" class=" form-control"></td>
-															<td><input type="text" name="std_assembly_min" class="form-control "> </td>
+															<td><input type="text" name="std_assembly_min" id="std_assembly_min" class="form-control  validate[max[59]]"> </td>
 															<td><input type="text" name="cpx_assembly_hr" class="form-control "></td>
-															<td><input type="text" name="cpx_assembly_min" class="form-control "></td>
+															<td><input type="text" name="cpx_assembly_min" id="cpx_assembly_min" class="form-control validate[max[59]]"></td>
 															<td><b><span id="total_cost_assembly"></span></b> </td>
 														</tr>
 														<tr>
@@ -337,7 +338,7 @@
 														<tr>
 															<td colspan="5"> </td>
 															<td>Units:</td>
-															<td> </td>
+															<td><b><span id="total_unit"></span></b> </td>
 														</tr>	
 														<tr>
 															<td colspan="5"> </td>
@@ -379,7 +380,7 @@
 																	<label for="multiple_quote_2">2</label>
 																</div>
 															</td>
-															<td></td>
+															<td><b><span id="multiple_quote_cost_2"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -388,7 +389,7 @@
 																	<label for="multiple_quote_3">3</label>
 																</div>
 															</td>
-															<td></td>
+															<td><b><span id="multiple_quote_cost_3"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -397,7 +398,7 @@
 																	<label for="multiple_quote_4">4</label>
 																</div>
 															</td>
-															<td></td>
+															<td><b><span id="multiple_quote_cost_4"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -406,7 +407,7 @@
 																	<label for="multiple_quote_5">5</label>
 																</div>
 															</td>
-															<td></td>
+															<td><b><span id="multiple_quote_cost_5"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -415,7 +416,7 @@
 																	<label for="multiple_quote_6">10</label>
 																</div>
 															</td>
-															<td></td>
+															<td><b><span id="multiple_quote_cost_10"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -424,7 +425,7 @@
 																	<label for="multiple_quote_7">15</label>
 																</div>
 															</td>
-															<td></td>
+															<td><b><span id="multiple_quote_cost_15"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -433,7 +434,7 @@
 																	<label for="multiple_quote_8">20</label>
 																</div>
 															</td>
-															<td></td>
+															<td><b><span id="multiple_quote_cost_20"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -478,11 +479,9 @@
         </div>
   <script>
 
-  	 $("#add_new_tooling").validate({
-        rules: {
-                'material_xvalue[]': "required",
-        },
-    });
+ 
+        $("#add_new_tooling").validationEngine('attach',{promptPosition : "topRight", scroll: false});
+   
   </script>
   <script>
    $('input[name="multiple_quote"]').click(function(){
@@ -520,7 +519,8 @@
   	var material_cost = [];
  	for(var i=0 ; i< material_x_value.length ; i++ )
  	{
- 		var material_fixed_cost = $('#tooling_material_select'+i).val();
+ 		var material_fixed_cost = $('#tooling_material_select'+i).find("option:selected").data('status');
+ 		console.log('material fixed cost'+material_fixed_cost);
  		var markup_final_percent = parseFloat((markup_fixed/100).toFixed(2));
  		var partb = ((parseFloat(material_x_value[i]) + parseFloat(material_inch)) * (parseFloat(material_y_value[i]) + parseFloat(material_inch)) * markup_final_percent);
   		material_cost[i] = ((parseFloat(material_x_value[i])+parseFloat(material_inch))*(parseFloat(material_y_value[i])+parseFloat(material_inch))+partb)*material_fixed_cost ;//material_x_value[i] * material_y_value[i];
@@ -528,7 +528,7 @@
 
  		if(material_x_value[i] != "" && material_y_value[i] !="" || material_x_value[i] != 'undefined' && material_y_value[i] != 'undefined' || !isNaN(material_x_value[i] && !isNaN(material_y_value[i]))){
  			all_mat_total_cost +=  parseFloat(material_cost[i]);
- 			console.log('all mat cost'+all_mat_total_cost);
+ 			//console.log('all mat cost'+all_mat_total_cost);
  		}
 
  	}
@@ -547,9 +547,12 @@
  	{
  		material_extra_cost[e] = parseFloat(extra_cost[e]) * parseFloat(extra_qty[e]);
  		
+ 		if(isNaN(material_extra_cost[e])){
+ 			material_extra_cost[e] = 0;
+ 		}
  		$('#extra_accessory_'+e).text('$'+material_extra_cost[e]);
  		all_extra_total_cost +=  parseFloat(material_extra_cost[e]);
- 		console.log('all extra cost'+all_extra_total_cost);
+ 		//console.log('all extra cost'+all_extra_total_cost);
 
  	}
   	
@@ -621,11 +624,23 @@
   	/* For rthers*/
   	if(std_other_hr != "" || std_other_min != "")
   	{
+  		if(isNaN(std_other_hr)){
+  			std_other_hr = 0;
+  		}
+  		if(isNaN(std_other_min)){
+  			std_other_min = 0;
+  		}
   		var total_standard_other_cost = (time_other_name*std_other_hr) + (time_other_name*(std_other_min/60));
   	}
 
   	if(cpx_other_hr != "" || cpx_other_min != "")
   	{
+  		if(isNaN(cpx_other_hr)){
+  			cpx_other_hr = 0;
+  		}
+  		if(isNaN(cpx_other_min)){
+  			cpx_other_min = 0;
+  		}
   		var total_complex_other_cost = (time_other_name*cpx_other_hr) + (time_other_name*(cpx_other_min/60));
   	}
 
@@ -647,15 +662,20 @@
   		{
   			total_machine_cost = 0;
   		}
+  		if(isNaN(total_other_cost))
+  		{
+  			total_other_cost = 0;
+  		}
 
   		$('#total_cost_design').text('$'+total_design_cost);
   		$('#total_cost_assembly').text('$'+total_assembly_cost);
   		$('#total_cost_machine').text('$'+total_machine_cost);
   		$('#total_cost_other').text('$'+total_other_cost);
 
+  	var total_time_cost_wo_design = total_assembly_cost + total_machine_cost + total_other_cost;
   	/*Calculate Accessories*/
   	/*total time cost */
-  	var total_time_cost = total_design_cost + total_assembly_cost + total_machine_cost + total_other_cost;
+  	var total_time_cost = total_design_cost + total_time_cost_wo_design;
   	/*end of total time */
 
   	var total_tooling_cost_wro = total_time_cost + all_mat_total_cost + all_extra_total_cost;
@@ -697,11 +717,21 @@
   	/*This is here for calculating multiple quotes*/
   	var multiple_quote = $('input[name="multiple_quote"]:checked').attr('value');
 
+  	console.log(multiple_quote);
+	$('#total_unit').text(multiple_quote);
+
   	/* multiple quotes check here*/
-  	if(multiple_quotes != "")
+  	if(multiple_quote != "")
   	{
-  		
+  		var multiple_quote_cost = 0;
+  		for(var mcq=1 ; mcq < multiple_quote ; mcq++ )
+  		{
+  			multiple_quote_cost += total_after_dp - total_design_cost;
+  		}
+
+  		var final_multiple_quote_cost = multiple_quote_cost + total_after_dp;
   	}
+    $("#multiple_quote_cost_"+multiple_quote).text(final_multiple_quote_cost);
   }
 
 

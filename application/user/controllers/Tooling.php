@@ -34,15 +34,15 @@ class Tooling extends CI_Controller {
 
 	public function add_tooling()
 	{
-		echo "<pre>";
-		print_r($_POST);
-
+		
+		$this->material_calculation($_POST);
 		//insert into tooling table
 
 		$tooling_data = array(
 							'tooling_type' => $this->input->post('tooling_type'),
 							'quote_id'	=> $this->input->post('quote_id'),
 							'tooling_description' => $this->input->post('tooling_description'),
+							'multiple_quote' => $this->input->post('multiple_quote'),
 							'date_created'	=> Date('Y-m-d'),
 							'status'	=> "1"
 						);
@@ -103,7 +103,7 @@ class Tooling extends CI_Controller {
 										'status' => "1",
 										'date_created' => Date('Y-m-d')
 									);
-			//$this->crud_model->insert();
+			$this->crud_model->insert('boss_tooling_extra',$extra_material_data);
 		}
 
 		/*
@@ -113,16 +113,32 @@ class Tooling extends CI_Controller {
 
 			need to think
 		*/
-		$tooling_accessories = array(
-									'quote_id' => $this->input->post('quote_id'),
-									'tooling_id' => $tooling_id,
-									'acc_cost' => $this->input->post(''),
-									'acc_qty' => $this->input->post(''),
-									'acc_total_cost' => $this->input->post(''),
-									'status' => "1",
-									'date_created' => Date('Y-m-d')
-								);
+		$tooling_accessory_count = count($_POST['tooling_accessory_name']);
+		for($ta=0 ; $ta < $tooling_accessory_count ; $ta++)
+		{
+			if($this->input->post('extra_qty')[$ta] != "")
+			{
+				$tooling_accessories = array(
+											'quote_id' => $this->input->post('quote_id'),
+											'tooling_id' => $tooling_id,
+											'acc_cost' => $this->input->post('extra_cost')[$ta],
+											'acc_qty' => $this->input->post('extra_qty')[$ta],
+											'acc_total_cost' => "",
+											'status' => "1",
+											'date_created' => Date('Y-m-d')
+										);
+				//insert query here
+				$this->crud_model->insert('boss_tooling_accessory',$tooling_accessories);
+			}
+		
+		}
+		exit;
+	}
 
+	public function material_calculation($data)
+	{
+		echo "<pre>";
+		print_r($data);
 		exit;
 	}
 

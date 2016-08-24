@@ -3,6 +3,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="panel">
+                    <?php echo $this->session->flashdata('response'); ?>
                 		<form action="<?php echo site_url('tooling/add_time'); ?>" method="post" id="add_time">
                             <div class="form-group">
                                  <label class="col-lg-12 control-label pt18">Name</label>
@@ -37,6 +38,7 @@
                 </div>
         </div>
 </div>
+</br></br></br></br></br></br></br></br></br></br>
 
 <script>
   $('#add_time').validate({

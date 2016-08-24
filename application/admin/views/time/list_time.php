@@ -30,6 +30,7 @@
 
         <div class="panel-body pn">
                         <div class="table-responsive">
+                            <?php echo $this->session->flashdata('response'); ?>
                             <table class="table datatable-index table-striped table-hover">
                                 <thead>
                                 <tr>

@@ -27,9 +27,10 @@
             <a class="btn-info" href="<?php echo site_url('tooling/add_extra_material'); ?>">Add Extra Material</a>
         </div> -->
         <div class="panel" id="spy3">
-
         <div class="panel-body pn">
                         <div class="table-responsive">
+                        <?php echo $this->session->flashdata('response'); ?>
+
                             <table class="table datatable-index table-striped table-hover">
                                 <thead>
                                 <tr>

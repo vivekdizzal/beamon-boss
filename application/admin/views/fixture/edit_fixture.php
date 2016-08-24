@@ -6,6 +6,7 @@
            <div class="row">
              <div class="col-sm-6">
                  <div class="panel">
+                <?php echo $this->session->flashdata('response'); ?>
                 <form action="<?php echo site_url('tooling/edit_fixture/'.$get_record[0]['id']); ?>" method="post" id="edit_fixture">
 
                     <div class="form-group">
@@ -31,6 +32,7 @@
             </div>
         </div>
 </div>
+ </br></br></br></br></br></br></br></br></br></br></br>
 
 <script>
         $('#edit_fixture').validate({

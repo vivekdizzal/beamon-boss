@@ -5,9 +5,10 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="panel">
+                    <?php echo $this->session->flashdata('response'); ?>
                     <form action="<?php echo  site_url('tooling/edit_markup/'.$records[0]["id"]); ?>" method="post">
                         <div class="form-group">
-                            <label class="col-lg-12 control-label pt18">Markup Percentage</label>
+                            <label class="col-lg-12 control-label pt18">Change Markup Percentage</label>
                                 <div class="col-lg-12">
                                    <input type="text" class="form-control" name="markup_percentage" id="markup_percentage" value="<?php echo $records[0]['markup_percentage']; ?>" />
                                 </div>
@@ -23,6 +24,6 @@
                 </div>
             </div>
         </div>
-
+        </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
 

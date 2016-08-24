@@ -55,7 +55,7 @@
     <!-- Header  -->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-logo-wrapper dark bg-dark">
-            <a class="navbar-logo-image" href="dashboard.html">
+            <a class="navbar-logo-image" href="<?php echo site_url('welcome/dashboard'); ?>">
                 <img src="<?php echo base_url(); ?>assets/img/logo.png" alt="" class="sb-l-o-logo">
                 <img src="<?php echo base_url(); ?>assets/img/logo_small.png" alt="" class="sb-l-m-logo">
             </a>
@@ -69,9 +69,9 @@
                         </a>
                     </li>
                     <li class="breadcrumb-link">
-                        <a href="index.html">Home</a>
+                        <a href="<?php echo site_url('welcome/dashboard'); ?>">Home</a>
                     </li>
-                    <li class="breadcrumb-current-item">Dashboard</li>
+                    <li class="breadcrumb-current-item"><?php echo $path_url; ?></li>
                 </ol>
             </div>
         </div>

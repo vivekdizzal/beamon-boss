@@ -56,7 +56,7 @@
             </div>
         </div>
 </div>
-
+ </br></br></br></br></br></br></br></br></br></br></br>
 
 <script>
     $('#edit_material').validate({
@@ -70,6 +70,7 @@
             },
             "material_cost":{
                 required: true,
+                number:true
             },
         },
         messages:{
@@ -82,6 +83,7 @@
             },
             "material_cost":{
                 required: "Cost of material is required",
+                number: "Please enter only digit"
             },
         },
 

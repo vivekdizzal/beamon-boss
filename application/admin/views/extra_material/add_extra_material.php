@@ -3,6 +3,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="panel">
+                        <?php echo $this->session->flashdata('response'); ?>
 						<form action="<?php echo site_url('tooling/add_extra_material'); ?>" method="post" id="add_extra_material">
 							<div class="form-group">
                                  <label class="col-lg-12 control-label pt18">Extra Material in inch</label>

@@ -18,7 +18,8 @@ class Tooling extends CI_Controller {
 
 		$where = array('status' => '1');
 		$data['result'] = $this->crud_model->get(MASTER_TOOLING_MATERIAL,$where);
-		$this->load->view('layout/header.php');
+		$breadcrumb['path_url'] = "List material";
+		$this->load->view('layout/header.php',$breadcrumb);
 		$this->load->view('material/list_material',$data);
 		$this->load->view('layout/footer.php');	
 	}
@@ -39,7 +40,8 @@ class Tooling extends CI_Controller {
 			$this->session->set_flashdata('response',success_message('Material Added succesfully'));
 			redirect('tooling/list_material');
 		}
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Add material";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('material/add_material');
 		$this->load->view('layout/footer');
 	}
@@ -62,8 +64,8 @@ class Tooling extends CI_Controller {
 
 		//get the necessary record for the id and pass to edit view
 		$data['get_record'] = $this->crud_model->get(MASTER_TOOLING_MATERIAL,array('id' => $id));
-
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Edit material";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('material/edit_material',$data);
 		$this->load->view('layout/footer');
 	}
@@ -83,7 +85,8 @@ class Tooling extends CI_Controller {
 			$this->session->set_flashdata('response',success_message('Accessory Added succesfully'));
 			redirect('tooling/list_accessory');
 		}
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Add Accessory";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('accessory/add_accesssory');
 		$this->load->view('layout/footer');
 	}
@@ -104,7 +107,8 @@ class Tooling extends CI_Controller {
 
 		}
 		$data['get_record'] = $this->crud_model->get(MASTER_TOOLING_ACCESSORY,array('id' => $id));
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Edit Accessory";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('accessory/edit_accessory',$data);
 		$this->load->view('layout/footer');
 	}
@@ -122,7 +126,8 @@ class Tooling extends CI_Controller {
 			$this->crud_model->insert(MASTER_TOOLING_TIMING,$data);
 			redirect('tooling/list_time');
 		}
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Add Time";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('time/add_time.php');
 		$this->load->view('layout/footer');
 	}
@@ -142,7 +147,8 @@ class Tooling extends CI_Controller {
 			redirect('tooling/list_fixture');
 
 		}
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Add Fixture";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('fixture/add_fixture');
 		$this->load->view('layout/footer');
 
@@ -153,7 +159,8 @@ class Tooling extends CI_Controller {
 	{
 		$where = array('status' => '1');
 		$data['result'] = $this->crud_model->get(MASTER_TOOLING_FIXTURE,$where);
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "List Fixture";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('fixture/list_fixture',$data);
 		$this->load->view('layout/footer');
 	}
@@ -176,8 +183,8 @@ class Tooling extends CI_Controller {
 		}
 
 		$data['get_record'] = $this->crud_model->get(MASTER_TOOLING_FIXTURE,array('id' => $id));
-
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Edit Fixture";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('fixture/edit_fixture',$data);
 		$this->load->view('layout/footer');
 	}
@@ -186,7 +193,8 @@ class Tooling extends CI_Controller {
 	{
 		$where = array('status' => '1');
 		$data['result'] = $this->crud_model->get(MASTER_TOOLING_TIMING,$where);
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "List Time";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('time/list_time',$data);
 		$this->load->view('layout/footer');
 	}
@@ -205,7 +213,8 @@ class Tooling extends CI_Controller {
 		}
 
 		$data['records'] = $this->crud_model->get(MASTER_TOOLING_TIMING,array('id' => $id));
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Edit Time";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('time/edit_time',$data);
 		$this->load->view('layout/footer');
 	}
@@ -214,7 +223,8 @@ class Tooling extends CI_Controller {
 	{
 		$where = array('status' => '1');
 		$data['result'] = $this->crud_model->get(MASTER_TOOLING_ACCESSORY,$where);
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "List Accessory";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('accessory/list_accessory',$data);
 		$this->load->view('layout/footer');
 	}
@@ -233,7 +243,8 @@ class Tooling extends CI_Controller {
 	{
 		$where = array('status' => '1');
 		$data['result'] = $this->crud_model->get('boss_master_extra_material',$where);
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "List Extra Material";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('extra_material/list_extra_material',$data);
 		$this->load->view('layout/footer');
 	}
@@ -248,9 +259,11 @@ class Tooling extends CI_Controller {
 						'date_created' => date('Y-m-d')
 					);
 			$this->crud_model->insert('boss_master_extra_material',$data);
+			$this->session->set_flashdata('response',success_message('Material Added succesfully'));
 			redirect('tooling/extra_material');
 		}
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Add Extra Material";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('extra_material/add_extra_material.php');
 		$this->load->view('layout/footer');
 	}
@@ -264,11 +277,13 @@ class Tooling extends CI_Controller {
 						'extra_material_inch' => $this->input->post('extra_material_inch')
 					);
 			$this->crud_model->update('boss_master_extra_material',$data,$where);
+			$this->session->set_flashdata('response',success_message('Material Updated succesfully'));
 			redirect('tooling/extra_material');
 		}
 
 		$data['records'] = $this->crud_model->get('boss_master_extra_material',array('id' => $id));
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Edit Extra Material";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('extra_material/edit_extra_material',$data);
 		$this->load->view('layout/footer');
 	}
@@ -277,7 +292,8 @@ class Tooling extends CI_Controller {
 	{
 		$where = array('status' => '1');
 		$data['result'] = $this->crud_model->get('boss_master_markup',$where);
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "List Marukup Percentage";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('markup/list_markup',$data);
 		$this->load->view('layout/footer');
 	}
@@ -292,9 +308,11 @@ class Tooling extends CI_Controller {
 						'date_created' => date('Y-m-d')
 					);
 			$this->crud_model->insert('boss_master_markup',$data);
+			$this->session->set_flashdata('response',success_message('Markup Added succesfully'));
 			redirect('tooling/list_material');
 		}
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Add Marukup Percentage";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('markup/add_markup');
 		$this->load->view('layout/footer');
 	}
@@ -313,7 +331,8 @@ class Tooling extends CI_Controller {
 		}
 
 		$data['records'] = $this->crud_model->get('boss_master_markup',array('id' => $id));
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Edit Marukup Percentage";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('markup/edit_markup',$data);
 		$this->load->view('layout/footer');
 	}

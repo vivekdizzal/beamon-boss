@@ -31,7 +31,8 @@ class Welcome extends CI_Controller {
 
 	public function dashboard()
 	{
-		$this->load->view('layout/header');
+		$breadcrumb['path_url'] = "Dashboard";
+		$this->load->view('layout/header',$breadcrumb);
 		$this->load->view('layout/footer');
 	}
 }

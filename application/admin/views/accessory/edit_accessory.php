@@ -47,6 +47,7 @@
                 </div>
             </div>
 		</div>
+         </br></br></br></br></br></br></br></br></br></br></br>
         <script>
            $("#edit_accessories").validate({
                 rules:{
@@ -56,9 +57,11 @@
                     },
                     "accessory_qty":{
                         required: true,
+                        number:true
                     },
                     "cost":{
                         required: true,
+                        number: true
                     },
                 },
                 messages:{
@@ -68,9 +71,12 @@
                     },
                     "accessory_qty":{
                         required: "Quantity is required",
+                        number: "Enter only digits"
                     },
                     "cost":{
                         required: "Cost of material is required",
+                        number: "Enter only digits"
+
                     },
                 },
             });
