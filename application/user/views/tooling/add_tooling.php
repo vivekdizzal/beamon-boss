@@ -3,57 +3,8 @@
 ?>
 
      <script type="text/javascript">
-				$(document).ready(function(){
-				    var maxField = 10; //Input fields increment limitation
-				    var material_count=1;
-				    var addButton = $('.add-material'); //Add button selector
-				    var wrapper = $('.field-wrapper'); //Input field wrapper
-					var id_count = 0;
-					var id_count_extra = 2;
-				    var x = 1; //Initial field counter is 1
-
-				    $('.append-add-extra').click(function(){ //Once add button is clicked
-				      
-				             var fieldHTML = '<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" id="tooling_material_other[]" class="form-control input-tooling validate[required]" name="tooling_material_other[]" ></td><td colspan="3"><b><input type="text" id="tooling_material_other_value[]" class="form-control input-tooling validate[required]" name="tooling_material_other_value[]" ></b></td></tr>';
-				            $('.add_extra').append(fieldHTML); // Add field html
-				            
-				        /*
-							<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" class="form-control input-tooling" name="tooling_material_select[]" ></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_xvalue[]" class="form-control input-tooling"></div></td><td><div class="price-update table-price-update"><input type="text" value="" name="material_yvalue[]" class="form-control input-tooling"></div></td><td><b></b></td></tr>';
-	
-
-				        */
-				    });
-					
-				//for add extra option
-					   $(addButton).click(function(){ //Once add button is clicked
-				        if(x < maxField){ //Check maximum number of input fields
-				            x++; //Increment field counter
-				            material_count++;
-				            id_count++;
-				             var fieldHTML = '<tr><td>Material-'+material_count+':</td><td colspan="3"></td>														</tr><tr><td><select class="form-control"  name="tooling_material_select[]" id="tooling_material_select'+id_count+'"><?php 
-																		foreach($material_list as $material)
-																		{
-																			/*echo "<option>".$material['material_name']."</option>";*/
-
-																			echo '<option value="'.$material['cost'].'" data-status="'.$material['cost'].'">'.$material['material_name'].'</option>';
-																		}
-																	?>		</select></td><td><div class="price-update table-price-update"><input type="text" id="material_xvalue[]" value="" name="material_xvalue[]" class="form-control input-tooling validate[required]"></div></td><td><div class="price-update table-price-update"><input type="text" value="" id="material_yvalue[]" name="material_yvalue[]" class="form-control input-tooling validate[required]"></div></td><td><b><span id="material_total_cost'+id_count+'"></span></b></td></tr>';
-				            $(wrapper).append(fieldHTML); // Add field html
-				            console.log(material_count);
-				        }
-				    });
-
-				    $('.tooling-extra').click(function(){ //Once add button is clicked
-			      		id_count_extra++;
-			             var fieldHTML = '<tr><td><input type="text" class="form-control input-tooling" ></td><td><div class="price-update table-price-update"><input type="text" value="" name="extra_cost[]" class="form-control input-tooling"></div></td><td><div class="price-update table-price-update"><input type="text" value="" name="extra_qty[]" class="form-control input-tooling"></div></td><td><b><span id="extra_accessory_'+id_count_extra+'"></span></b></td></tr>';
-			            $('.tooling-extra-append').append(fieldHTML); // Add field html
-			            
-			        
-			    });
-					
-
-				});
-</script>
+				
+	</script>
 
 <!-- Main Wrapper -->
     <section id="content_wrapper">
@@ -137,67 +88,7 @@
 															<th width="20%">Type</th><th width="25%">Size - X in Inch</th><th width="25%">Size - Y in Inch</th><th width="20%">Cost</th>
 														</tr>
 														
-														<!--<tr>
-															<td>Material-1:</td><td colspan="3"></td>
-														</tr>
-														<tr>
-															<td>
-																<select class="form-control" name="tooling_material_select[]" id="tooling_material_select0">
-																	<?php 
-																		foreach($material_list as $material)
-																		{
-																			echo "<option value='".$material['cost']."'>".$material['material_name']."</option>";
-																		}
-
-																	?>
-																</select>
-															</td>
-															<td>
-																<div class="price-update table-price-update">
-																	<input type="text" value="" name="material_xvalue[]" class="form-control input-tooling">
-
-																</div>
-															</td>
-															<td>
-																<div class="price-update table-price-update">
-																	<input type="text" value="" name="material_yvalue[]" class="form-control input-tooling">
-																</div>
-															</td>
-															
-															<td>
-																<b><div><span id="material_total_cost0"></span></div></b>
-															</td>
-														</tr>
-														<tr>
-															<td>Material-2:</td><td colspan="3"></td>
-														</tr>
-														<tr>
-															<td>
-																<select class="form-control"  name="tooling_material_select[]" id="tooling_material_select1">
-																	<?php 
-																		foreach($material_list as $material)
-																		{
-																			echo "<option value='".$material['cost']."'>".$material['material_name']."</option>";
-																		}
-
-																	?>
-																</select>
-															</td>
-															<td>
-																<div class="price-update table-price-update">
-																	<input type="text" value="" name="material_xvalue[]" class="form-control input-tooling">
-																</div>
-															</td>
-															<td>
-																<div class="price-update table-price-update">
-																	<input type="text" value="" name="material_yvalue[]" class="form-control input-tooling">
-																</div>
-															</td>
-																									
-															<td>
-																<b><div><span id="material_total_cost1" ></span></div></b>
-															</td>
-														</tr>-->
+														
 														<tr>
 															<td>Material-1:</td><td><span class="pull-left append-add"><i class="fa fa-plus-square add-material"></i></span></td><td colspan="3"></td>
 														</tr>
@@ -215,12 +106,12 @@
 															</td>
 															<td>
 																<div class="price-update table-price-update">
-																	<input type="text" value="" id="material_xvalue[]" name="material_xvalue[]" class="form-control input-tooling validate[required]">
+																	<input type="text" value="" id="material_xvalue[0]" name="material_xvalue[0]" class="form-control input-tooling validate[required,custom[onlyNumberDecimal]]" data-tooling="material_xvalue[]">
 																</div>
 															</td>
 															<td>
 																<div class="price-update table-price-update">
-																	<input type="text" value="" id="material_yvalue[]" name="material_yvalue[]" class="form-control input-tooling validate[required]">
+																	<input type="text" value="" id="material_yvalue[0]" name="material_yvalue[0]" class="form-control input-tooling validate[required,custom[onlyNumberDecimal]]" data-tooling="material_yvalue[]">
 																</div>
 															</td>
 															<td>
@@ -380,7 +271,7 @@
 																	<label for="multiple_quote_2">2</label>
 																</div>
 															</td>
-															<td><b><span id="multiple_quote_cost_2"></span></b></td>
+															<td><b><span id="multiple_quote_cost_2" class="multiple_quote_cost"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -389,7 +280,7 @@
 																	<label for="multiple_quote_3">3</label>
 																</div>
 															</td>
-															<td><b><span id="multiple_quote_cost_3"></span></b></td>
+															<td><b><span id="multiple_quote_cost_3" class="multiple_quote_cost"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -398,7 +289,7 @@
 																	<label for="multiple_quote_4">4</label>
 																</div>
 															</td>
-															<td><b><span id="multiple_quote_cost_4"></span></b></td>
+															<td><b><span id="multiple_quote_cost_4" class="multiple_quote_cost"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -407,7 +298,7 @@
 																	<label for="multiple_quote_5">5</label>
 																</div>
 															</td>
-															<td><b><span id="multiple_quote_cost_5"></span></b></td>
+															<td><b><span id="multiple_quote_cost_5" class="multiple_quote_cost"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -416,7 +307,7 @@
 																	<label for="multiple_quote_6">10</label>
 																</div>
 															</td>
-															<td><b><span id="multiple_quote_cost_10"></span></b></td>
+															<td><b><span id="multiple_quote_cost_10" class="multiple_quote_cost"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -425,7 +316,7 @@
 																	<label for="multiple_quote_7">15</label>
 																</div>
 															</td>
-															<td><b><span id="multiple_quote_cost_15"></span></b></td>
+															<td><b><span id="multiple_quote_cost_15" class="multiple_quote_cost"></span></b></td>
 														</tr>
 														<tr>
 															<td>
@@ -434,17 +325,17 @@
 																	<label for="multiple_quote_8">20</label>
 																</div>
 															</td>
-															<td><b><span id="multiple_quote_cost_20"></span></b></td>
+															<td><b><span id="multiple_quote_cost_20" class="multiple_quote_cost"></span></b></td>
 														</tr>
 														<tr>
 															<td>
 																<div class="radio-custom mb5">
 																	<input id="multiple_quote_other" name="multiple_quote" type="radio" value="other">
 																	<label for="multiple_quote_other">Other</label>
-																	<input type="text" value="" id="radio_id" class="form-control radio_other" name="custom_quote_std">
+																	<input type="text" value="" id="mul_quote_text" class="form-control radio_other" name="custom_quote_std">
 																</div>
 															</td>
-															<td></td>
+															<td><b><span id="multiple_quote_cost_other" class="multiple_quote_cost"></span></b></td>
 														</tr>
 													</table>
 													
@@ -478,43 +369,100 @@
 
         </div>
   <script>
-
+  	$(document).ready(function(){
  
-        $("#add_new_tooling").validationEngine('attach',{promptPosition : "topRight", scroll: false});
+		$("#add_new_tooling").validationEngine('attach',{promptPosition : "topRight", scroll: false});
    
-  </script>
-  <script>
-   $('input[name="multiple_quote"]').click(function(){
-  	if($(this).attr("value")=="other"){    
-  			$('#radio_id').show();
-  	}
-  	else
+	   $('input[name="multiple_quote"]').click(function(){
+	  	if($(this).attr("value")=="other"){    
+	  			$('#mul_quote_text').show();
+	  	}
+	  	else
+	  	{
+	  			$('#mul_quote_text').val('');
+	  		  	$('#mul_quote_text').hide();
+	  		}
+	  	});
+
+	   /* for calculation*/
+	    var maxField = 10; //Input fields increment limitation
+				    var material_count=1;
+				    var addButton = $('.add-material'); //Add button selector
+				    var wrapper = $('.field-wrapper'); //Input field wrapper
+					var id_count = 0;
+					var id_count_extra = 2;
+				    var x = 1; //Initial field counter is 1
+				    var extra_material_other_count = 0;
+
+				    $('.append-add-extra').click(function(){ //Once add button is clicked
+				      
+				             var fieldHTML = '<tr><td>Material:</td><td colspan="3"></td>														</tr><tr><td><input type="text" id="tooling_material_other['+extra_material_other_count+']" class="form-control input-tooling validate[required]" name="tooling_material_other['+extra_material_other_count+']" data-tooling="tooling_material_other[]"></td><td colspan="3"><b><input type="text" id="tooling_material_other_value['+extra_material_other_count+']" class="form-control input-tooling validate[required]" name="tooling_material_other_value['+extra_material_other_count+']" data-tooling="tooling_material_other_value[]" ></b></td></tr>';
+				            $('.add_extra').append(fieldHTML); // Add field html
+				            extra_material_other_count++;
+				    });
+					
+				//for add extra option
+					   $(addButton).click(function(){ //Once add button is clicked
+				        if(x < maxField){ //Check maximum number of input fields
+				            x++; //Increment field counter
+				            material_count++;
+				            id_count++;
+				             var fieldHTML = '<tr><td>Material-'+material_count+':</td><td colspan="3"></td>														</tr><tr><td><select class="form-control"  name="tooling_material_select[]" id="tooling_material_select'+id_count+'"><?php 
+																		foreach($material_list as $material)
+																		{
+																			/*echo "<option>".$material['material_name']."</option>";*/
+
+																			echo '<option value="'.$material['cost'].'" data-status="'.$material['cost'].'">'.$material['material_name'].'</option>';
+																		}
+																	?>		</select></td><td><div class="price-update table-price-update"><input type="text" id="material_xvalue['+id_count+']" value="" name="material_xvalue['+id_count+']" class="form-control input-tooling validate[required,custom[onlyNumberDecimal]]" data-tooling="material_xvalue[]"></div></td><td><div class="price-update table-price-update"><input type="text" value="" id="material_yvalue['+id_count+']" name="material_yvalue['+id_count+']" class="form-control input-tooling validate[required,custom[onlyNumberDecimal]]" data-tooling="material_yvalue[]"></div></td><td><b><span id="material_total_cost'+id_count+'"></span></b></td></tr>';
+				            $(wrapper).append(fieldHTML); // Add field html
+				            console.log(material_count);
+				        }
+				    });
+
+				    $('.tooling-extra').click(function(){ //Once add button is clicked
+			      		id_count_extra++;
+			             var fieldHTML = '<tr><td><input type="text" class="form-control input-tooling" ></td><td><div class="price-update table-price-update"><input type="text" value="" name="extra_cost[]" class="form-control input-tooling"></div></td><td><div class="price-update table-price-update"><input type="text" value="" name="extra_qty[]" class="form-control input-tooling"></div></td><td><b><span id="extra_accessory_'+id_count_extra+'"></span></b></td></tr>';
+			            $('.tooling-extra-append').append(fieldHTML); // Add field html
+			            
+			        
+			    });
+					
+				   /*calculation*/
+
+	
+});
+  
+function calculate()
   	{
-  			$('#radio_id').val('');
-  		  	$('#radio_id').hide();
-  		}
-  	});
-
-
-  function calculate()
-  {
 
   	var all_mat_total_cost = 0;
   	var all_extra_total_cost = 0;
   	var all_time_total_cost = 0;
-
+  	var material_tooling_other_total_cost = 0;
 
   	var material_inch = $('input[name="extra_material"]').val();
   	var markup_fixed = $('input[name="markup"]').val();
   	/*calculate Material */
-  	var material_x_value = $('input[name="material_xvalue[]"]').map(function(){
+  	var material_x_value = $('input[data-tooling="material_xvalue[]"]').map(function(){
      							  return this.value
    							}).get();
 
 
-  	var material_y_value = $('input[name="material_yvalue[]"]').map(function(){
+  	var material_y_value = $('input[data-tooling="material_yvalue[]"]').map(function(){
       						 return this.value
   							}).get();
+
+  	var material_tooling_other = $('input[data-tooling="tooling_material_other[]"]').map(function(){
+      						 return this.value
+  							}).get();
+
+  	var tooling_material_other_value  = $('input[data-tooling="tooling_material_other_value[]"]').map(function()								{
+      										 return this.value
+  										}).get();
+
+  	console.log(material_x_value);
+  	console.log(material_tooling_other);
 
   	var material_cost = [];
  	for(var i=0 ; i< material_x_value.length ; i++ )
@@ -524,14 +472,28 @@
  		var markup_final_percent = parseFloat((markup_fixed/100).toFixed(2));
  		var partb = ((parseFloat(material_x_value[i]) + parseFloat(material_inch)) * (parseFloat(material_y_value[i]) + parseFloat(material_inch)) * markup_final_percent);
   		material_cost[i] = ((parseFloat(material_x_value[i])+parseFloat(material_inch))*(parseFloat(material_y_value[i])+parseFloat(material_inch))+partb)*material_fixed_cost ;//material_x_value[i] * material_y_value[i];
- 		$('#material_total_cost'+i).text('$'+parseFloat(material_cost[i]).toFixed(2));
+  		if(isNaN(material_cost[i]))
+  		{
+ 			material_cost[i] = 0;
+  		}
 
+  		$('#material_total_cost'+i).text('$'+parseFloat(material_cost[i]).toFixed(2));
  		if(material_x_value[i] != "" && material_y_value[i] !="" || material_x_value[i] != 'undefined' && material_y_value[i] != 'undefined' || !isNaN(material_x_value[i] && !isNaN(material_y_value[i]))){
  			all_mat_total_cost +=  parseFloat(material_cost[i]);
  			//console.log('all mat cost'+all_mat_total_cost);
  		}
 
  	}
+
+ 	/*Extra Material Tooling*/
+ 	for(var mto=0 ; mto < material_tooling_other.length ; mto++)
+ 	{
+ 		material_tooling_other_total_cost += parseFloat(tooling_material_other_value[mto]);
+ 	}
+
+
+ 	//
+
 
   	/*calculate material extra */
   	var extra_cost = $('input[name="extra_cost[]"]').map(function(){
@@ -589,88 +551,70 @@
   	var complex_machine_cost = $('#complex_machine_cost').val();
 
   	/* For Design**/
-  	if(std_design_hr != "" || std_design_min != "")
+  	if(check_number(std_design_hr) || check_number(std_design_min))
   	{
+  		std_design_hr = assign_value(std_design_hr);
+  		std_design_min = assign_value(std_design_min);
   		var total_standard_design_cost = (design_cost*std_design_hr) + (design_cost*(std_design_min/60));
+  		console.log('design hour:'+total_standard_design_cost);
   	}
 
-  	if(cpx_design_hr != "" || cpx_design_min != "")
+  	if(check_number(cpx_design_hr)  || check_number(cpx_design_min))
   	{
+  		cpx_design_hr = assign_value(cpx_design_hr);
+  		cpx_design_min = assign_value(cpx_design_min);
   		var total_complex_design_cost = (complex_design_cost*cpx_design_hr) + (complex_design_cost*(cpx_design_min/60));
   	}
 
   	/**For Machine*/
-  	if(std_machine_hr != "" || std_machine_min != "")
+  	if(check_number(std_machine_hr) || check_number(std_machine_min))
   	{
+  		std_machine_hr = assign_value(std_machine_hr);
+  		std_machine_min = assign_value(std_machine_min);
   		var total_standard_machine_cost = (machine_cost*std_machine_hr) + (machine_cost*(std_machine_min/60));
   	}
 
-  	if(cpx_machine_hr != "" || cpx_machine_min != "")
+  	if(check_number(cpx_machine_hr)  || check_number(cpx_machine_min))
   	{
+  		cpx_machine_hr = assign_value(cpx_machine_hr);
+  		cpx_machine_min = assign_value(cpx_machine_min);
   		var total_complex_machine_cost = (complex_machine_cost*cpx_design_hr) + (complex_machine_cost*(cpx_design_min/60));
   	}
 
   	/* For Assembly*/
-  	if(std_assembly_hr != "" || std_assembly_min != "")
+  	if(check_number(std_assembly_hr) || check_number(std_assembly_min))
   	{
   		var total_standard_assembly_cost = (assembly_cost*std_assembly_hr) + (assembly_cost*(std_assembly_min/60));
   	}
 
-  	if(cpx_assembly_hr != "" || cpx_assembly_min != "")
+  	if(check_number(cpx_assembly_hr) || check_number(cpx_assembly_min))
   	{
   		var total_complex_assembly_cost = (complex_assembly_cost*cpx_assembly_hr) + (complex_assembly_cost*(cpx_assembly_min/60));
   	}
 
   	/* For rthers*/
-  	if(std_other_hr != "" || std_other_min != "")
+  	if(check_number(std_other_hr) || check_number(std_other_min))
   	{
-  		if(isNaN(std_other_hr)){
-  			std_other_hr = 0;
-  		}
-  		if(isNaN(std_other_min)){
-  			std_other_min = 0;
-  		}
-  		var total_standard_other_cost = (time_other_name*std_other_hr) + (time_other_name*(std_other_min/60));
+  		var total_standard_other_cost = (time_other_name*assign_value(std_other_hr)) + (time_other_name*(assign_value(std_other_min)/60));
   	}
 
-  	if(cpx_other_hr != "" || cpx_other_min != "")
+  	if(check_number(cpx_other_hr) || check_number(cpx_other_min))
   	{
-  		if(isNaN(cpx_other_hr)){
-  			cpx_other_hr = 0;
-  		}
-  		if(isNaN(cpx_other_min)){
-  			cpx_other_min = 0;
-  		}
-  		var total_complex_other_cost = (time_other_name*cpx_other_hr) + (time_other_name*(cpx_other_min/60));
+  		
+  		var total_complex_other_cost = (time_other_name*assign_value(cpx_other_hr)) + (time_other_name*(assign_value(cpx_other_min)/60));
   	}
 
 
-  		var total_design_cost = total_standard_design_cost + total_complex_design_cost;
-  		var total_assembly_cost = total_standard_assembly_cost + total_complex_assembly_cost;
-  		var total_machine_cost = total_standard_machine_cost + total_complex_machine_cost;
-  		var total_other_cost = total_standard_other_cost + total_complex_other_cost;
+  		var total_design_cost = assign_value(total_standard_design_cost) + assign_value(total_complex_design_cost);
+  		var total_assembly_cost = assign_value(total_standard_assembly_cost) + assign_value(total_complex_assembly_cost);
+  		var total_machine_cost = assign_value(total_standard_machine_cost) + assign_value(total_complex_machine_cost);
+  		var total_other_cost = assign_value(total_standard_other_cost) + assign_value(total_complex_other_cost);
 
-  		if(isNaN(total_design_cost))
-  		{
-  			total_design_cost = 0;
-  		}
-  		if(isNaN(total_assembly_cost))
-  		{
-  			total_assembly_cost = 0;
-  		}
-  		if(isNaN(total_machine_cost))
-  		{
-  			total_machine_cost = 0;
-  		}
-  		if(isNaN(total_other_cost))
-  		{
-  			total_other_cost = 0;
-  		}
-
-  		$('#total_cost_design').text('$'+total_design_cost);
-  		$('#total_cost_assembly').text('$'+total_assembly_cost);
-  		$('#total_cost_machine').text('$'+total_machine_cost);
-  		$('#total_cost_other').text('$'+total_other_cost);
+ 
+  		$('#total_cost_design').text('$'+assign_value(total_design_cost));
+  		$('#total_cost_assembly').text('$'+assign_value(total_assembly_cost));
+  		$('#total_cost_machine').text('$'+assign_value(total_machine_cost));
+  		$('#total_cost_other').text('$'+assign_value(total_other_cost));
 
   	var total_time_cost_wo_design = total_assembly_cost + total_machine_cost + total_other_cost;
   	/*Calculate Accessories*/
@@ -678,7 +622,7 @@
   	var total_time_cost = total_design_cost + total_time_cost_wo_design;
   	/*end of total time */
 
-  	var total_tooling_cost_wro = total_time_cost + all_mat_total_cost + all_extra_total_cost;
+  	var total_tooling_cost_wro = total_time_cost + all_mat_total_cost + all_extra_total_cost + material_tooling_other_total_cost;
   	//append here to total values
 
   	$('#total_tooling_cost_wor').text('$'+parseFloat(total_tooling_cost_wro).toFixed(2));
@@ -706,7 +650,7 @@
   	var total_after_dp;
   	if(premium_exist != "" || discount_exist !="")
   	{
-  		total_after_dp = (total_tooling_cost_wro + premium_calculation) - discount_calculation;
+  		total_after_dp = (total_tooling_cost_wro + assign_value(premium_calculation)) - assign_value(discount_calculation);
   	}
   	else
   	{
@@ -717,22 +661,79 @@
   	/*This is here for calculating multiple quotes*/
   	var multiple_quote = $('input[name="multiple_quote"]:checked').attr('value');
 
-  	console.log(multiple_quote);
 	$('#total_unit').text(multiple_quote);
 
   	/* multiple quotes check here*/
   	if(multiple_quote != "")
   	{
-  		var multiple_quote_cost = 0;
-  		for(var mcq=1 ; mcq < multiple_quote ; mcq++ )
+  		if(multiple_quote != "other")
   		{
-  			multiple_quote_cost += total_after_dp - total_design_cost;
-  		}
-
+	  		$('.multiple_quote_cost').text('');
+	  		var multiple_quote_cost = 0;
+	  		for(var mcq=1 ; mcq < multiple_quote ; mcq++ )
+	  		{
+	  			multiple_quote_cost += total_tooling_cost_wro - total_design_cost;
+	  		}
+	  	}
+	  	else
+	  	{
+	  		$('.multiple_quote_cost').text('');
+	  		var multiple_text_val = $('#mul_quote_text').val();
+	  		var multiple_quote_cost = 0;
+	  		for(var mcq=1 ; mcq < multiple_text_val ; mcq++ )
+	  		{
+	  			multiple_quote_cost += total_tooling_cost_wro - total_design_cost;
+	  		}
+	  	}
   		var final_multiple_quote_cost = multiple_quote_cost + total_after_dp;
   	}
-    $("#multiple_quote_cost_"+multiple_quote).text(final_multiple_quote_cost);
+
+  	/**Round Off Calculation*/
+  	if(final_multiple_quote_cost < 1000)
+  	{
+  		var round_final_multiple_quote_cost = round5(final_multiple_quote_cost);
+  	}
+  	else if(final_multiple_quote_cost > 1000 && final_multiple_quote_cost < 2000)
+  	{
+  		var round_final_multiple_quote_cost = round10(final_multiple_quote_cost);
+  	}
+  	else
+  	{
+  		  var round_final_multiple_quote_cost = round25(final_multiple_quote_cost);
+  	}
+
+
+
+    $("#multiple_quote_cost_"+multiple_quote).text((round_final_multiple_quote_cost).toFixed(2));
   }
 
+	function round5(x)
+	{
+	    return (x % 5) >= 2.5 ? parseInt(x / 5) * 5 + 5 : parseInt(x / 5) * 5;
+	}
+	function round10(x)
+	{
+	    return (x % 10) >= 2.5 ? parseInt(x / 10) * 10 + 10 : parseInt(x / 10) * 10;
+	}
+	function round25(x)
+	{
+	    return (x % 25) >= 2.5 ? parseInt(x / 25) * 25 + 25 : parseInt(x / 25) * 25;
+	}
 
+	/*function to check number**/
+	function check_number(numb) {
+		if(numb=="") return false;
+		if(numb==0) return false;
+		if(isNaN(numb) ) return false;
+		return true;
+	}
+
+	function assign_value(numb)
+	{
+		if(numb=="" || isNaN(numb))
+		{
+			return 0;
+		}
+		return numb;
+	}
   </script>

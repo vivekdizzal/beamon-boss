@@ -83,7 +83,8 @@
 	});
 } );
 </script>
-
+<script src="<?php echo base_url('assets/js/jquery.validationEngine.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.validationEngine-en.js'); ?>"></script>
 <!-- Charts JS -->
 <script src="<?php echo base_url('assets/js/plugins/highcharts/highcharts.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/plugins/circles/circles.js'); ?>"></script>

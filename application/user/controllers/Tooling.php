@@ -140,6 +140,12 @@ class Tooling extends CI_Controller {
 		echo "<pre>";
 		print_r($data);
 		exit;
+
+		//get the material value based on the id
+
+		//get the 
+
+
 	}
 
 }
