@@ -35,7 +35,7 @@ class Tooling extends CI_Controller {
 	public function add_tooling()
 	{
 		
-		$this->material_calculation($_POST);
+		material_calculation($_POST);
 		//insert into tooling table
 
 		$tooling_data = array(
@@ -135,17 +135,6 @@ class Tooling extends CI_Controller {
 		exit;
 	}
 
-	public function material_calculation($data)
-	{
-		echo "<pre>";
-		print_r($data);
-		exit;
-
-		//get the material value based on the id
-
-		//get the 
-
-
-	}
+	
 
 }

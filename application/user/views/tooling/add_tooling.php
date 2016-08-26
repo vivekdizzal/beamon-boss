@@ -354,6 +354,9 @@
 												<input type="hidden" name="complex_design_cost" id="complex_design_cost" value="<?php echo $complex_timing[0]['cost']; ?>">
 												<input type="hidden" name="complex_machine_cost" id="complex_machine_cost" value="<?php echo $complex_timing[1]['cost']; ?>">
 												<input type="hidden" name="complex_assembly_cost" id="complex_assembly_cost" value="<?php echo $complex_timing[2]['cost']; ?>">
+												<input type="hidden" name="standard_design_cost" id="complex_design_cost" value="<?php echo $standard_timing[0]['cost']; ?>">
+												<input type="hidden" name="standard_machine_cost" id="complex_machine_cost" value="<?php echo $standard_timing[1]['cost']; ?>">
+												<input type="hidden" name="standard_assembly_cost" id="complex_assembly_cost" value="<?php echo $standard_timing[2]['cost']; ?>">
 												<input type="hidden" name="quote_id" value="<?php echo $quote_id; ?>" >
  												</form>
 												
@@ -390,7 +393,7 @@
 				    var addButton = $('.add-material'); //Add button selector
 				    var wrapper = $('.field-wrapper'); //Input field wrapper
 					var id_count = 0;
-					var id_count_extra = 2;
+					var id_count_extra = 0;
 				    var x = 1; //Initial field counter is 1
 				    var extra_material_other_count = 0;
 
@@ -421,10 +424,10 @@
 				    });
 
 				    $('.tooling-extra').click(function(){ //Once add button is clicked
-			      		id_count_extra++;
-			             var fieldHTML = '<tr><td><input type="text" class="form-control input-tooling" ></td><td><div class="price-update table-price-update"><input type="text" value="" name="extra_cost[]" class="form-control input-tooling"></div></td><td><div class="price-update table-price-update"><input type="text" value="" name="extra_qty[]" class="form-control input-tooling"></div></td><td><b><span id="extra_accessory_'+id_count_extra+'"></span></b></td></tr>';
+			      		
+			             var fieldHTML = '<tr><td><input type="text" name="tooling_accessory_extra_name['+id_count_extra+']" id="tooling_accessory_extra_name['+id_count_extra+']" data-accessory-name="tooling_accessory_extra[]" class="form-control input-tooling" ></td><td><div class="price-update table-price-update"><input type="text" value="" name="extra_accessory_cost['+id_count_extra+']" id="extra_accessory_cost['+id_count_extra+']" data-extra-accessory-cost="extra_accessory_cost[]" class="form-control input-tooling"></div></td><td><div class="price-update table-price-update"><input type="text" value="" name="extra_accessory_qty['+id_count_extra+']" id="extra_accessory_qty['+id_count_extra+']" data-extra-accessory-qty="extra_accessory_qty[]" class="form-control input-tooling"></div></td><td><b><span id="extra_accessory_cost_'+id_count_extra+'"></span></b></td></tr>';
 			            $('.tooling-extra-append').append(fieldHTML); // Add field html
-			            
+			            id_count_extra++;
 			        
 			    });
 					
@@ -518,6 +521,39 @@ function calculate()
 
  	}
   	
+  	/*calculate cost for extra accessory*/
+
+  		var tooling_extra_accessory_name = $('input[data-accessory-name="tooling_accessory_extra[]"]').map(function(){
+					      						 return this.value
+					  						}).get();
+  		var tooling_extra_accessory_cost = $('input[data-extra-accessory-cost="extra_accessory_cost[]"]').map(function(){
+					      						 return this.value
+					  						}).get();
+
+		var tooling_extra_accessory_qty = $('input[data-extra-accessory-qty="extra_accessory_qty[]"]').map(function(){
+					      						 return this.value
+					  						}).get();
+
+
+		/*
+				assign extra material variables here
+		*/
+		var extra_tooling_accessory_cost = 0;
+		var extra_tooling_accessory_total_cost = 0;
+
+		if(!tooling_extra_accessory_name.length == 0)
+		{
+			for(var etac=0 ; etac < tooling_extra_accessory_name.length; etac++)
+			{
+				extra_tooling_accessory_cost = tooling_extra_accessory_cost[etac] * tooling_extra_accessory_qty[etac];
+				
+				extra_tooling_accessory_total_cost = extra_tooling_accessory_total_cost + extra_tooling_accessory_cost;
+		 		$('#extra_accessory_cost_'+etac).text('$'+extra_tooling_accessory_cost);
+
+			}			
+		}
+
+  	/*End of calculation*/
 
   	/* calculate time*/ 
 
