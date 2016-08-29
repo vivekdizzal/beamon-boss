@@ -8,9 +8,8 @@ class Tooling extends CI_Controller {
     }
 	public function index($id=0)
 	{
-		/*
-			generate quote reference number
-		*/
+		
+
 			
 		/*
 			Insert here in quote table
@@ -32,20 +31,43 @@ class Tooling extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
+	public function add_tooling1()
+	{
+		echo "<pre>";
+		print_r($_POST);
+	}
+
 	public function add_tooling()
 	{
 		
-		material_calculation($_POST);
+		$get_total_cost = material_calculation($_POST);
+		echo "TotalCost";
+		print_r($get_total_cost);
 		//insert into tooling table
-
+		//check multiple quote exist
 		$tooling_data = array(
 							'tooling_type' => $this->input->post('tooling_type'),
 							'quote_id'	=> $this->input->post('quote_id'),
 							'tooling_description' => $this->input->post('tooling_description'),
-							'multiple_quote' => $this->input->post('multiple_quote'),
+							//'multiple_quote' => $multiple_quote,
 							'date_created'	=> Date('Y-m-d'),
 							'status'	=> "1"
 						);
+
+		if(isset($_POST['multiple_quote']))
+		{
+			$tooling_data['multiple_quote'] =  $this->input->post('multiple_quote');
+			$tooling_data['multiple_quote_cost'] =  $get_total_cost['round_off_mq'];
+			$tooling_data['tooling_cost_wop'] = $get_total_cost['total_calculation_wop'];
+		}
+		else
+		{
+			$tooling_data['multiple_quote'] = "1";
+			$tooling_data['tooling_cost_wop'] = $get_total_cost['total_calculation_wop'];
+			$tooling_data['multiple_quote_cost'] =  $get_total_cost['total_calculation_wop'];
+
+							
+		}
 		$tooling_id = $this->crud_model->insert('boss_tooling',$tooling_data);
 
 		//insert in tooling material
@@ -62,11 +84,13 @@ class Tooling extends CI_Controller {
 										'size_y'	=>  $this->input->post('material_yvalue')[$i],
 										'markup'	=> $this->input->post('markup'),
 										'extra_material' => $this->input->post('extra_material'),
+										'cost'	=> $get_total_cost['material_cost'][$i],
 										'date_created'	=> Date('Y-m-d'),
 										'status'		=> "1"
 									 );
 			$this->crud_model->insert('boss_tooling_material',$tooling_material_data);
 		}
+
 
 		//insert into time
 		$tooling_time_data = array(
@@ -84,27 +108,53 @@ class Tooling extends CI_Controller {
 								'std_ass_min' =>$this->input->post('std_assembly_min'),
 								'cpx_ass_hr' =>$this->input->post('cpx_assembly_hr'),
 								'cpx_ass_min' =>$this->input->post('cpx_assembly_min'),
+								'total_design_cost' => $get_total_cost['total_design_cost'], 
+								'total_machine_cost' => $get_total_cost['total_machine_cost'],
+								'total_assembly_cost' => $get_total_cost['total_assembly_cost'],
 								'date_created' => Date('Y-m-d'),
 								'status' 	=> "1"
 							);
-			//$this->crud_model->insert();
+		$this->crud_model->insert('boss_tooling_time',$tooling_time_data);
+
+		/**/
+		$tooling_time_extra = array(
+								'quote_id'=> $this->input->post('quote_id'),
+								'tooling_id' => $tooling_id,
+								'other_time_cost' => $this->input->post('time_other_name'),
+								'other_std_hr' => $this->input->post('std_other_hr'),
+								'other_std_min' => $this->input->post('std_other_min'),
+								'other_cpx_hr' => $this->input->post('cpx_other_hr'),
+								'other_cpx_min' => $this->input->post('cpx_other_min'),
+								'other_total_cost' => $get_total_cost['total_other_time_cost'],
+								'status' => 1,
+								'date_created' => Date('Y-m-d')
+							  );
+		$this->crud_model->insert('boss_timing_time_other',$tooling_time_extra);
+
+
+
+		//End of extra time
+
 
 		//insert extra material
-
-		$extra_material_count = count($_POST['tooling_material_other']);
-
-		for($em=0 ; $em<$extra_material_count; $em++)
+		if(isset($_POST['tooling_material_other']))
 		{
-			$extra_material_data = array(
-										'quote_id' => $this->input->post('quote_id'),
-										'tooling_id' => $tooling_id,
-										'material_name' => $this->input->post('tooling_material_other')[$em],
-										'material_cost' => $this->input->post('tooling_material_other_value')[$em],
-										'status' => "1",
-										'date_created' => Date('Y-m-d')
-									);
-			$this->crud_model->insert('boss_tooling_extra',$extra_material_data);
+			$extra_material_count = count($_POST['tooling_material_other']);
+
+			for($em=0 ; $em<$extra_material_count; $em++)
+			{
+				$extra_material_data = array(
+											'quote_id' => $this->input->post('quote_id'),
+											'tooling_id' => $tooling_id,
+											'material_name' => $this->input->post('tooling_material_other')[$em],
+											'material_cost' => $this->input->post('tooling_material_other_value')[$em],
+											'status' => "1",
+											'date_created' => Date('Y-m-d')
+										);
+				$this->crud_model->insert('boss_tooling_extra',$extra_material_data);
+			}
 		}
+
 
 		/*
 			Insert into tooling accessories
@@ -132,7 +182,27 @@ class Tooling extends CI_Controller {
 			}
 		
 		}
-		exit;
+
+		/*Insert into accessory extra*/
+		if(isset($_POST['tooling_accessory_extra_name']))
+		{
+			$tooling_extra_accessory_count = count($this->input->post('tooling_accessory_extra_name'));
+			for($tea = 0 ; $tea < $tooling_extra_accessory_count; $tea++)
+			{
+				$tooling_accessory_extra = array(
+											'quote_id' => $this->input->post('quote_id'),
+											'tooling_id' => $tooling_id,
+											'extra_acc_name' => $this->input->post('tooling_accessory_extra_name')[$tea],
+											'extra_acc_price' => $this->input->post('extra_accessory_cost')[$tea],
+											'extra_acc_qty' => $this->input->post('extra_accessory_qty')[$tea],
+											'extra_acc_total' => $get_total_cost['accessory_extra_cost'][$tea]
+
+											);
+					$this->crud_model->insert('boss_tooling_accessory_extra',$tooling_accessory_extra);
+
+			}
+		}
+		redirect('quotes/quote_status');
 	}
 
 	

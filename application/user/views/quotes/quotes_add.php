@@ -40,9 +40,9 @@
                                             <div class="col-lg-9">
                                                 <div class="">
                                                     <select class="form-control" name="engineer_id">
-                                                        <option value="1">Engineer 1</option>
-                                                        <option value="2">Engineer 2</option>
-                                                        <option value="3">Engineer 3</option>
+                                                        <option value="111">Engineer 1</option>
+                                                        <option value="222">Engineer 2</option>
+                                                        <option value="333">Engineer 3</option>
                                                         <?php
                                                             /* bring dynamic fields here*/
 
@@ -82,9 +82,9 @@
                                             <div class="col-lg-9">
                                                 <div class="">
                                                     <select class="form-control" name="customer">
-                                                        <option value="1">Intel</option>
-                                                        <option value="2">HCL</option>
-                                                        <option value="3">Microsoft</option>
+                                                        <option value="133">Intel</option>
+                                                        <option value="244">HCL</option>
+                                                        <option value="355">Microsoft</option>
                                                     </select>
 
                                                     <?php
@@ -93,12 +93,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                      <!--   <div class="form-group">
                                             <label class="col-lg-3 control-label" for="inputStandard">Assy#:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" value="333444" class="form-control">
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="row">
