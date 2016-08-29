@@ -372,6 +372,8 @@ class Tooling extends CI_Controller {
 		$data['boss_tooling_material'] = $this->crud_model->get('boss_tooling_material',$where);
 		/*Count the size of the dynamic selectors*/
 		$data['material_count'] = $this->crud_model->get_count('boss_tooling_material',$where);
+		$data['extra_material_count'] = $this->crud_model->get_count('boss_tooling_extra',$where);
+		$data['tooling_accessory_extra'] = $this->crud_model->get_count('boss_tooling_accessory_extra',$where);
 
 		/*Display db values*/
 		$data['fixture_list'] = $this->crud_model->get('boss_master_fixture_list');

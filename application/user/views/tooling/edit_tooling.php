@@ -113,7 +113,7 @@
 															
 															echo "<tr>
 															<td>
-																<select class=\"form-control\"  name=\"tooling_material_select[]\" id=\"tooling_material_select0\">";
+																<select class=\"form-control\"  name=\"tooling_material_select[]\" id=\"tooling_material_select".$key."\">";
 
 																		foreach($material_list as $material)
 																		{
@@ -450,9 +450,9 @@
 				    var addButton = $('.add-material'); //Add button selector
 				    var wrapper = $('.field-wrapper'); //Input field wrapper
 					var id_count_t = <?php echo $material_count; ?>;
-					var id_count_extra = 0;
+					var id_count_extra = <?php echo $tooling_accessory_extra; ?>;
 				    var x = 1; //Initial field counter is 1
-				    var extra_material_other_count = 0;
+				    var extra_material_other_count = <?php echo $extra_material_count; ?>;
 
 				    $('.append-add-extra').click(function(){ //Once add button is clicked
 				      
@@ -466,8 +466,8 @@
 				        if(x < maxField){ //Check maximum number of input fields
 				            x++; //Increment field counter
 				            material_count++;
-				            id_count = id_count_t - 1;
 				            id_count_t++;
+				            id_count = id_count_t - 1;
 				             var fieldHTML = '<tr><td>Material-'+material_count+':</td><td colspan="3"></td>														</tr><tr><td><select class="form-control"  name="tooling_material_select[]" id="tooling_material_select'+id_count+'"><?php 
 																		foreach($material_list as $material)
 																		{
@@ -523,7 +523,7 @@ function calculate()
       										 return this.value
   										}).get();
 
-  	console.log(material_x_value);
+  	console.log(material_x_value.length);
   	console.log(material_tooling_other);
 
   	var material_cost = [];
