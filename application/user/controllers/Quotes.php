@@ -71,7 +71,12 @@ class Quotes extends CI_Controller {
 	*/
 	public function view_quotes($quote_id=0)
 	{
-		//fetch the information from the quote model and update here
+		/*using quote id get the data from the db*/
+		$data['quote_details'] = $this->crud_model->get_row('boss_quotes',array('id' => $quote_id));
+		$data['tooling_details'] = $this->crud_model->get('boss_tooling',array('quote_id' => $quote_id));
+		$this->load->view('layouts/header');
+		$this->load->view('quotes/quote_edit',$data);
+		$this->load->view('layouts/footer');
 	}
 
 

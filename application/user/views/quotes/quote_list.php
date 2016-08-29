@@ -79,7 +79,7 @@
 									<td>$450</td>
                                 </tr>
                               <?php
-                                if(isset($records))
+                                if(!empty($records))
                                 {
                                     $i=1;
                                     foreach($records as $record)
@@ -88,7 +88,7 @@
                                         echo " <td>".$i."</td>";
                                         echo "<td>".$record['date_created']."</td>";
                                         echo "<td>".$record['company_id']."</td>";
-                                        echo "<td>".$record['company_id']."</td>";
+                                        echo "<td><a href=\"".base_url('quotes/view_quotes/'.$record['id'])."\" >".$record['quote_ref']."</a></td>";
                                         echo "<td>".$record['company_id']."</td>";
                                         echo "<td>".$record['company_id']."</td>";
                                         echo "<td>".$record['company_id']."</td>";

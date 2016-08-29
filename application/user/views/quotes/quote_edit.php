@@ -1,3 +1,13 @@
+<?php
+ /*   echo "<pre>";
+    print_r($quote_details);
+      print_r($tooling_details);
+   // exit;
+*/
+
+?>
+
+
  <!-- Main Wrapper -->
     <section id="content_wrapper">
 
@@ -41,12 +51,8 @@
                                                 <div class="">
                                                     <select class="form-control" name="engineer_name">
                                                         <option>Engineer 1</option>
-                                                        <option>Engineer 2</option>
+                                                        <option selected>Engineer 2</option>
                                                         <option>Engineer 3</option>
-                                                        <?php
-                                                            /* bring dynamic fields here*/
-
-                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -54,7 +60,7 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="inputStandard">Email:</label>
                                             <div class="col-lg-9">
-                                                <input type="text" name="primary_email" class="form-control">
+                                                <input type="text" name="primary_email" class="form-control" value="<?php echo $quote_details['email_id']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -68,7 +74,7 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="inputStandard">Quote Ref#:</label>
                                             <div class="col-lg-9">
-                                                <p class="form-control-static text-muted"></p>
+                                                <p class="form-control-static text-muted"><?php echo $quote_details['quote_ref']; ?></p>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -93,12 +99,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                      <!--   <div class="form-group">
                                             <label class="col-lg-3 control-label" for="inputStandard">Assy#:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" value="333444" class="form-control">
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="row">
@@ -109,7 +115,16 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-6">
-            
+                                                    <?php
+                                                        if(!empty($tooling_details))
+                                                        {
+                                                            foreach($tooling_details as $key => $value)
+                                                            {
+                                                               echo "<p><a href='".base_url('tooling/view_tooling/'.$value['tooling_id'])."'>tooling".$value['tooling_id']."</a></p>";
+    
+                                                            }
+                                                        }
+                                                    ?>
                                                 </div>
                                                 <div class="col-lg-6 pull-right text-right">
                                                     <button type="submit" class="btn btn-danger ph25">Create

@@ -90,6 +90,7 @@ if(! function_exists('material_calculation'))
 				array_push($accessory_cost,$cost_of_acc);
 				$accessory_total_cost = $accessory_total_cost + $cost_of_acc;
 			}
+			$result['accessory_cost'] = $accessory_cost;
 			$result['accessory_total_cost'] = number_format((float)$accessory_total_cost, 2, '.', '');
 		}
 
@@ -169,6 +170,8 @@ if(! function_exists('material_calculation'))
 		/*ffinal total after tooling premium and discount*/
 		$total_calculation_after_pd = $total_calculation_wop + $tooling_premium - $tooling_discount;
 
+		$result['tooling_premium'] = $tooling_premium;
+		$result['tooling_discount'] = $tooling_discount;
 		$result['total_calculation_after_pd'] = number_format((float)$total_calculation_after_pd, 2, '.', '');
 		/*calculation for multiple quote*/
 		$multiple_quote_cost = 0;
