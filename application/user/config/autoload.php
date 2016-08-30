@@ -103,7 +103,7 @@ $autoload['helper'] = array('url','tooling_helper');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array('arrays');
 
 /*
 | -------------------------------------------------------------------

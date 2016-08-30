@@ -10,7 +10,7 @@
     <section id="content_wrapper">
 
         <!-- Topbar -->
-        <header id="topbar" class="alt">
+    <!--     <header id="topbar" class="alt">
             <div class="topbar-left">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-icon">
@@ -24,7 +24,7 @@
                     <li class="breadcrumb-current-item">New Tooling</li>
                 </ol>
             </div>
-        </header>
+        </header> -->
         <!-- /Topbar -->
 
         <!-- Content -->
@@ -344,9 +344,9 @@
 													<textarea class="form-control" id="tooling_description" name="tooling_description" rows="3" placeholder="Notes: Customer will recieve this notes"></textarea>
 													<div class="form-buttons text-right">
 														<button class="btn btn-default ph25" value="tooling_calculate" type="button" onclick="calculate();">Calculate</button>
-														<button class="btn btn-default ph25" value="tooling_update" type="submit">Update</button>
-														<button class="btn btn-default ph25" value="tooling_send_evaluation"  type="submit">Send Evalution</button>
-														<button class="green btn btn-default ph25" value="tooling_send_final" type="submit">Send Final</button>
+														<button class="btn btn-default ph25" value="tooling_update" name="tooling_status" type="submit">Update</button>
+														<button class="btn btn-default ph25" value="tooling_send_evaluation" name="tooling_status" type="submit">Send Evalution</button>
+														<button class="green btn btn-default ph25" value="tooling_send_final" name="tooling_status" type="submit">Send Final</button>
 													</div>
 
 												</div>
@@ -365,7 +365,7 @@
 <!--2nd form -->
 
 <form class="form-horizontal" method="post" id="add_new_tooling_custom" action="<?php echo base_url('tooling/add_tooling_custom'); ?>">
-											<div class="tab-content padd-none p25 tolling-content">
+											<div class="tab-content padd-none p25 tolling-content custom-form">
 												<div id="tab6_2" class="tab-pane active">
 													<div class="form-group">
 														<label class="col-lg-2 control-label">Type of fixtures:</label>
@@ -650,9 +650,9 @@
 													<textarea class="form-control" id="tooling_description" name="tooling_description" rows="3" placeholder="Notes: Customer will recieve this notes"></textarea>
 													<div class="form-buttons text-right">
 														<!-- <button class="btn btn-default ph25" value="tooling_calculate" type="button" onclick="calculate();">Calculate</button> -->
-														<button class="btn btn-default ph25" value="tooling_update" type="submit">Update</button>
-														<button class="btn btn-default ph25" value="tooling_send_evaluation"  type="submit">Send Evalution</button>
-														<button class="green btn btn-default ph25" value="tooling_send_final" type="submit">Send Final</button>
+														<button class="btn btn-default ph25" value="tooling_update" name="cstm_tooling_status" type="submit">Update</button>
+														<button class="btn btn-default ph25" value="tooling_send_evaluation" name="cstm_tooling_status" type="submit">Send Evalution</button>
+														<button class="green btn btn-default ph25" value="tooling_send_final" name="cstm_tooling_status" type="submit">Send Final</button>
 													</div>
 
 												</div>
@@ -694,15 +694,11 @@
 
         </div>
   <script>
+
+
   	$(document).ready(function(){
  
- 		/*This is to check which value is selected */
-var radio_value=0;
-   		$('input[name="tooling_type1"]').click(function(){
-  			var radio_value = $('input[name=tooling_type1]:checked').val();
-  			console.log(radio_value);
-  			$('input[name=tooling_type]').val(radio_value);
-  		});
+ 	$(".tolling-content .custom-form").hide();
 
   		/***/
 	$("#add_new_tooling").validationEngine('attach',{promptPosition : "topRight", scroll: false});

@@ -33,6 +33,7 @@
 
 
 <script src="<?php echo base_url('assets/js/jquery/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>
 <!-- <script src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/additional-method.js'); ?>"></script> -->
 <!-- <script src="<?php echo base_url('assets/js/jquery.validationEngine.js'); ?>"></script>
@@ -56,12 +57,26 @@
     <!-- Header  -->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-logo-wrapper dark bg-dark">
-            <a class="navbar-logo-image" href="index.html">
+            <a class="navbar-logo-image" href="<?php echo base_url('quotes/quote_status'); ?>">
                 <img src="<?php echo base_url('assets/img/logo.png'); ?>" alt="" class="sb-l-o-logo">
                 <img src="<?php echo base_url('assets/img/logo_small.png'); ?>" alt="" class="sb-l-m-logo">
             </a>
         </div>
-        
+        <div class="extra-breadcrumb">
+            <div class="topbar-left">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-icon">
+                        <a href="index.html">
+                            <span class="fa fa-home"></span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-link">
+                        <a href="<?php echo site_url('welcome/dashboard'); ?>">Home</a>
+                    </li>
+                    <li class="breadcrumb-current-item">123</li>
+                </ol>
+            </div>
+        </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown dropdown-fuse">
                 <a href="#" class="dropdown-toggle mln" data-toggle="dropdown">
@@ -104,7 +119,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<?php echo base_url('quotes/quote_status'); ?>">
                         <span class="sidebar-title">Quote Status</span>
                     </a>
                 </li>
@@ -114,7 +129,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<?php echo base_url('price'); ?>">
                         <span class="sidebar-title">Price Table</span>
                     </a>
                 </li>

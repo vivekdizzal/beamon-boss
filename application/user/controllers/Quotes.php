@@ -21,9 +21,16 @@ class Quotes extends CI_Controller {
 		{
 			/*
 				generate quote reference number
+				//get the count of engineer id
 			*/
-			$quote_ref = $this->input->post('engineer_id')."tq".$this->input->post('customer');
+			$eng_id = $this->input->post('engineer_id');
+			$sql = "SELECT * FROM `boss_quotes` WHERE `quote_ref` LIKE '$eng_id%' AND `quote_ref_sub` = ''";
+			$quote_count = $this->crud_model->get_count_by_sql($sql);
+			$quote_count = $quote_count + 1;
+			$quote_count_id = str_pad($quote_count, 3, '0', STR_PAD_LEFT);
 
+			$quote_ref = $this->input->post('engineer_id')."tq".$quote_count_id;
+			
 			//count the secondary email
 			$email_cc_count = count($_POST['secondary_email']);
 			$email_cc = "";

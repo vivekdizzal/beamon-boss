@@ -12,7 +12,7 @@
     <section id="content_wrapper">
 
         <!-- Topbar -->
-        <header id="topbar" class="alt">
+    <!--     <header id="topbar" class="alt">
             <div class="topbar-left">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-icon">
@@ -26,7 +26,7 @@
                     <li class="breadcrumb-current-item">New Quotes</li>
                 </ol>
             </div>
-        </header>
+        </header> -->
         <!-- /Topbar -->
 
         <!-- Content -->

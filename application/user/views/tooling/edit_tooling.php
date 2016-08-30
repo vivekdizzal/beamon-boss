@@ -21,7 +21,7 @@
     <section id="content_wrapper">
 
         <!-- Topbar -->
-        <header id="topbar" class="alt">
+      <!--   <header id="topbar" class="alt">
             <div class="topbar-left">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-icon">
@@ -35,7 +35,7 @@
                     <li class="breadcrumb-current-item">New Tooling</li>
                 </ol>
             </div>
-        </header>
+        </header -->>
         <!-- /Topbar -->
 
         <!-- Content -->
@@ -51,7 +51,7 @@
                         </div>
                         <div class="panel-body">
 
-                            <form class="form-horizontal" method="post" id="add_new_tooling" action="<?php echo base_url('tooling/view_tooling_action'); ?>">
+                            <form class="form-horizontal" method="post" id="add_new_tooling" action="<?php echo base_url('tooling/view_tooling_action/'.$boss_tooling[0]['tooling_id']); ?>">
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="tab-block mb25">
@@ -417,6 +417,317 @@
 												<input type="hidden" name="quote_id" value="<?php echo $quote_id; ?>" >
  												</form>
 												
+
+
+												
+<form class="form-horizontal" method="post" id="add_new_tooling_custom" action="<?php echo base_url('tooling/add_tooling_custom'); ?>">
+											<div class="tab-content padd-none p25 tolling-content custom-form">
+												<div id="tab6_2" class="tab-pane active">
+													<div class="form-group">
+														<label class="col-lg-2 control-label">Type of fixtures:</label>
+														<div class="col-lg-4">
+															<div class="">
+																<select class="form-control">
+																	
+																	<?php
+																		foreach($fixture_list as $fixture)
+																		{
+																			echo "<option value=".$fixture['id'].">".$fixture['fixture_name']."</option>";
+																		}
+																	?>
+																	<option>Others</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<table class="table boss-table cstm-field-wrapper">
+														<tr>
+															<td colspan="3">
+																<b>MATERIAL:</b>
+															</td>
+															<td width="100"><b></b></td>
+														</tr>
+														<tr>
+															<th width="20%">Type</th><th width="25%">Size - X in Inch</th><th width="25%">Size - Y in Inch</th><th width="20%">Cost</th>
+														</tr>
+														
+														
+														<tr>
+															<td>Material-1:</td><td><span class="pull-left append-add"><i class="fa fa-plus-square cstm-add-material"></i></span></td><td colspan="3"></td>
+														</tr>
+														<tr>
+															<td>
+																<select class="form-control"  name="tooling_material_select[]" id="tooling_material_select0">
+																	<?php 
+																		foreach($material_list as $material)
+																		{
+																			echo "<option value='".$material['id']."' data-status='".$material['cost']."'>".$material['material_name']."</option>";
+																		}
+
+																	?>
+																</select>
+															</td>
+															<td>
+																<div class="price-update table-price-update">
+																	<input type="text" value="" id="material_xvalue[0]" name="material_xvalue[0]" class="form-control input-tooling validate[required,custom[onlyNumberDecimal]]" data-tooling="material_xvalue[]">
+																</div>
+															</td>
+															<td>
+																<div class="price-update table-price-update">
+																	<input type="text" value="" id="material_yvalue[0]" name="material_yvalue[0]" class="form-control input-tooling validate[required,custom[onlyNumberDecimal]]" data-tooling="material_yvalue[]">
+																</div>
+															</td>
+															<td>
+																<b><div><input type="text" id="material_total_cost[0]" name="material_total_cost[0]" class="form-control"></div></b>
+															</td>
+
+														</tr>
+														</table>
+														<table class="table boss-table cstm_add_extra">
+														<tr>
+															<td>Others</td>
+															<td><span class="pull-left "><i class="fa fa-plus-square cstm-append-add-extra"></i></span></td>
+															<td colspan="3"></td>
+															<!-- <td></td> -->
+														</tr>
+													</table>
+													<table class="table boss-table cstm-tooling-extra-append">
+														<tr>
+															<td>
+																<b>EXTRAS:</b>
+															</td>
+															<td colspan="2"><span class="pull-left"><i class="fa fa-plus-square cstm-tooling-extra"></i></span></td>
+															<td width="100"><b>$0.00</b></td>
+														</tr>
+														<tr>
+															<th width="20%">Item</th><th width="25%">Cost/Unit</th><th width="25%">Qty</th><th width="20%">Cost</th>
+														</tr>
+			<?php
+				/* Dynamically display others accesssories here*/
+				$accessory_count = 0;
+				foreach($accessories_list as $accessories)
+				{
+			?>
+				<tr>
+					<td>
+						<?php echo $accessories['accessory_name']; ?>
+						<input type="hidden" name="tooling_accessory_name[]" value="<?php echo $accessories['id']; ?>" />
+					</td>
+					<td>
+					<div class="price-update table-price-update">
+					
+						<input type="text" class="form-control input-tooling" name="extra_cost[]" value="<?php echo $accessories['accessory_cost']; ?>" >
+					</div>
+				</td>
+				<td>
+					<input type="text" class="form-control input-tooling" name="extra_qty[]" value="" >
+				</td>
+				<td>
+					<b><input type="text" class="form-control" name="extra_accessory_cost[]" id="extra_accessory_<?php echo $accessory_count; ?>" ></b>
+				</td>
+				</tr>
+															
+			<?php
+				$accessory_count++;
+				}	
+
+			?>
+
+
+											</table>
+													<table class="table">
+														<tr>
+															<td colspan="5">
+																<b>TIME:</b>
+															</td>
+															<td width="100"><b></b></td>
+														</tr>
+													</table>
+													<table class="table boss-table">
+														<tr>
+															<th></th><th></th><th colspan="2">Standard Design - India</th><th colspan="2">Complex Design - CA</th><th></th>
+														</tr>
+														<tr>
+															<th></th><th>Unit/hr.</th><th colspan="2">Time</th><th colspan="2">Time</th><th width="100">Cost</th>
+														</tr>
+														<tr>
+															<th></th><th></th><th>Hrs</th><th>Mins</th><th>Hrs</th><th>Mins</th><th></th>
+														</tr>
+														<tr>
+															<td>Design </td>
+															<td><span id="std_design_cost" value="<?php echo $standard_timing[0]['cost']; ?>">$<?php echo $standard_timing[0]['cost']; ?></span></td>
+															<td><input type="text" value="" name="std_design_hr" class="form-control"></td>
+															<td><input type="text" value="" id="std_design_min" name="std_design_min" class="form-control validate[max[59]]"></td>
+															<td><input type="text" value="" name="cpx_design_hr" class="form-control"></td>
+															<td><input type="text" value="" name="cpx_design_min" id="cpx_design_min" class=" form-control validate[max[59]]" ></td>
+															<td><b><input type="text" class="form-control"  id="total_cost_design" name="total_cost_design"></b> </td>
+														</tr>
+														<tr>
+															<td>Machine  </td>
+															<td><span id="std_machine_cost" value="<?php echo $standard_timing[1]['cost']; ?>">$<?php echo $standard_timing[1]['cost']; ?> </span></td>
+															<td><input type="text" name="std_machine_hr" class="form-control"></td>
+															<td><input type="text" name="std_machine_min" id="std_machine_min" class=" form-control validate[max[59]]"> </td>
+															<td><input type="text" name="cpx_machine_hr" class=" form-control"> </td>
+															<td><input type="text" name="cpx_machine_min" id="cpx_machine_min" class="form-control validate[max[59]]"> </td>
+															<td><b><input type="text" class=" form-control" id="total_cost_machine" name="total_cost_machine"></b> </td>
+														</tr>
+														<tr>
+															<td>Assembly  </td>
+															<td><span id="std_assembly_cost" value="<?php echo $standard_timing[2]['cost']; ?>">$<?php echo $standard_timing[2]['cost']; ?></span> </td>
+															<td><input type="text" name="std_assembly_hr" class=" form-control"></td>
+															<td><input type="text" name="std_assembly_min" id="std_assembly_min" class="form-control  validate[max[59]]"> </td>
+															<td><input type="text" name="cpx_assembly_hr" class="form-control "></td>
+															<td><input type="text" name="cpx_assembly_min" id="cpx_assembly_min" class="form-control validate[max[59]]"></td>
+															<td><b><input type="text" class="form-control" id="total_cost_assembly" name="total_cost_assembly"></b> </td>
+														</tr>
+														<tr>
+															<td>Others </td>
+															<td><input type="text" name="time_other_name"  class=" form-control"></td>
+															<td><input type="text" name="std_other_hr" class="form-control "> </td>
+															<td><input type="text" name="std_other_min" class="form-control "></td>
+															<td><input type="text" name="cpx_other_hr" class="form-control "></td>
+															<td><input type="text" name="cpx_other_min" class="form-control "></td>
+															<td><b><input type="text" class="form-control" id="total_cost_other" name="total_cost_other"></b></td>
+														</tr>
+														<tr>
+															<td colspan="5"> </td>
+															<td>Units:</td>
+															<td><b><span id="total_unit"></span></b> </td>
+														</tr>	
+														<tr>
+															<td colspan="5"> </td>
+															<td>Total:</td>
+															<td><b><input type="text" class="form-control" id="total_tooling_cost_wor"></b></td>
+														</tr>
+														<tr>
+															<td colspan="5"> </td>
+															<td colspan="2">Premium</td>
+														</tr>	
+														<tr>
+															<td colspan="5"> </td>
+															<td><input type="text" name="tooling_premium" id="tooling_premium" value="" class="form-control"></td>
+															<td><input type="text" class="form-control" id="total_tooling_premium"></td>
+														</tr>
+														<tr>
+															<td colspan="5"> </td>
+															<td colspan="2">Discount</td>
+														</tr>	
+														<tr>
+															<td colspan="5"> </td>
+															<td><input type="text" name="tooling_discount" id="tooling_discount" value="" class="form-control"></td>
+															<td><b><input type="text" class="form-control" id="total_tooling_discount"></b></td>
+														</tr>
+														<tr>
+															<td colspan="5"> </td>
+															<td><b>Total:</b></td>
+															<td><b><input type="text" class="form-control" id="total_after_discount"></span></b> </td>
+														</tr>
+													</table>
+													<table class="table boss-table">
+														<tr>
+															<th><b>Multiple Quotes:</b></th><th width="100"><b>Cost</b></th>
+														</tr>
+														<tr>
+															<td>
+																<div class="radio-custom mb5">
+																	<input id="cstm_multiple_quote_2" name="multiple_quote" type="radio" value="2">
+																	<label for="cstm_multiple_quote_2">2</label>
+																</div>
+															</td>
+															<td><b><span id="cstm_multiple_quote_cost_2" class="multiple_quote_cost"></span></b></td>
+														</tr>
+														<tr>
+															<td>
+																<div class="radio-custom mb5">
+																	<input id="cstm_multiple_quote_3" name="cstm_multiple_quote" type="radio" value="3">
+																	<label for="cstm_multiple_quote_3">3</label>
+																</div>
+															</td>
+															<td><b><span id="multiple_quote_cost_3" class="multiple_quote_cost"></span></b></td>
+														</tr>
+														<tr>
+															<td>
+																<div class="radio-custom mb5">
+																	<input id="cstm_multiple_quote_4" name="multiple_quote" type="radio" value="4">
+																	<label for="cstm_multiple_quote_4">4</label>
+																</div>
+															</td>
+															<td><b><span id="multiple_quote_cost_4" class="multiple_quote_cost"></span></b></td>
+														</tr>
+														<tr>
+															<td>
+																<div class="radio-custom mb5">
+																	<input id="cstm_multiple_quote_5" name="multiple_quote" type="radio" value="5">
+																	<label for="cstm_multiple_quote_5">5</label>
+																</div>
+															</td>
+															<td><b><span id="multiple_quote_cost_5" class="multiple_quote_cost"></span></b></td>
+														</tr>
+														<tr>
+															<td>
+																<div class="radio-custom mb5">
+																	<input id="cstm_multiple_quote_6" name="multiple_quote" type="radio" value="10">
+																	<label for="cstm_multiple_quote_6">10</label>
+																</div>
+															</td>
+															<td><b><span id="multiple_quote_cost_10" class="multiple_quote_cost"></span></b></td>
+														</tr>
+														<tr>
+															<td>
+																<div class="radio-custom mb5">
+																	<input id="cstm_multiple_quote_7" name="multiple_quote" type="radio" value="15">
+																	<label for="cstm_multiple_quote_7">15</label>
+																</div>
+															</td>
+															<td><b><span id="multiple_quote_cost_15" class="multiple_quote_cost"></span></b></td>
+														</tr>
+														<tr>
+															<td>
+																<div class="radio-custom mb5">
+																	<input id="cstm_multiple_quote_8" name="multiple_quote" type="radio" value="20">
+																	<label for="cstm_multiple_quote_8">20</label>
+																</div>
+															</td>
+															<td><b><span id="multiple_quote_cost_20" class="multiple_quote_cost"></span></b></td>
+														</tr>
+														<tr>
+															<td>
+																<div class="radio-custom mb5">
+																	<input id="cstm_multiple_quote_other" name="multiple_quote" type="radio" value="other">
+																	<label for="cstm_multiple_quote_other">Other</label>
+																	<input type="text" value="" id="mul_quote_text" class="form-control radio_other" name="custom_quote_std">
+																</div>
+															</td>
+															<td><b><span id="multiple_quote_cost_other" class="multiple_quote_cost"></span></b></td>
+														</tr>
+													</table>
+													
+
+													<textarea class="form-control" id="tooling_description" name="tooling_description" rows="3" placeholder="Notes: Customer will recieve this notes"></textarea>
+													<div class="form-buttons text-right">
+														<!-- <button class="btn btn-default ph25" value="tooling_calculate" type="button" onclick="calculate();">Calculate</button> -->
+														<button class="btn btn-default ph25" value="tooling_update" name="cstm_tooling_status" type="submit">Update</button>
+														<button class="btn btn-default ph25" value="tooling_send_evaluation" name="cstm_tooling_status" type="submit">Send Evalution</button>
+														<button class="green btn btn-default ph25" value="tooling_send_final" name="cstm_tooling_status" type="submit">Send Final</button>
+													</div>
+
+												</div>
+												<input type="hidden" name="tooling_type" value="" >
+												<input type="hidden" name="markup" value="<?php echo $mark_up[0]['markup_percentage']; ?>" >
+												<input type="hidden" name="extra_material" value="<?php echo $tooling_extra_material_inch[0]['extra_material_inch']; ?>" >
+												<input type="hidden" name="complex_design_cost" id="complex_design_cost" value="<?php echo $complex_timing[0]['cost']; ?>">
+												<input type="hidden" name="complex_machine_cost" id="complex_machine_cost" value="<?php echo $complex_timing[1]['cost']; ?>">
+												<input type="hidden" name="complex_assembly_cost" id="complex_assembly_cost" value="<?php echo $complex_timing[2]['cost']; ?>">
+												<input type="hidden" name="standard_design_cost" id="complex_design_cost" value="<?php echo $standard_timing[0]['cost']; ?>">
+												<input type="hidden" name="standard_machine_cost" id="complex_machine_cost" value="<?php echo $standard_timing[1]['cost']; ?>">
+												<input type="hidden" name="standard_assembly_cost" id="complex_assembly_cost" value="<?php echo $standard_timing[2]['cost']; ?>">
+												<input type="hidden" name="quote_id" value="<?php echo $quote_id; ?>" >
+ 												</form>
+												
+
+
+
+
 											</div>
 										</div>
 									</div>

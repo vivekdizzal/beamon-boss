@@ -23,8 +23,6 @@ if(! function_exists('material_calculation'))
 {
 	function material_calculation($data)
 	{
-		echo "<pre>";
-				print_r($data);
 
 		$result = array();
 
@@ -200,8 +198,6 @@ if(! function_exists('material_calculation'))
 		$round_off_mq = round_off($final_multiple_quote_cost);
 		
 		$result['round_off_mq'] = $round_off_mq;
-
-		
 		/*End of round off*/
 		return $result;
 	}

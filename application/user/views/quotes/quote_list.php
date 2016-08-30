@@ -2,7 +2,7 @@
     <section id="content_wrapper">
 
         <!-- Topbar -->
-        <header id="topbar" class="alt">
+     <!--    <header id="topbar" class="alt">
             <div class="topbar-left">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-icon">
@@ -16,7 +16,7 @@
                     <li class="breadcrumb-current-item">Dashboard</li>
                 </ol>
             </div>
-        </header>
+        </header> -->
 
  <section id="content" class="table-layout animated fadeIn">
 
@@ -60,38 +60,36 @@
                                     <th>QN#</th>
                                     <th>CREATED DATE</th>
                                     <th>CUSTOMER</th>
-									<th>TOOLING REF#</th>
-                                    <th>Stencil Ref#</th>
+                                    <th>CUSTOMER EMAIL</th>
+									<th>QUOTE REF#</th>
+                                   
                                     <th>STATUS</th>
-                                    <th>QTY</th>
 									<th>TOTAL COST</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>30/07/2016</td>
-                                    <td>HCL</td>
-									<td>333tq001</td>
-                                    <td>333ts001</td>
-                                    <td>Active</td>
-                                    <td>10</td>
-									<td>$450</td>
-                                </tr>
                               <?php
                                 if(!empty($records))
                                 {
                                     $i=1;
                                     foreach($records as $record)
                                     {
+                                      if($record['quote_ref_sub'] != "")
+                                      {
+                                            $quote_ref = $record['quote_ref'].$this->config->item('quote_ref_alp')[$record['quote_ref_sub']];
+                                       }
+                                       else
+                                       {
+                                             $quote_ref = $record['quote_ref'];
+                                       }
                                         echo "<tr>";
                                         echo " <td>".$i."</td>";
                                         echo "<td>".$record['date_created']."</td>";
                                         echo "<td>".$record['company_id']."</td>";
-                                        echo "<td><a href=\"".base_url('quotes/view_quotes/'.$record['id'])."\" >".$record['quote_ref']."</a></td>";
-                                        echo "<td>".$record['company_id']."</td>";
-                                        echo "<td>".$record['company_id']."</td>";
-                                        echo "<td>".$record['company_id']."</td>";
+                                        echo "<td>".$record['email_id']."</td>";
+                                        echo "<td><a href=\"".base_url('quotes/view_quotes/'.$record['id'])."\" >".$quote_ref."</a></td>";
+                                     
+                                        echo "<td>ACTIVE</td>";
                                         echo "<td>".$record['company_id']."</td>";
                                         echo "</tr>";
                                         $i++;

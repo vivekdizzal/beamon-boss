@@ -2,7 +2,7 @@
     <section id="content_wrapper">
 
         <!-- Topbar -->
-        <header id="topbar" class="alt">
+        <!-- <header id="topbar" class="alt">
             <div class="topbar-left">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-icon">
@@ -16,7 +16,7 @@
                     <li class="breadcrumb-current-item">New Quotes</li>
                 </ol>
             </div>
-        </header>
+        </header> -->
         <!-- /Topbar -->
 
         <!-- Content -->
@@ -32,14 +32,14 @@
                         </div>
                         <div class="panel-body">
 
-                            <form class="form-horizontal" action="<?php echo base_url('quotes/add_new_quotes'); ?>" method="post">
+                            <form class="form-horizontal" action="<?php echo base_url('quotes/add_new_quotes'); ?>" method="post" id="add_quote" name="add_quote">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Engineer Name:</label>
                                             <div class="col-lg-9">
                                                 <div class="">
-                                                    <select class="form-control" name="engineer_id">
+                                                    <select class="form-control ui search dropdown" name="engineer_id">
                                                         <option value="111">Engineer 1</option>
                                                         <option value="222">Engineer 2</option>
                                                         <option value="333">Engineer 3</option>
@@ -74,7 +74,7 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="inputStandard">Company:</label>
                                             <div class="col-lg-9">
-                                                <input type="text" value="Test Company" class="form-control" name="company">
+                                                <input type="text" class="form-control" name="company">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -125,3 +125,26 @@
                 </div>
             </div>
         </div>
+<script>
+$("#add_quote").validate({
+	rules:{
+		"engineer_id":{
+				required:true,
+		},
+		"primary_email":{
+				required:true,
+				email:true
+		},
+		"company":{
+			required:true,
+		},
+		"customer":{required:true},
+		
+
+	},
+});
+
+
+    
+
+</script>
