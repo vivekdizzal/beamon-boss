@@ -227,9 +227,9 @@ if(! function_exists('tooling_custom_calculation'))
 
 		*/
 		$cstm_material_calculation =0;
-		if(isset($data['material_total_cost']))
+		if(isset($data['cstm_material_total_cost']))
 		{
-			foreach($data['material_total_cost'] as $value) {
+			foreach($data['cstm_material_total_cost'] as $value) {
 
 				$cstm_material_calculation = $cstm_material_calculation + $value;
 				
@@ -237,26 +237,26 @@ if(! function_exists('tooling_custom_calculation'))
 		}
 
 		$cstm_extra_material = 0;
-		if(isset($data['tooling_material_other_value']))
+		if(isset($data['cstm_tooling_material_other_value']))
 		{
-			foreach ($data['tooling_material_other_value'] as $value) {
+			foreach ($data['cstm_tooling_material_other_value'] as $value) {
 				$cstm_extra_material = $cstm_extra_material + $value;
 			}
 		}
 		/*Calculation for total accessory**/
 		$accessory_cost= 0;
-		if(isset($data['extra_accessory_cost']))
+		if(isset($data['cstm_extra_accessory_cost']))
 		{
-			foreach ($data['extra_accessory_cost'] as $value) {
+			foreach ($data['cstm_extra_accessory_cost'] as $value) {
 				$accessory_cost = $accessory_cost + $value;
 				# code...
 			}
 		}
 		/*total extra accessory*/
 		$extra_accessory_cost=0;
-		if(isset($data['cstm_extra_accessory_cost']))
+		if(isset($data['cstm_tooling_extra_accessory_total_cost']))
 		{
-			foreach ($data['cstm_extra_accessory_cost'] as $value) {
+			foreach ($data['cstm_tooling_extra_accessory_total_cost'] as $value) {
 				$extra_accessory_cost = $extra_accessory_cost + $value;
 			}
 		}
@@ -289,9 +289,9 @@ if(! function_exists('tooling_custom_calculation'))
 		/*calculation for multiple quotes*/
 			/*calculation for multiple quote*/
 		$multiple_quote_cost = 0;
-		if(isset($data['multiple_quote']))
+		if(isset($data['cstm_multiple_quote']))
 		{
-			$multiple_quote = $data['multiple_quote'];
+			$multiple_quote = $data['cstm_multiple_quote'];
 			if($multiple_quote != "other")
 			{
 				for($mqc = 1;$mqc < $multiple_quote ; $mqc++)

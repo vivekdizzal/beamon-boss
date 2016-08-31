@@ -40,9 +40,14 @@
                                             <div class="col-lg-9">
                                                 <div class="">
                                                     <select class="form-control ui search dropdown" name="engineer_id">
-                                                        <option value="111">Engineer 1</option>
-                                                        <option value="222">Engineer 2</option>
-                                                        <option value="333">Engineer 3</option>
+                                                        <option value="929">Alan Donaldson</option>
+                                                        <option value="113">Albert Mendez</option>
+                                                        <option value="132">Alberto Galaviz</option>
+                                                        <option value="130">Alex Ko</option>
+                                                        <option value="152">Alex Esparza</option>
+                                                        <option value="133">Alex Kitaigorodsky</option>
+                                                        <option value="117">Alex Cheung</option>
+                                                        <option value="947">Alex Chu</option>
                                                         <?php
                                                             /* bring dynamic fields here*/
 
@@ -142,6 +147,16 @@ $("#add_quote").validate({
 		
 
 	},
+    messages:{
+        "primary_email":{
+            required: "Email id is required",
+            email: "Please Enter the valid Email Address"
+        },
+        "company":{
+            required: "Company Name is required"
+        }
+
+    },
 });
 
 

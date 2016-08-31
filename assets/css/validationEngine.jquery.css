@@ -179,3 +179,7 @@ body.rtl .formError .formErrorArrow {
 	border: none;
 	background: #ddd;
 }
+
+.error{
+	color:red;
+}

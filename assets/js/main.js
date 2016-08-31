@@ -9,7 +9,6 @@
 */
 	$(function() {
     $(".tooling-select li").click(function() {
-      console.log(this);
 		$(".tooling-select li").removeClass("active-tooling");
        $(this).addClass("active-tooling");
        $(".tolling-content .tab-pane").hide().eq($(this).index()).show();

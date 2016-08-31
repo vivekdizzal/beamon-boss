@@ -13,8 +13,9 @@ class Price extends CI_Controller {
 		$data['material_cost'] = $this->crud_model->get('boss_master_tooling_material');
 		$data['accessory_cost'] = $this->crud_model->get('boss_master_accssories');
 
+		$breadcrumb['data'] = "Price List";
 
-		$this->load->view('layouts/header');
+		$this->load->view('layouts/header',$breadcrumb);
 		$this->load->view('price/list_price',$data);
 		$this->load->view('layouts/footer');
 	}

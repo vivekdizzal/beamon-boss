@@ -5,7 +5,7 @@ class Quotes extends CI_Controller {
 
 	public function __construct() {
         parent::__construct();
-        $this->load->view('layouts/header');
+        //$this->load->view('layouts/header');
     }
 	public function index()
 	{
@@ -19,6 +19,7 @@ class Quotes extends CI_Controller {
 		
 		if($this->input->post())
 		{
+		
 			/*
 				generate quote reference number
 				//get the count of engineer id
@@ -43,7 +44,7 @@ class Quotes extends CI_Controller {
 
 			$quote_data = array(
 						'quote_ref' => $quote_ref,
-						'engineer_id' => "2",
+						'engineer_id' => $this->input->post('engineer_id'),
 						'email_id' => $this->input->post('primary_email'),
 						'email_id_cc' => $email_cc,
 						'company_id' => $this->input->post('customer'),
@@ -58,7 +59,10 @@ class Quotes extends CI_Controller {
 		$id = $this->crud_model->insert('boss_quotes',$quote_data);
 		redirect('tooling/index/'.$id);
 		}
-		$this->load->view('layouts/header');
+
+		$breadcrumb['data'] = "Add New Quote";
+
+		$this->load->view('layouts/header',$breadcrumb);
 		$this->load->view('quotes/quotes_add');
 		$this->load->view('layouts/footer');
 	}
@@ -67,6 +71,9 @@ class Quotes extends CI_Controller {
 	{
 		//get list of quotes from quotes table
 		$data['records'] = $this->crud_model->get('boss_quotes');
+
+		$breadcrumb['data'] = "Quote List";
+		$this->load->view('layouts/header',$breadcrumb);
 		$this->load->view('quotes/quote_list',$data);
 		$this->load->view('layouts/footer');
 
@@ -81,7 +88,9 @@ class Quotes extends CI_Controller {
 		/*using quote id get the data from the db*/
 		$data['quote_details'] = $this->crud_model->get_row('boss_quotes',array('id' => $quote_id));
 		$data['tooling_details'] = $this->crud_model->get('boss_tooling',array('quote_id' => $quote_id));
-		$this->load->view('layouts/header');
+
+		$breadcrumb['data'] = "View Quote";
+		$this->load->view('layouts/header',$breadcrumb);
 		$this->load->view('quotes/quote_edit',$data);
 		$this->load->view('layouts/footer');
 	}

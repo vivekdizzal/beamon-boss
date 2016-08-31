@@ -25,7 +25,7 @@
                 <!-- Pagination -->
                 <div class="panel" id="spy3">
                     <div class="panel-heading">
-                        <div class="dt-panelmenu clearfix">
+                        <!-- <div class="dt-panelmenu clearfix">
 							<div class="col-sm-4">
 								<form class="form-inline" role="form">
 								  <div class="form-group">
@@ -50,7 +50,7 @@
 								  </div>
 								 </form>
 							</div>
-							</div>
+							</div> -->
                     </div>
                     <div class="panel-body pn">
                         <div class="table-responsive">
@@ -90,7 +90,7 @@
                                         echo "<td><a href=\"".base_url('quotes/view_quotes/'.$record['id'])."\" >".$quote_ref."</a></td>";
                                      
                                         echo "<td>".$this->config->item('quote_status')[$record['quote_status']]."</td>";
-                                        echo "<td>".$record['company_id']."</td>";
+                                        echo "<td>"."$".$record['tooling_cost']."</td>";
                                         echo "</tr>";
                                         $i++;
                                     }

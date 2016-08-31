@@ -49,7 +49,7 @@
 									echo "<tr>
 									    <td>".$key."</td>
 									    <td>".$value['accessory_name']."</td>
-									    <td>".$value['accessory_cost']."</td>
+									    <td>"."$".$value['accessory_cost']."</td>
 										</tr>";
 									}
                                 ?>
@@ -82,7 +82,7 @@
 										    <td>".$key."</td>
 										    <td>".$value['material_name']."</td>
 										    <td>".$value['material_description']."</td>
-										    <td>".$value['cost']."</td>
+										    <td>"."$".$value['cost']."</td>
 										 </tr>";
 									
 									}
@@ -116,7 +116,7 @@
                                             <td>".$key."</td>
                                             <td>".$value['name']."</td>
                                             <td>".$value['design_complex']."</td>
-                                            <td>".$value['cost']."</td>
+                                            <td>"."$".$value['cost']."</td>
                                         </tr>";
                                     
                                 }

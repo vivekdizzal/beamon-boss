@@ -71,9 +71,9 @@
                         </a>
                     </li>
                     <li class="breadcrumb-link">
-                        <a href="<?php echo site_url('welcome/dashboard'); ?>">Home</a>
+                        <a href="<?php echo site_url('quotes/quote_status'); ?>">Home</a>
                     </li>
-                    <li class="breadcrumb-current-item">123</li>
+                    <li class="breadcrumb-current-item"><?php echo ($data != "" ? $data : "Boss" ) ?></li>
                 </ol>
             </div>
         </div>

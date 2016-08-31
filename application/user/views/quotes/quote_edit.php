@@ -2,7 +2,7 @@
  /*   echo "<pre>";
     print_r($quote_details);
       print_r($tooling_details);
-   // exit;
+    exit;
 */
 
 ?>
@@ -50,9 +50,14 @@
                                             <div class="col-lg-9">
                                                 <div class="">
                                                     <select class="form-control" name="engineer_name">
-                                                        <option>Engineer 1</option>
-                                                        <option selected>Engineer 2</option>
-                                                        <option>Engineer 3</option>
+                                                        <option value="929" <?php echo $quote_details['engineer_id'] == "929"? "selected": "" ?>>Alan Donaldson</option>
+                                                        <option value="113" <?php echo $quote_details['engineer_id'] == "113"? "selected": "" ?>>Albert Mendez</option>
+                                                        <option value="132" <?php echo $quote_details['engineer_id'] == "132"? "selected": "" ?>>Alberto Galaviz</option>
+                                                        <option value="130" <?php echo $quote_details['engineer_id'] == "130"? "selected": "" ?>>Alex Ko</option>
+                                                        <option value="152" <?php echo $quote_details['engineer_id'] == "152"? "selected": "" ?>>Alex Esparza</option>
+                                                        <option value="133" <?php echo $quote_details['engineer_id'] == "133"? "selected": "" ?>>Alex Kitaigorodsky</option>
+                                                        <option value="117" <?php echo $quote_details['engineer_id'] == "117"? "selected": "" ?>>Alex Cheung</option>
+                                                        <option value="947" <?php echo $quote_details['engineer_id'] == "947"? "selected": "" ?>>Alex Chu</option>
                                                     </select>
                                                 </div>
                                             </div>
