@@ -31,9 +31,9 @@ class Tooling extends CI_Controller {
 	
 	public function add_tooling()
 	{
-		echo "<pre>";
+	/*	echo "<pre>";
 		print_r($_POST);
-		exit;
+		exit;*/
 		$get_total_cost = material_calculation($_POST);
 		//insert into tooling table
 		//check multiple quote exist
@@ -192,18 +192,35 @@ class Tooling extends CI_Controller {
 			}
 		}
 		/*Update quote table here**/
+		if($this->input->post('tooling_status') == "tooling_update")
+		{
+			$update_quote_status = "1";
+		}
+		if($this->input->post('tooling_status') == "tooling_send_evaluation")
+		{
+			$update_quote_status = "2";
+		}
+		if($this->input->post('tooling_status') == "tooling_send_final")
+		{
+			$update_quote_status = "3";
+		}
 
-
+		$this->crud_model->update('boss_quotes',array('quote_status'=>$update_quote_status),array('id'=>$this->input->post('quote_id')));
 		redirect('quotes/quote_status');
 	}
 
 	/*function add tooling custom*/
 	public function add_tooling_custom()
 	{
+		$tooling_custom_calculation = tooling_custom_calculation($_POST);
+	
 		$tooling_data = array(
 						'tooling_type' => $this->input->post('tooling_type'),
 						'quote_id'	=> $this->input->post('quote_id'),
 						'tooling_description' => $this->input->post('tooling_description'),
+						'premium_percentage' => $this->input->post('tooling_premium'),
+						'discount_percentage' => $this->input->post('tooling_discount'),
+						'tooling_cost_adp' => $tooling_custom_calculation['total_apd'],
 						'date_created'	=> Date('Y-m-d'),
 						'status'	=> "1"
 					);
@@ -211,14 +228,14 @@ class Tooling extends CI_Controller {
 		if(isset($_POST['multiple_quote']))
 		{
 			$tooling_data['multiple_quote'] =  $this->input->post('multiple_quote');
-			/*$tooling_data['multiple_quote_cost'] =  $get_total_cost['round_off_mq'];
-			$tooling_data['tooling_cost_wop'] = $get_total_cost['total_calculation_wop'];*/
+			$tooling_data['multiple_quote_cost'] =  $tooling_custom_calculation['multiple_quotes'];
+			$tooling_data['tooling_cost_wop'] = $tooling_custom_calculation['total_wopd'];
 		}
 		else
 		{
 			$tooling_data['multiple_quote'] = "1";
-			/*$tooling_data['tooling_cost_wop'] = $get_total_cost['total_calculation_wop'];
-			$tooling_data['multiple_quote_cost'] =  $get_total_cost['total_calculation_wop'];*/
+			$tooling_data['tooling_cost_wop'] = $tooling_custom_calculation['total_wopd'];
+			$tooling_data['multiple_quote_cost'] =  $tooling_custom_calculation['multiple_quotes'];
 
 							
 		}
@@ -284,12 +301,7 @@ class Tooling extends CI_Controller {
 								'date_created' => Date('Y-m-d')
 							  );
 		$this->crud_model->insert('boss_timing_time_other',$tooling_time_extra);
-
-
-
 		//End of extra time
-
-
 		//insert extra material
 		if(isset($_POST['tooling_material_other']))
 		{
@@ -308,8 +320,6 @@ class Tooling extends CI_Controller {
 				$this->crud_model->insert('boss_tooling_extra',$extra_material_data);
 			}
 		}
-
-
 		/*
 			Insert into tooling accessories
 
@@ -604,7 +614,21 @@ class Tooling extends CI_Controller {
 						}
 					}
 					/*Update quote table here**/
+						/*Update quote table here**/
+					if($this->input->post('tooling_status') == "tooling_update")
+					{
+						$update_quote_status = "1";
+					}
+					if($this->input->post('tooling_status') == "tooling_send_evaluation")
+					{
+						$update_quote_status = "2";
+					}
+					if($this->input->post('tooling_status') == "tooling_send_final")
+					{
+						$update_quote_status = "3";
+					}
 
+					$this->crud_model->update('boss_quotes',array('quote_status'=>$update_quote_status),array('id'=>$quote_id));
 					/*Redirect from here*/
 
 		}

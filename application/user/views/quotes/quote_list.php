@@ -89,7 +89,7 @@
                                         echo "<td>".$record['email_id']."</td>";
                                         echo "<td><a href=\"".base_url('quotes/view_quotes/'.$record['id'])."\" >".$quote_ref."</a></td>";
                                      
-                                        echo "<td>ACTIVE</td>";
+                                        echo "<td>".$this->config->item('quote_status')[$record['quote_status']]."</td>";
                                         echo "<td>".$record['company_id']."</td>";
                                         echo "</tr>";
                                         $i++;

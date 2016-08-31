@@ -211,3 +211,113 @@ if(! function_exists('round_off'))
 		 return ($number % $limit) >= 2.5 ? intval($number / $limit) * $limit + $limit : intval($number / $limit) * $limit;
 	}
 }
+
+if(! function_exists('tooling_custom_calculation'))
+{
+	function tooling_custom_calculation($data)
+	{
+		/*
+			->total material calculation
+			->total extra material calculation
+			->total accessory calculation
+			->total extra accessory calculation
+			-.total time calculation 
+			->total other time calculation
+		
+
+		*/
+		$cstm_material_calculation =0;
+		if(isset($data['material_total_cost']))
+		{
+			foreach($data['material_total_cost'] as $value) {
+
+				$cstm_material_calculation = $cstm_material_calculation + $value;
+				
+			}
+		}
+
+		$cstm_extra_material = 0;
+		if(isset($data['tooling_material_other_value']))
+		{
+			foreach ($data['tooling_material_other_value'] as $value) {
+				$cstm_extra_material = $cstm_extra_material + $value;
+			}
+		}
+		/*Calculation for total accessory**/
+		$accessory_cost= 0;
+		if(isset($data['extra_accessory_cost']))
+		{
+			foreach ($data['extra_accessory_cost'] as $value) {
+				$accessory_cost = $accessory_cost + $value;
+				# code...
+			}
+		}
+		/*total extra accessory*/
+		$extra_accessory_cost=0;
+		if(isset($data['cstm_extra_accessory_cost']))
+		{
+			foreach ($data['cstm_extra_accessory_cost'] as $value) {
+				$extra_accessory_cost = $extra_accessory_cost + $value;
+			}
+		}
+
+		/*design cost*/
+		$design_cost_tooling=$data['total_cost_design'];
+		$other_cost = $data['total_cost_machine']+$data['total_cost_assembly']+$data['total_cost_other'];
+
+		$design_cost = $design_cost_tooling + $other_cost;
+
+
+
+		$total_wopd = $cstm_material_calculation+$cstm_extra_material+$accessory_cost+$extra_accessory_cost+$design_cost;
+
+		$tooling_premium=0;
+		$tooling_discount=0;
+		if($data['tooling_premium'] != "")
+		{
+			$tooling_premium = $total_wopd * ($data['tooling_premium']/100);
+		}
+
+		/* eheck discount exist*/
+		if($data['tooling_discount'] !="")
+		{
+			$tooling_discount = $total_wopd * ($data['tooling_discount']/100);
+		}
+
+		$total_apd = $total_wopd + $tooling_premium - $tooling_discount;
+
+		/*calculation for multiple quotes*/
+			/*calculation for multiple quote*/
+		$multiple_quote_cost = 0;
+		if(isset($data['multiple_quote']))
+		{
+			$multiple_quote = $data['multiple_quote'];
+			if($multiple_quote != "other")
+			{
+				for($mqc = 1;$mqc < $multiple_quote ; $mqc++)
+				{
+					$multiple_quote_cost = $multiple_quote_cost + $total_wopd - ($design_cost_tooling);
+				}
+			}
+			else
+			{
+				$multiple_quote_cstm = $data['custom_quote_std'];
+				for($mqc = 1;$mqc < $multiple_quote_cstm ; $mqc++)
+				{
+					$multiple_quote_cost = $multiple_quote_cost + $total_wopd - ($design_cost_tooling);
+				}
+			}
+		}
+		$final_multiple_quote_cost = $total_wopd + $multiple_quote_cost;
+
+		/* Round off multiple quotes*/
+		$round_off_mq = round_off($final_multiple_quote_cost);
+		
+		$result['multiple_quotes'] = $round_off_mq;
+		$result['total_apd'] = $total_apd;
+		$result['total_wopd'] = $total_wopd; 
+
+		return $result;
+
+	}
+}

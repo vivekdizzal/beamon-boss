@@ -698,7 +698,7 @@
 
   	$(document).ready(function(){
  
- 	$(".tolling-content .custom-form").hide();
+ 	//$(".tolling-content .custom-form").hide();
 
   		/***/
 	$("#add_new_tooling").validationEngine('attach',{promptPosition : "topRight", scroll: false});
