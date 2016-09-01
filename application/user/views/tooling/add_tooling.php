@@ -518,7 +518,7 @@
 														<tr>
 															<td colspan="5"> </td>
 															<td>Total:</td>
-															<td><b><input type="text" class="form-control" id="total_tooling_cost_wor"></b></td>
+															<td><b><!--<input type="text" class="form-control" id="total_tooling_cost_wor">--></b></td>
 														</tr>
 														<tr>
 															<td colspan="5"> </td>
@@ -541,7 +541,7 @@
 														<tr>
 															<td colspan="5"> </td>
 															<td><b>Total:</b></td>
-															<td><b><input type="text" class="form-control" id="total_after_discount"></span></b> </td>
+															<td><b><!--<input type="text" class="form-control" id="total_after_discount">--></span></b> </td>
 														</tr>
 													</table>
 													<table class="table boss-table">

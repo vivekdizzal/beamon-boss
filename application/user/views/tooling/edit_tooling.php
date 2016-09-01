@@ -572,7 +572,7 @@ echo $quote_type;
 						<input type="text" class="form-control input-tooling" name="cstm_extra_qty[]" value="<?php echo $boss_tooling_accessory[$accessory_count]['acc_qty']; ?>" >
 					</td>
 					<td>
-						<b><input type="text" class="form-control" id="extra_accessory_<?php echo $accessory_count; ?>" value="<?php echo $boss_tooling_accessory[$accessory_count]['acc_total_cost']; ?>"></b>
+						<b><input type="text" name="cstm_extra_accessory_cost[]" class="form-control" id="extra_accessory_<?php echo $accessory_count; ?>" value="<?php echo $boss_tooling_accessory[$accessory_count]['acc_total_cost']; ?>"></b>
 					</td>
 				<?php
 					}
@@ -837,7 +837,7 @@ echo $quote_type;
 
   		/*add class based on quote type*/
   		<?php
-  			if($quote_type == "1")
+  			if($boss_tooling[0]['tooling_type'] == "1")
   			{
   		?>
   			$('#csm').addClass('active-tooling');

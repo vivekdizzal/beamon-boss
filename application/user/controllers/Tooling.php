@@ -656,6 +656,9 @@ class Tooling extends CI_Controller {
 	/* Public view action for custom qupte**/
 	public function cstm_view_tooling_action($id=0)
 	{
+/*		echo "<pre>";
+		print_r($_POST);
+		exit;*/
 		$get_total_cost = tooling_custom_calculation($_POST);
 			
 		$where = array('tooling_id' => $id);
@@ -866,7 +869,7 @@ class Tooling extends CI_Controller {
 				$update_quote_status = "3";
 			}
 
-			$this->crud_model->update('boss_quotes',array('quote_status'=>$update_quote_status),array('id'=>$quote_id));
+			$this->crud_model->update('boss_quotes',array('quote_status'=>$update_quote_status,'tooling_cost'=>$get_total_cost['total_wopd']),array('id'=>$quote_id));
 			redirect('quotes/quote_status');
 		}
 		else
